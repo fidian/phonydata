@@ -1,4 +1,4 @@
-import MersenneTwister = require("mersenne-twister");
+import MersenneTwister from "mersenne-twister";
 const loremWords: string[] = require("./data/lorem-words");
 
 export interface PhonyData {
