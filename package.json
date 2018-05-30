@@ -39,11 +39,10 @@
     "gts": "^0.6.0",
     "tslint": "^5.10.0",
     "@types/mersenne-twister": "^1.1.2",
-    "@types/node": "^10.1.2",
-    "typescript": "~2.8.0"
+    "@types/node": "^10.1.4",
+    "typescript": "~2.8.3"
   },
   "dependencies": {
-    "mersenne-twister": "^1.1.0",
-    "@types/node": "^10.1.2"
+    "mersenne-twister": "^1.1.0"
   }
 }

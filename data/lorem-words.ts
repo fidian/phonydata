@@ -1,6 +1,4 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.loremWords = [
+export const loremWords = [
     "a",
     "ab",
     "accusamus",
@@ -251,4 +249,3 @@ exports.loremWords = [
     "voluptatibus",
     "voluptatum",
 ];
-//# sourceMappingURL=lorem-words.js.map

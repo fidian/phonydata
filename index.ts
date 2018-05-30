@@ -1,5 +1,5 @@
 import MersenneTwister from "mersenne-twister";
-import * as loremWords from "./data/lorem-words";
+import { loremWords } from "./data/lorem-words";
 
 export interface PhonyData {
     // Index signatures

@@ -1,11 +1,14 @@
 "use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
-var MersenneTwister = require("mersenne-twister");
-var loremWords = require("./data/lorem-words");
+var mersenne_twister_1 = __importDefault(require("mersenne-twister"));
+var lorem_words_1 = require("./data/lorem-words");
 var PhonyData = /** @class */ (function () {
     function PhonyData() {
         var _this = this;
-        var generator = new MersenneTwister();
+        var generator = new mersenne_twister_1.default();
         /******
          * Random number generation functions
          ******/
@@ -35,7 +38,7 @@ var PhonyData = /** @class */ (function () {
         ]));
         this.define('loremTitle', function () { return _this.capitalizeTitle(_this.loremWords(_this.integer(3, 8))); });
         this.define('loremTitleWords', function (num) { return _this.capitalizeTitle(_this.loremWords(num)); });
-        this.define('loremWord', loremWords);
+        this.define('loremWord', lorem_words_1.loremWords);
         this.define('loremWords', function (num) {
             var desired = num || _this.integer(3, 8);
             var words = [];
