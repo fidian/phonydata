@@ -1,5 +1,5 @@
 import MersenneTwister from "mersenne-twister";
-const loremWords: string[] = require("./data/lorem-words");
+import * as loremWords from "./data/lorem-words";
 
 export interface PhonyData {
     // Index signatures
