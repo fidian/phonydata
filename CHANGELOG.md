@@ -2,6 +2,12 @@ Changelog
 =========
 
 
+0.1.4 - 2018-05-30
+------------------
+
+* Removed TypeScript from code. Separated into a `index.d.ts` file.
+
+
 0.1.3 - 2018-05-30
 ------------------
 

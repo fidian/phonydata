@@ -4,6 +4,9 @@
         "tslint:recommended"
     ],
     "jsRules": {},
-    "rules": {},
+    "rules": {
+        "interface-name": false,
+        "member-ordering": false
+    },
     "rulesDirectory": []
 }
