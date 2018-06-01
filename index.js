@@ -1,10 +1,11 @@
 "use strict";
-const basicFunctions = require("./basic/functions"),
+const basicBoolean = require("./basic/boolean"),
+    basicDate = require("./basic/date"),
+    basicFunctions = require("./basic/functions"),
     basicLocale = require("./basic/locale"),
     basicLorem = require("./basic/lorem"),
     basicModifiers = require("./basic/modifiers"),
     basicNumber = require("./basic/number"),
-    basicOther = require("./basic/other"),
     basicRandom = require("./basic/random"),
     basicText = require("./basic/text"),
     parseGenerator = require("./parse-generator");
@@ -13,12 +14,13 @@ const basicFunctions = require("./basic/functions"),
  * Data generation class
  */
 function PhonyData() {
+    this.define(basicBoolean);
+    this.define(basicDate);
     this.define(basicFunctions);
     this.define(basicLocale);
     this.define(basicLorem);
     this.define(basicModifiers);
     this.define(basicNumber);
-    this.define(basicOther);
     this.define(basicRandom);
     this.define(basicText);
 }

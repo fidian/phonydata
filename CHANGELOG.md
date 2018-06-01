@@ -1,6 +1,12 @@
 Changelog
 =========
 
+1.0.0 - ?
+---------
+
+* Split into separate files.
+* Initial locale support.
+* Added `date`, `datePast`, `dateFuture`.
 
 0.1.4 - 2018-05-30
 ------------------
