@@ -8,6 +8,7 @@ const basicBoolean = require("./basic/boolean"),
     basicNumber = require("./basic/number"),
     basicRandom = require("./basic/random"),
     basicText = require("./basic/text"),
+    formatGenerator = require("./format-generator"),
     parseGenerator = require("./parse-generator");
 
 /**
@@ -62,8 +63,11 @@ PhonyData.prototype.define = function (name, generator) {
     this[`_${name}`] = generator.bind(this);
 };
 
+PhonyData.prototype.formatGenerator = formatGenerator;
 PhonyData.prototype.parseGenerator = parseGenerator;
 
 module.exports = {
+    formatGenerator,
+    parseGenerator,
     PhonyData
 };

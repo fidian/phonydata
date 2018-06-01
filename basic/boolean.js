@@ -1,8 +1,7 @@
 "use strict";
 
 module.exports = {
-    boolean: [
-        true,
-        false
-    ]
+    boolean() {
+        return this.random < 0.5;
+    }
 };

@@ -2,7 +2,7 @@
 
 module.exports = {
     date() {
-        if (this.boolean) {
+        if (this.random < 0.5) {
             return this.dateFuture;
         }
 

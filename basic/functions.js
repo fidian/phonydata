@@ -1,6 +1,20 @@
 "use strict";
 
 module.exports = {
+    dateFormat(format, date) {
+        if (!(date instanceof Date)) {
+            date = this.date;
+        }
+
+        // Forbidden (used in ISO 8601): W, T, Z
+        return format.toString()
+            .replace(/YYYY/, date.getUTCFullYear())
+            .replace(/MM/, `0${(date.getUTCMonth() + 1)}`.substr(-2))
+            .replace(/DD/, `0${date.getUTCDate()}`.substr(-2))
+            .replace(/hh/, `0${date.getUTCHours()}`.substr(-2))
+            .replace(/mm/, `0${date.getUTCMinutes()}`.substr(-2))
+            .replace(/ss/, `0${date.getUTCSeconds()}`.substr(-2));
+    },
     format(format) {
         return format.toString()
             .replace(/#/g, this._digit)
