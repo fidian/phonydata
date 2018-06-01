@@ -157,25 +157,26 @@ Each of these generators are able to be used in two different ways. First, you m
 
 This is a complete list of getters. Ones tagged with `»` at the beginning indicate properties that are overridden when using a locale.
 
-| Generator             | Description                                                    | Sample Shown As JSON                         |
-|-----------------------|----------------------------------------------------------------|----------------------------------------------|
-| alphaNumericLower     | `»` A lowercase letter or number.                              | "w"                                          |
-| alphaNumericUpper     | `»` A capitalized letter or number.                            | "G"                                          |
-| boolean               | Boolean.                                                       | true                                         |
-| currencyValue         | `»` A number for a relatively inexpesive item, 0.00 to 100.99. | 20.69                                        |
-| digit                 | Single numerical digit.                                        | "0"                                          |
-| hexLower              | Hexadecimal digit in lowercase.                                | "f"                                          |
-| hexUpper              | Hexadecimal digit in uppercase.                                | "c"                                          |
-| letterLower           | `»` A lowercase letter.                                        | "l"                                          |
-| letterUpper           | `»` A capitalized letter.                                      | "P"                                          |
-| loremSentence         | Fake sentence.                                                 | "Et consequatur doloribus officiis officia." |
-| loremSentenceFragment | Portion of a sentence.                                         | "sit voluptatem maxime quae"                 |
-| loremTitle            | Three to eight capitalized words.                              | "Ut Quia Rerum Illum"                        |
-| random                | Number from 0 to 1.                                            | 0.9053151633124799                           |
-| sentence              | `»` Fake sentence.                                             | "Repellat quos neque animi."                 |
-| sentencePunctuation   | A biased punctuation generator that produces mostly periods.   | "."                                          |
-| title                 | `»` Three to eight capitalized words.                          | "Ad Voluptas Est Nihil"                      |
-| word                  | `»` A word.                                                    | "quia"                                       |
+| Generator             | Description                                                     | Sample Shown As JSON                         |
+|-----------------------|-----------------------------------------------------------------|----------------------------------------------|
+| alphaNumericLower     | `»` A lowercase letter or number.                               | "w"                                          |
+| alphaNumericUpper     | `»` A capitalized letter or number.                             | "G"                                          |
+| boolean               | Boolean.                                                        | true                                         |
+| currencyValue         | `»` A number for a relatively inexpensive item, 0.00 to 100.99. | 20.69                                        |
+| digit                 | Single numerical digit.                                         | "0"                                          |
+| hexLower              | Hexadecimal digit in lowercase.                                 | "f"                                          |
+| hexUpper              | Hexadecimal digit in uppercase.                                 | "c"                                          |
+| letterLower           | `»` A lowercase letter.                                         | "l"                                          |
+| letterUpper           | `»` A capitalized letter.                                       | "P"                                          |
+| loremSentence         | Fake sentence.                                                  | "Et consequatur doloribus officiis officia." |
+| loremSentenceFragment | Portion of a sentence.                                          | "sit voluptatem maxime quae"                 |
+| loremTitle            | Three to eight capitalized words.                               | "Ut Quia Rerum Illum"                        |
+| phoneNumber           | `»` A phone number.                                             | "345-884-7216"                               |
+| random                | Number from 0 to 1.                                             | 0.9053151633124799                           |
+| sentence              | `»` Fake sentence.                                              | "Repellat quos neque animi."                 |
+| sentencePunctuation   | A biased punctuation generator that produces mostly periods.    | "."                                          |
+| title                 | `»` Three to eight capitalized words.                           | "Ad Voluptas Est Nihil"                      |
+| word                  | `»` A word.                                                     | "quia"                                       |
 
 `phony.random` returns a number from a range that starts at zero and ends just before one, also known as `[0-1)`. Use this as a basis for any random number generation because it can get reset when the user uses `phony.seed()`.
 
@@ -265,9 +266,9 @@ Support for localization is rudimentary at present. Generators will be updated t
 
 This will set the words to match the language and country-specific information to change in order to try to match the country.
 
-| Locale  | Language | Country       |
-|---------|----------|---------------|
-| `en-US` | English  | United States |
+| Locale | Language | Country       |
+|--------|----------|---------------|
+| en-US  | English  | United States |
 
 
 Development
