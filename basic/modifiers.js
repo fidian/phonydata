@@ -12,6 +12,9 @@ module.exports = {
             return match.toUpperCase();
         });
     },
+    toJson(thing) {
+        return JSON.stringify(thing);
+    },
     toString(thing) {
         return thing.toString();
     }

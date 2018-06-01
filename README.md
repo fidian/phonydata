@@ -206,6 +206,7 @@ Some of these functions are useful as modifiers for `phony.parse()`, which is ex
 | format(format)       | Replaces letters in the format.                | "##-AA-aa-ZZ-zz-XX-xx" | "65-W1-qm-7Y-br-20-ec" |
 | parse(format)        | Replaces `{{prop}}` and modifier syntax.       | "{{digit}}"            | "9"                    |
 | titleWords(num)      | `»` A number of capitalized words.             | 2                      | "Ut Quis"              |
+| toJson(thing)        | Converts `thing` to JSON.                      | "string"               | "\"string\""           |
 | toString(thing)      | Returns `thing.toString()`                     | {}                     | "[Object]"             |
 | words(num)           | `»` A number of words.                         | 2                      | "ut voluptatum"        |
 
