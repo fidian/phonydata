@@ -80,7 +80,7 @@ Since this is a class, you could extend it and add additional data generators. I
 API - Special Functions
 -----------------------
 
-There are a few special functions that don't generate data themselves, but are still quite useful.
+There are a few special functions that are primarily used as the engine behind the random data generation.
 
 ### `phony.define(name, generator)`
 
@@ -195,18 +195,19 @@ The functions are very similar to getters, but they could take arguments, so you
 
 Some of these functions are useful as modifiers for `phony.parse()`, which is explained later. Anything with `»` at the beginning indicate properties that are overridden when using a locale.
 
-| Generator            | Description                                    | Input                  | Sample Shown As JSON   |     |
-|----------------------|------------------------------------------------|------------------------|------------------------|-----|
-| loremTitleWords(num) | A specific number of capitalized words.        | 2                      | "Beatae Unde"          |     |
-| index(max)           | Number from 0 to `max - 1`.                    | 100                    | 33                     |     |
-| integer(min, max)    | Number from `min` to `max`, inclusive.         | 99, 200                | 117                    |     |
-| capitalize(str)      | Translates a string into uppercase.            | "test"                 | "TEST"                 |     |
-| capitalizeFirst(str) | Translates the first character into uppercase. | "test"                 | "Test"                 |     |
-| capitalizeTitle(str) | Capitalizes every word.                        | "one two"              | "One Two"              |     |
-| format(format)       | Replaces letters in the format.                | "##-AA-aa-ZZ-zz-XX-xx" | "65-W1-qm-7Y-br-20-ec" |     |
-| parse(format)        | Replaces `{{prop}}` and modifier syntax.       | "{{digit}}"            | "9"                    |     |
-| titleWords(num)      | `»` A number of capitalized words.             | 2                      | "Ut Quis"              |     |
-| words(num)           | `»` A number of words.                         | 2                      | "ut voluptatum"        |     |
+| Generator            | Description                                    | Input                  | Sample Shown As JSON   |
+|----------------------|------------------------------------------------|------------------------|------------------------|
+| loremTitleWords(num) | A specific number of capitalized words.        | 2                      | "Beatae Unde"          |
+| index(max)           | Number from 0 to `max - 1`.                    | 100                    | 33                     |
+| integer(min, max)    | Number from `min` to `max`, inclusive.         | 99, 200                | 117                    |
+| capitalize(str)      | Translates a string into uppercase.            | "test"                 | "TEST"                 |
+| capitalizeFirst(str) | Translates the first character into uppercase. | "test"                 | "Test"                 |
+| capitalizeTitle(str) | Capitalizes every word.                        | "one two"              | "One Two"              |
+| format(format)       | Replaces letters in the format.                | "##-AA-aa-ZZ-zz-XX-xx" | "65-W1-qm-7Y-br-20-ec" |
+| parse(format)        | Replaces `{{prop}}` and modifier syntax.       | "{{digit}}"            | "9"                    |
+| titleWords(num)      | `»` A number of capitalized words.             | 2                      | "Ut Quis"              |
+| toString(thing)      | Returns `thing.toString()`                     | {}                     | "[Object]"             |
+| words(num)           | `»` A number of words.                         | 2                      | "ut voluptatum"        |
 
 
 ### `phony.format()`
@@ -252,6 +253,20 @@ This can not use functions that take arguments, so you can not use a format like
 
     console.log(phony.parse("{{integer}}"));
     // function () { [native code] }
+
+
+Localization
+------------
+
+Support for localization is rudimentary at present. Generators will be updated to use more appropriate settings. To get a specially localized version of `PhonyData`, simply change your `require()` statement:
+
+    require("phonydata/locale/en-US");  // Loads the US version of English
+
+This will set the words to match the language and country-specific information to change in order to try to match the country.
+
+| Locale  | Language | Country       |
+|---------|----------|---------------|
+| `en-US` | English  | United States |
 
 
 Development

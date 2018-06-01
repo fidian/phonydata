@@ -7,6 +7,9 @@ module.exports = {
     alphaNumericUpper: "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789".split(""),
     letterLower: "abcdefghijklmnopqrstuvwxyz".split(""),
     letterUpper: "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split(""),
+    phoneNumber() {
+        return this.integer(2, 9).toString() + this.format("##-###-####");
+    },
     sentence() {
         return this.loremSentence;
     },
