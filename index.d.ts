@@ -65,6 +65,8 @@ export interface PhonyData {
     parse(format: string): string;
     _parse(format: string): string;
     parseGenerator(formats: string | string[]): () => string;
+    phoneNumber: string
+    _phoneNumber(): string
     random: number;
     _random(): number;
     seed(seed?: number): void;
@@ -73,10 +75,6 @@ export interface PhonyData {
     _sentence(): string;
     sentencePunctuation: string;
     _sentencePunctuation(): string;
-    stars4: number;
-    _stars4: number;
-    stars5: number;
-    _stars5: number;
     title: string;
     _title(): string;
     titleWords(num?: number): string;

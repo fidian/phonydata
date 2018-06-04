@@ -6,7 +6,9 @@ Changelog
 
 * Split into separate files.
 * Initial locale support.
-* Added `date`, `datePast`, `dateFuture`.
+* Added `date`, `datePast`, `dateFuture`, several other Date-related methods.
+* Added `parseGenerator` and `formatGenerator` to the exports.
+* Added `toString()` and `toJson()` modifiers.
 
 0.1.4 - 2018-05-30
 ------------------
