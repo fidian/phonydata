@@ -1,16 +1,16 @@
 "use strict";
 
 module.exports = {
-    index(items) {
+    index: function (items) {
         return Math.floor(this.random * (items || 1));
     },
-    integer(min, max) {
+    integer: function (min, max) {
         return Math.floor(this.random * (max - min + 1)) + min;
     },
-    stars4() {
+    stars4: function () {
         return this.integer(0, 40) / 10;
     },
-    stars5() {
+    stars5: function () {
         return this.integer(0, 50) / 10;
     }
 };

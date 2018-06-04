@@ -1,14 +1,14 @@
 "use strict";
 
 module.exports = {
-    date() {
+    date: function () {
         if (this.random < 0.5) {
             return this.dateFuture;
         }
 
         return this.datePast;
     },
-    dateFuture() {
+    dateFuture: function () {
         const d = new Date(),
             future = new Date();
 
@@ -17,7 +17,7 @@ module.exports = {
 
         return d;
     },
-    datePast() {
+    datePast: function () {
         const d = new Date(),
             past = new Date();
 

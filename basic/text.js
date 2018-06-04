@@ -1,19 +1,19 @@
 "use strict";
 
 module.exports = {
-    dateText(d) {
+    dateText: function (d) {
         return this.dateFormat("YYYY-MM-DD", d);
     },
-    dateTimeCondensed(d) {
+    dateTimeCondensed: function (d) {
         return this.dateFormat("YYYYMMDDThhmmssZ", d);
     },
-    dateTimeOffset(d) {
+    dateTimeOffset: function (d) {
         return this.dateFormat("YYYY-MM-DDThh:mm:ss+00:00", d);
     },
-    dateTimeMinuteZ(d) {
+    dateTimeMinuteZ: function (d) {
         return this.dateFormat("YYYY-MM-DDThh:mmZ", d);
     },
-    dateTimeZ(d) {
+    dateTimeZ: function (d) {
         return this.dateFormat("YYYY-MM-DDThh:mm:ssZ", d);
     },
     digit: "0123456789".split(""),

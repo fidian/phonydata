@@ -1,5 +1,5 @@
 parserOptions:
-    ecmaVersion: 6
+    ecmaVersion: 5
 env:
     es6: true
     jasmine: true
@@ -29,7 +29,7 @@ rules:
         - 10
     computed-property-spacing: error
     consistent-return: error
-    consistent-this: error
+    consistent-this: off
     constructor-super: error
     curly: error
     default-case: error
@@ -166,7 +166,7 @@ rules:
     no-with: error
     object-curly-spacing: error
     object-property-newline: error
-    object-shorthand: error
+    object-shorthand: off
     one-var: error
     operator-assignment: error
     operator-linebreak:
@@ -175,12 +175,9 @@ rules:
     padded-blocks:
         - error
         - never
-    prefer-arrow-callback:
-        - error
-        -
-            allowNamedFunctions: true
+    prefer-arrow-callback: off
     prefer-const: error
-    prefer-template: error
+    prefer-template: off
     quote-props:
         - error
         - as-needed

@@ -1,21 +1,21 @@
 "use strict";
 
 module.exports = {
-    capitalize(str) {
+    capitalize: function (str) {
         return str.toString().toUpperCase();
     },
-    capitalizeFirst(str) {
+    capitalizeFirst: function (str) {
         return str.toString().charAt(0).toUpperCase() + str.toString().substr(1);
     },
-    capitalizeTitle(str) {
-        return str.toString().replace(/(^|[^\w])\w/g, (match) => {
+    capitalizeTitle: function (str) {
+        return str.toString().replace(/(^|[^\w])\w/g, function (match) {
             return match.toUpperCase();
         });
     },
-    toJson(thing) {
+    toJson: function (thing) {
         return JSON.stringify(thing);
     },
-    toString(thing) {
+    toString: function (thing) {
         return thing.toString();
     }
 };

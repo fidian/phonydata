@@ -11,10 +11,10 @@ const MersenneTwister = require("mersenne-twister");
 function init(obj) {
     const generator = new MersenneTwister(),
         methods = {
-            random: () => {
+            random: function () {
                 return generator.random();
             },
-            seed: (seed) => {
+            seed: function (seed) {
                 return generator.init_seed(seed || 0);
             }
         };
@@ -25,10 +25,10 @@ function init(obj) {
 }
 
 module.exports = {
-    random() {
+    random: function () {
         return init(this).random();
     },
-    seed(seed) {
+    seed: function (seed) {
         return init(this).seed(seed);
     }
 };

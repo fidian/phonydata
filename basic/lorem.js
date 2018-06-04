@@ -14,14 +14,14 @@ module.exports = {
         "{{loremWord}} {{loremWord}} {{loremWord}} {{loremWord}} {{loremWord}} {{loremWord}}",
         "{{loremWord}} {{loremWord}} {{loremWord}} {{loremWord}} {{loremWord}} {{loremWord}} {{loremWord}}"
     ]),
-    loremTitle() {
+    loremTitle: function () {
         return this.capitalizeTitle(this.loremWords());
     },
-    loremTitleWords(num) {
+    loremTitleWords: function (num) {
         return this.capitalizeTitle(this.loremWords(num));
     },
     loremWord: loremWordList,
-    loremWords(num) {
+    loremWords: function (num) {
         const desired = num || this.integer(3, 8),
             words = [];
 

@@ -7,27 +7,27 @@ module.exports = {
     alphaNumericUpper: "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789".split(""),
     letterLower: "abcdefghijklmnopqrstuvwxyz".split(""),
     letterUpper: "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split(""),
-    phoneNumber() {
+    phoneNumber: function () {
         return this.integer(2, 9).toString() + this.format("##-###-####");
     },
-    sentence() {
+    sentence: function () {
         return this.loremSentence;
     },
-    title() {
+    title: function () {
         return this.loremTitle;
     },
-    titleWords(num) {
+    titleWords: function (num) {
         return this.loremTitleWords(num);
     },
-    word() {
+    word: function () {
         return this.loremWord;
     },
-    words(num) {
+    words: function (num) {
         return this.loremWords(num);
     },
 
     // Country specific
-    currencyValue() {
+    currencyValue: function () {
         return this.integer(0, 100) + this.integer(0, 100) / 100;
     }
 };
