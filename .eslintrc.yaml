@@ -94,7 +94,7 @@ rules:
     no-implied-eval: error
     no-inline-comments: error
     no-inner-declarations: error
-    no-invalid-this: error
+    no-invalid-this: off
     no-invalid-regexp: error
     no-irregular-whitespace: error
     no-iterator: error

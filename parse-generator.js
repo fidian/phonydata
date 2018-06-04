@@ -2,12 +2,12 @@
 
 module.exports = function (formats) {
     if (Array.isArray(formats)) {
-        return () => {
+        return function () {
             return this.parse(formats[this.index(formats.length)]);
         };
     }
 
-    return () => {
+    return function () {
         return this.parse(formats);
     };
 };
