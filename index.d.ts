@@ -75,7 +75,7 @@ export interface PhonyData {
     _sentence(): string;
     sentencePunctuation: string;
     _sentencePunctuation(): string;
-    sequenceGenerator(any[]): () => any;
+    sequenceGenerator(values: any[]): () => any;
     title: string;
     _title(): string;
     titleWords(num?: number): string;
