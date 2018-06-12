@@ -141,6 +141,21 @@ Creates a generator function that should be passed into `phony.generator()`. The
     // sad it is
 
 
+### `phony.sequenceGenerator(arrayOfValues)`
+
+Returns a function that will provide the values in the array sequentially. When at the end, the list will begin again from the beginning.
+
+    phony.define("powerLevel", phony.sequenceGenerator([ "low", "medium", "high" ]));
+    console.log(phony.powerLevel);
+    // low
+    console.log(phony.powerLevel);
+    // medium
+    console.log(phony.powerLevel);
+    // high
+    console.log(phony.powerLevel);
+    // low
+
+
 ### `phony.seed(number?)`
 
 Seeds the random number generator. When `number` is not passed, the generator is seeded with 0.

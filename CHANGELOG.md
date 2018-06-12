@@ -1,8 +1,14 @@
 Changelog
 =========
 
-1.0.0 - ?
----------
+1.1.0 - 2018-06-12
+------------------
+
+* Added `sequenceGenerator` to the exports.
+
+
+1.0.0 - 2018-06-04
+------------------
 
 * Split into separate files.
 * Initial locale support.

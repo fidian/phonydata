@@ -1,5 +1,5 @@
 "use strict";
-var basicBoolean, basicDate, basicFunctions, basicLocale, basicLorem, basicModifiers, basicNumber, basicRandom, basicText, formatGenerator, parseGenerator;
+var basicBoolean, basicDate, basicFunctions, basicLocale, basicLorem, basicModifiers, basicNumber, basicRandom, basicText, formatGenerator, parseGenerator, sequenceGenerator;
 
 basicBoolean = require("./basic/boolean");
 basicDate = require("./basic/date");
@@ -12,6 +12,7 @@ basicRandom = require("./basic/random");
 basicText = require("./basic/text");
 formatGenerator = require("./format-generator");
 parseGenerator = require("./parse-generator");
+sequenceGenerator = require("./sequence-generator");
 
 /**
  * Data generation class
@@ -71,6 +72,7 @@ PhonyData.prototype.define = function (name, generator) {
 
 PhonyData.prototype.formatGenerator = formatGenerator;
 PhonyData.prototype.parseGenerator = parseGenerator;
+PhonyData.prototype.sequenceGenerator = sequenceGenerator;
 
 module.exports = {
     formatGenerator: formatGenerator,
