@@ -1,6 +1,12 @@
 Changelog
 =========
 
+1.1.1 - 2018-06-12
+------------------
+
+* Fixed the TypeScript definition that was omitted in 1.1.0.
+
+
 1.1.0 - 2018-06-12
 ------------------
 
