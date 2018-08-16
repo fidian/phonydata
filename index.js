@@ -1,15 +1,16 @@
 "use strict";
-var basicBoolean, basicDate, basicFunctions, basicLocale, basicLorem, basicModifiers, basicNumber, basicRandom, basicText, formatGenerator, parseGenerator, sequenceGenerator;
+var binary, boolean, date, formatGenerator, functions, locale, lorem, modifiers, number, parseGenerator, random, sequenceGenerator, text;
 
-basicBoolean = require("./basic/boolean");
-basicDate = require("./basic/date");
-basicFunctions = require("./basic/functions");
-basicLocale = require("./basic/locale");
-basicLorem = require("./basic/lorem");
-basicModifiers = require("./basic/modifiers");
-basicNumber = require("./basic/number");
-basicRandom = require("./basic/random");
-basicText = require("./basic/text");
+binary = require("./basic/binary");
+boolean = require("./basic/boolean");
+date = require("./basic/date");
+functions = require("./basic/functions");
+locale = require("./basic/locale");
+lorem = require("./basic/lorem");
+modifiers = require("./basic/modifiers");
+number = require("./basic/number");
+random = require("./basic/random");
+text = require("./basic/text");
 formatGenerator = require("./format-generator");
 parseGenerator = require("./parse-generator");
 sequenceGenerator = require("./sequence-generator");
@@ -18,15 +19,16 @@ sequenceGenerator = require("./sequence-generator");
  * Data generation class
  */
 function PhonyData() {
-    this.define(basicBoolean);
-    this.define(basicDate);
-    this.define(basicFunctions);
-    this.define(basicLocale);
-    this.define(basicLorem);
-    this.define(basicModifiers);
-    this.define(basicNumber);
-    this.define(basicRandom);
-    this.define(basicText);
+    this.define(binary);
+    this.define(boolean);
+    this.define(date);
+    this.define(functions);
+    this.define(locale);
+    this.define(lorem);
+    this.define(modifiers);
+    this.define(number);
+    this.define(random);
+    this.define(text);
 }
 
 PhonyData.prototype.define = function (name, generator) {

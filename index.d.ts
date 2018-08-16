@@ -5,6 +5,10 @@ export interface PhonyData {
     _alphaNumericUpper(): string;
     boolean: boolean;
     _boolean(): boolean;
+    byteHex: string;
+    _byteHex(): string;
+    byteValue: number;
+    _byteValue(): number;
     capitalize(str: string): string;
     _capitalize(str: string): string;
     capitalizeFirst(str: string): string;

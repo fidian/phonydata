@@ -192,6 +192,8 @@ This is a complete list of getters. Ones tagged with `»` at the beginning indic
 | alphaNumericLower     | `»` A lowercase letter or number.                               | "w"                                          |
 | alphaNumericUpper     | `»` A capitalized letter or number.                             | "G"                                          |
 | boolean               | Boolean.                                                        | true                                         |
+| byteHex               | A hexadecimal value of a single 8-bit byte.                     | "4b"                                         |
+| byteValue             | A decimal value of a single 8-bit byte.                         | 75                                           |
 | currencyValue         | `»` A number for a relatively inexpensive item, 0.00 to 100.99. | 20.69                                        |
 | date                  | A date within one year of the current date.                     | new Date("2018-05-03T04:46:55.586Z")         |
 | dateFuture            | A date in the future, within one year of the current date.      | new Date("2018-07-04T06:04:40.744Z")         |
