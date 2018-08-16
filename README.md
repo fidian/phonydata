@@ -196,6 +196,11 @@ This is a complete list of getters. Ones tagged with `»` at the beginning indic
 | byteValue             | A decimal value of a single 8-bit byte.                         | 75                                           |
 | cssBasicColorName     | A valid CSS3 color name.                                        | "olive"                                      |
 | cssColorName          | An extended CSS3 color name. It's also capitalized.             | "SpringGreen"                                |
+| currency              | An object that details a random type of currency.               | ***See note below.***                        |
+| currencyCode          | Three-letter code for a currency.                               | "IQD"                                        |
+| currencyDigitalCode   | Three-digit code for a currency.                                | "776"                                        |
+| currencyName          | How the currency is said in conversation.                       | "Somali Shilling"                            |
+| currencySymbol        | The symbol for a currency. Might be an empty string.            | "$"                                          |
 | currencyValue         | `»` A number for a relatively inexpensive item, 0.00 to 100.99. | 20.69                                        |
 | date                  | A date within one year of the current date.                     | new Date("2018-05-03T04:46:55.586Z")         |
 | dateFuture            | A date in the future, within one year of the current date.      | new Date("2018-07-04T06:04:40.744Z")         |
@@ -219,6 +224,16 @@ This is a complete list of getters. Ones tagged with `»` at the beginning indic
 | title                 | `»` Three to eight capitalized words.                           | "Ad Voluptas Est Nihil"                      |
 | uuid                  | Version 4 random UUID.                                          | "e92f7cc8-7eb7-4ec4-B36-1b7d8cc8d66c"        |
 | word                  | `»` A word.                                                     | "quia"                                       |
+
+`phony.currency` provides an object similar to this one.
+
+    {
+        code: 'TTD',
+        symbol: '$',
+        digitalCode: '780',
+        name: 'Trinidad and Tobago Dollar',
+        countries: [ 'Trinidad and Tobago' ]
+    }
 
 `phony.random` returns a number from a range that starts at zero and ends just before one, also known as `[0-1)`. Use this as a basis for any random number generation because it can get reset when the user uses `phony.seed()`.
 

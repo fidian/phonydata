@@ -1,3 +1,11 @@
+export interface PhonyCurrency {
+    code: string;
+    countries: string[];
+    digitalCode: string;
+    name: string;
+    symbol: string;
+}
+
 export interface PhonyData {
     alphaNumericLower: string;
     _alphaNumericLower(): string;
@@ -19,6 +27,16 @@ export interface PhonyData {
     _cssBasicColorName(): string;
     cssColorName: string;
     _cssColorName(): string;
+    currency: PhonyCurrency;
+    _currency(): PhonyCurrency;
+    currencyCode: string;
+    _currencyCode(): string;
+    currencyDigitalCode: string;
+    _currencyDigitalCode(): string;
+    currencyName: string;
+    _currencyName(): string;
+    currencySymbol: string;
+    _currencySymbol(): string;
     currencyValue: number;
     _currencyValue(): number;
     date: Date;

@@ -1,8 +1,9 @@
 "use strict";
-var binary, boolean, date, formatGenerator, functions, locale, lorem, modifiers, number, parseGenerator, random, sequenceGenerator, text, web;
+var binary, boolean, currency, date, formatGenerator, functions, locale, lorem, modifiers, number, parseGenerator, random, sequenceGenerator, text, web;
 
 binary = require("./basic/binary");
 boolean = require("./basic/boolean");
+currency = require("./basic/currency");
 date = require("./basic/date");
 functions = require("./basic/functions");
 locale = require("./basic/locale");
@@ -22,6 +23,7 @@ sequenceGenerator = require("./sequence-generator");
 function PhonyData() {
     this.define(binary);
     this.define(boolean);
+    this.define(currency);
     this.define(date);
     this.define(functions);
     this.define(locale);
