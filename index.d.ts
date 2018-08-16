@@ -15,6 +15,10 @@ export interface PhonyData {
     _capitalizeFirst(str: string): string;
     capitalizeTitle(str: string): string;
     _capitalizeTitle(str: string): string;
+    cssBasicColorName: string;
+    _cssBasicColorName(): string;
+    cssColorName: string;
+    _cssColorName(): string;
     currencyValue: number;
     _currencyValue(): number;
     date: Date;
@@ -39,6 +43,8 @@ export interface PhonyData {
     define(name: string, generator: any): void;
     digit: string;
     _digit(): string;
+    fileExtension: string;
+    _fileExtension(): string;
     format(format: string): string;
     _format(format: string): string;
     formatGenerator(formats: string | string[]): () => string;
@@ -66,11 +72,15 @@ export interface PhonyData {
     _loremWord(): string;
     loremWords(num?: number): string;
     _loremWords(num?: number): string;
+    mimeType: string;
+    _mimeType(): string;
     parse(format: string): string;
     _parse(format: string): string;
     parseGenerator(formats: string | string[]): () => string;
-    phoneNumber: string
-    _phoneNumber(): string
+    phoneNumber: string;
+    _phoneNumber(): string;
+    rgbHex: string;
+    _rgbHex(): string;
     random: number;
     _random(): number;
     seed(seed?: number): void;

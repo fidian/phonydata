@@ -194,11 +194,14 @@ This is a complete list of getters. Ones tagged with `»` at the beginning indic
 | boolean               | Boolean.                                                        | true                                         |
 | byteHex               | A hexadecimal value of a single 8-bit byte.                     | "4b"                                         |
 | byteValue             | A decimal value of a single 8-bit byte.                         | 75                                           |
+| cssBasicColorName     | A valid CSS3 color name.                                        | "olive"                                      |
+| cssColorName          | An extended CSS3 color name. It's also capitalized.             | "SpringGreen"                                |
 | currencyValue         | `»` A number for a relatively inexpensive item, 0.00 to 100.99. | 20.69                                        |
 | date                  | A date within one year of the current date.                     | new Date("2018-05-03T04:46:55.586Z")         |
 | dateFuture            | A date in the future, within one year of the current date.      | new Date("2018-07-04T06:04:40.744Z")         |
 | datePast              | A date in the past, within one year of the current date.        | new Date("2018-01-11T12:37:18.965Z")         |
 | digit                 | Single numerical digit.                                         | "0"                                          |
+| fileExtension         | Extension of a filename.                                        | "ogv"                                        |
 | hexLower              | Hexadecimal digit in lowercase.                                 | "f"                                          |
 | hexUpper              | Hexadecimal digit in uppercase.                                 | "c"                                          |
 | letterLower           | `»` A lowercase letter.                                         | "l"                                          |
@@ -207,8 +210,10 @@ This is a complete list of getters. Ones tagged with `»` at the beginning indic
 | loremSentenceFragment | Portion of a sentence.                                          | "sit voluptatem maxime quae"                 |
 | loremTitle            | Three to eight capitalized words.                               | "Ut Quia Rerum Illum"                        |
 | loremWord             | A single word from Lorem Ipsum.                                 | "velit"                                      |
+| mimeType              | A file's MIME type.                                             | "application/x-abiword"                      |
 | phoneNumber           | `»` A phone number.                                             | "345-884-7216"                               |
-| random                | Number from 0 to 1.                                             | 0.9053151633124799                           |
+| random                | Number from 0 to 1. ***See note below.***                       | 0.9053151633124799                           |
+| rgbHex                | Color code, suitable for HTML.                                  | "#fafeca"                                    |
 | sentence              | `»` Fake sentence.                                              | "Repellat quos neque animi."                 |
 | sentencePunctuation   | A biased punctuation generator that produces mostly periods.    | "."                                          |
 | title                 | `»` Three to eight capitalized words.                           | "Ad Voluptas Est Nihil"                      |

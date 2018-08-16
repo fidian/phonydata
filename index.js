@@ -1,5 +1,5 @@
 "use strict";
-var binary, boolean, date, formatGenerator, functions, locale, lorem, modifiers, number, parseGenerator, random, sequenceGenerator, text;
+var binary, boolean, date, formatGenerator, functions, locale, lorem, modifiers, number, parseGenerator, random, sequenceGenerator, text, web;
 
 binary = require("./basic/binary");
 boolean = require("./basic/boolean");
@@ -11,6 +11,7 @@ modifiers = require("./basic/modifiers");
 number = require("./basic/number");
 random = require("./basic/random");
 text = require("./basic/text");
+web = require("./basic/web");
 formatGenerator = require("./format-generator");
 parseGenerator = require("./parse-generator");
 sequenceGenerator = require("./sequence-generator");
@@ -29,6 +30,7 @@ function PhonyData() {
     this.define(number);
     this.define(random);
     this.define(text);
+    this.define(web);
 }
 
 PhonyData.prototype.define = function (name, generator) {
