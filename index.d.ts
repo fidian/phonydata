@@ -98,6 +98,8 @@ export interface PhonyData {
     _toJson(thing: any): string;
     toString(thing: any): string;
     _toString(thing: any): string;
+    uuid: string;
+    _uuid(): string;
     word: string;
     _word(): string;
     words(num?: number): string;

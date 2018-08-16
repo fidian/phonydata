@@ -217,6 +217,7 @@ This is a complete list of getters. Ones tagged with `»` at the beginning indic
 | sentence              | `»` Fake sentence.                                              | "Repellat quos neque animi."                 |
 | sentencePunctuation   | A biased punctuation generator that produces mostly periods.    | "."                                          |
 | title                 | `»` Three to eight capitalized words.                           | "Ad Voluptas Est Nihil"                      |
+| uuid                  | Version 4 random UUID.                                          | "e92f7cc8-7eb7-4ec4-B36-1b7d8cc8d66c"        |
 | word                  | `»` A word.                                                     | "quia"                                       |
 
 `phony.random` returns a number from a range that starts at zero and ends just before one, also known as `[0-1)`. Use this as a basis for any random number generation because it can get reset when the user uses `phony.seed()`.

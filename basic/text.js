@@ -19,5 +19,17 @@ module.exports = {
     digit: "0123456789".split(""),
     hexLower: "0123456789abcdef".split(""),
     hexUpper: "0123456789ABCDEF".split(""),
-    sentencePunctuation: "..........?!".split("")
+    sentencePunctuation: "..........?!".split(""),
+    uuid: function () {
+        var variant;
+
+        variant = [
+            "8",
+            "9",
+            "A",
+            "B"
+        ][this.index(4)];
+
+        return this.format("xxxxxxxx-xxxx-4xxx-") + variant + this.format("xx-xxxxxxxxxxxx");
+    }
 };
