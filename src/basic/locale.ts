@@ -1,6 +1,7 @@
 import { PhonyData } from '..';
 
 export interface PhonyDataLocality {
+    addressLine1: string;
     city: string;
     stateOrProvince: string;
     postCode: string;
@@ -9,10 +10,14 @@ export interface PhonyDataLocality {
 declare module '..' {
     interface PhonyData {
         // Language specific
+        addressLine1: string;
+        _addressLine1: () => string;
         alphaNumericLower: string;
         _alphaNumericLower: () => string;
         alphaNumericUpper: string;
         _alphaNumericUpper: () => string;
+        buildingNumber: number;
+        _buildingNumber: () => number;
         city: string;
         _city: () => string;
         givenName: string;
@@ -39,6 +44,8 @@ declare module '..' {
         _sentencePunctuation: () => string;
         stateOrProvince: string;
         _stateOrProvince: () => string;
+        streetName: string;
+        _streetName: () => string;
         surname: string;
         _surname: () => string;
         title: string;
@@ -58,7 +65,7 @@ declare module '..' {
 
 // Placeholders that should get overridden by locale-specific extensions.
 export function locale(phonyData: PhonyData) {
-    // Language specific
+    // Language/location specific
     phonyData.define(
         'alphaNumericLower',
         'abcdefghijklmnopqrstuvwxyz0123456789'.split('')
@@ -67,37 +74,14 @@ export function locale(phonyData: PhonyData) {
         'alphaNumericUpper',
         'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789'.split('')
     );
-    phonyData.define('city', () => phonyData.loremTitleWords(1));
-    phonyData.define('givenName', () =>
-        phonyData.random < 0.5
-            ? phonyData.givenNameFemale
-            : phonyData.givenNameMale
-    );
-    phonyData.define('givenNameFemale', () => phonyData.loremTitleWords(1));
-    phonyData.define('givenNameMale', () => phonyData.loremTitleWords(1));
     phonyData.define('letterLower', 'abcdefghijklmnopqrstuvwxyz'.split(''));
     phonyData.define('letterUpper', 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split(''));
-    phonyData.define('locality', () => {
-        return {
-            city: phonyData.city,
-            stateOrProvince: phonyData.stateOrProvince,
-            postCode: phonyData.postCode
-        };
-    });
     phonyData.define(
         'personName',
         () => phonyData.givenName + ' ' + phonyData.surname
     );
-    phonyData.define(
-        'phoneNumber',
-        () =>
-            phonyData.integer(2, 9).toString() + phonyData.format('##-###-####')
-    );
-    phonyData.define('postCode', () => phonyData.format('ZZZ ZZZ'));
     phonyData.define('sentence', () => phonyData.loremSentence);
     phonyData.define('sentencePunctuation', '..........?!'.split(''));
-    phonyData.define('stateOrProvince', () => phonyData.format('AAA'));
-    phonyData.define('surname', () => phonyData.loremTitleWords(1));
     phonyData.define('title', () => phonyData.loremTitle);
     phonyData.define('titleWords', (num?: number) =>
         phonyData.loremTitleWords(num)
@@ -106,5 +90,32 @@ export function locale(phonyData: PhonyData) {
     phonyData.define('words', (num?: number) => phonyData.loremWords(num));
 
     // Country specific
+    phonyData.define('addressLine1', () => phonyData.buildingNumber + ' ' + phonyData.streetName);
+    phonyData.define('buildingNumber', () => phonyData.integer(1, 1000));
+    phonyData.define('city', () => phonyData.loremTitleWords(1));
     phonyData.define('currencyValue', () => phonyData.integer(0, 10000) / 100);
+    phonyData.define('givenName', () =>
+        phonyData.random < 0.5
+            ? phonyData.givenNameFemale
+            : phonyData.givenNameMale
+    );
+    phonyData.define('givenNameFemale', () => phonyData.loremTitleWords(1));
+    phonyData.define('givenNameMale', () => phonyData.loremTitleWords(1));
+    phonyData.define('locality', () => {
+        return {
+            addressLine1: phonyData.addressLine1,
+            city: phonyData.city,
+            stateOrProvince: phonyData.stateOrProvince,
+            postCode: phonyData.postCode
+        };
+    });
+    phonyData.define(
+        'phoneNumber',
+        () =>
+            phonyData.integer(2, 9).toString() + phonyData.format('##-###-####')
+    );
+    phonyData.define('postCode', () => phonyData.format('ZZZ ZZZ'));
+    phonyData.define('stateOrProvince', () => phonyData.format('AAA'));
+    phonyData.define('streetName', () => phonyData.loremTitleWords(2));
+    phonyData.define('surname', () => phonyData.loremTitleWords(1));
 }

@@ -1,15 +1,20 @@
 import { PhonyData } from '..';
 export interface PhonyDataLocality {
+    addressLine1: string;
     city: string;
     stateOrProvince: string;
     postCode: string;
 }
 declare module '..' {
     interface PhonyData {
+        addressLine1: string;
+        _addressLine1: () => string;
         alphaNumericLower: string;
         _alphaNumericLower: () => string;
         alphaNumericUpper: string;
         _alphaNumericUpper: () => string;
+        buildingNumber: number;
+        _buildingNumber: () => number;
         city: string;
         _city: () => string;
         givenName: string;
@@ -36,6 +41,8 @@ declare module '..' {
         _sentencePunctuation: () => string;
         stateOrProvince: string;
         _stateOrProvince: () => string;
+        streetName: string;
+        _streetName: () => string;
         surname: string;
         _surname: () => string;
         title: string;

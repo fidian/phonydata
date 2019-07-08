@@ -1,5 +1,5 @@
 // 1990 US Census data
-export const givenNameMale = [
+export const givenNamesMale = [
     'James',
     'John',
     'Robert',

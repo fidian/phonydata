@@ -1,7 +1,5 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
 // 1990 US Census data
-exports.givenNameFemale = [
+export const givenNamesFemale = [
     'Mary',
     'Patricia',
     'Linda',
