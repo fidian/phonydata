@@ -7,16 +7,26 @@ declare module '..' {
         _alphaNumericLower: () => string;
         alphaNumericUpper: string;
         _alphaNumericUpper: () => string;
+        givenName: string;
+        _givenName: () => string;
+        givenNameFemale: string;
+        _givenNameFemale: () => string;
+        givenNameMale: string;
+        _givenNameMale: () => string;
         letterLower: string;
         _letterLower: () => string;
         letterUpper: string;
         _letterUpper: () => string;
         phoneNumber: string;
         _phoneNumber: () => string;
+        personName: string;
+        _personName: () => string;
         sentence: string;
         _sentence: () => string;
         sentencePunctuation: string;
         _sentencePunctuation: () => string;
+        surname: string;
+        _surname: () => string;
         title: string;
         _title: () => string;
         titleWords: (num?: number) => string;
@@ -43,8 +53,19 @@ export function locale(phonyData: PhonyData) {
         'alphaNumericUpper',
         'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789'.split('')
     );
+    phonyData.define('givenName', () =>
+        phonyData.random < 0.5
+            ? phonyData.givenNameFemale
+            : phonyData.givenNameMale
+    );
+    phonyData.define('givenNameFemale', () => phonyData.loremTitleWords(1));
+    phonyData.define('givenNameMale', () => phonyData.loremTitleWords(1));
     phonyData.define('letterLower', 'abcdefghijklmnopqrstuvwxyz'.split(''));
     phonyData.define('letterUpper', 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split(''));
+    phonyData.define(
+        'personName',
+        () => phonyData.givenName + ' ' + phonyData.surname
+    );
     phonyData.define(
         'phoneNumber',
         () =>
@@ -52,6 +73,7 @@ export function locale(phonyData: PhonyData) {
     );
     phonyData.define('sentence', () => phonyData.loremSentence);
     phonyData.define('sentencePunctuation', '..........?!'.split(''));
+    phonyData.define('surname', () => phonyData.loremTitleWords(1));
     phonyData.define('title', () => phonyData.loremTitle);
     phonyData.define('titleWords', (num?: number) =>
         phonyData.loremTitleWords(num)
