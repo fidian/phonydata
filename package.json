@@ -4,9 +4,8 @@
     "description": "Generate test data, based on casual's ideas and faker's data.",
     "main": "index.js",
     "scripts": {
-        "eslint": "eslint *.js data",
-        "test": "npm run eslint && npm run tslint",
-        "tslint": "tslint *.d.js"
+        "build": "rm -rf lib && tsc",
+        "test": "tslint -p tslint.json"
     },
     "repository": {
         "type": "git",
@@ -30,11 +29,11 @@
     },
     "homepage": "https://github.com/fidian/phonydata#readme",
     "devDependencies": {
-        "eslint": "^4.19.1",
-        "tslint": "^5.10.0",
-        "typescript": "^2.8.3"
+        "typescript": "^3.5.2"
     },
     "dependencies": {
+        "@types/mersenne-twister": "^1.1.2",
         "mersenne-twister": "^1.1.0"
-    }
+    },
+    "sideEffects": false
 }

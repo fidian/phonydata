@@ -338,7 +338,7 @@ Localization
 
 Support for localization is rudimentary at present. Generators will be updated to use more appropriate settings. To get a specially localized version of `PhonyData`, simply change your `require()` statement:
 
-    require("phonydata/locale/en-US");  // Loads the US version of English
+    require("phonydata/lib/locale/en-US").PhonyDataEnUs;  // Loads the US version of English
 
 This will set the words to match the language and country-specific information to change in order to try to match the country.
 
