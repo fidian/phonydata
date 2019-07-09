@@ -1,4 +1,4 @@
-import { PhonyData } from '..';
+import { defineForObject, PhonyData } from '..';
 import { PhonyDataLocality } from '../basic/locale';
 import { cityStatePostCode } from './us-data/city-state-post-code';
 import { givenNamesFemale } from './us-data/given-names-female';
@@ -63,54 +63,61 @@ const streetNameSuffixes = [
     'Parkway',
     'Run'
 ];
-export class PhonyDataUs extends PhonyData {
-    constructor() {
-        super();
-        this.define('addressLine1', () => this.buildingNumber + ' ' + this.streetName);
-        this.define('buildingNumber', () => this.integer(1, 1000));
-        this.define('city', () => this.locality.city);
-        this.define('givenNameFemale', givenNamesFemale);
-        this.define('givenNameMale', givenNamesMale);
-        this.define(
-            'locality',
-            (): PhonyDataLocality => {
-                const entry = cityStatePostCode[
-                    this.index(cityStatePostCode.length)
-                ].split('|');
+export class PhonyDataUs extends PhonyData {}
 
-                return {
-                    addressLine1: this.addressLine1,
-                    city: entry[0],
-                    stateOrProvince: entry[1],
-                    postCode: entry[2]
-                };
-            }
-        );
-        this.define(
-            'phoneNumber',
-            () => this.integer(2, 9).toString(10) + this.format('##-###-####')
-        );
-        this.define('postCode', () => this.locality.postCode);
-        this.define('stateOrProvince', () => this.locality.stateOrProvince);
-        this.define('streetName', () => {
-            let result = '';
+const define = defineForObject.bind(null, PhonyDataUs.prototype);
 
-            if (this.random <= 0.01) {
-                result += streetNamePrefixes[this.index(streetNamePrefixes.length)] + ' ';
-            }
+define('addressLine1', function() {
+    return this.buildingNumber + ' ' + this.streetName;
+});
+define('buildingNumber', function() {
+    return this.integer(1, 1000);
+});
+define('city', function() {
+    return this.locality.city;
+});
+define('givenNameFemale', givenNamesFemale);
+define('givenNameMale', givenNamesMale);
+define('locality', function(): PhonyDataLocality {
+    const entry = cityStatePostCode[this.index(cityStatePostCode.length)].split(
+        '|'
+    );
 
-            result += streetNames[this.index(streetNames.length)];
+    return {
+        addressLine1: this.addressLine1,
+        city: entry[0],
+        stateOrProvince: entry[1],
+        postCode: entry[2]
+    };
+});
+define('phoneNumber', function() {
+    return this.integer(2, 9).toString(10) + this.format('##-###-####');
+});
+define('postCode', function() {
+    return this.locality.postCode;
+});
+define('stateOrProvince', function() {
+    return this.locality.stateOrProvince;
+});
+define('streetName', function() {
+    let result = '';
 
-            if (this.random <= 0.8) {
-                result += ' ' + streetNameSuffixes[this.index(streetNameSuffixes.length)];
-            }
-
-            if (this.random <= 0.1) {
-                result += ' '  + streetDirections[this.index(streetDirections.length)];
-            }
-
-            return result;
-        });
-        this.define('surname', surnames);
+    if (this.random <= 0.01) {
+        result +=
+            streetNamePrefixes[this.index(streetNamePrefixes.length)] + ' ';
     }
-}
+
+    result += streetNames[this.index(streetNames.length)];
+
+    if (this.random <= 0.8) {
+        result +=
+            ' ' + streetNameSuffixes[this.index(streetNameSuffixes.length)];
+    }
+
+    if (this.random <= 0.1) {
+        result += ' ' + streetDirections[this.index(streetDirections.length)];
+    }
+
+    return result;
+});
+define('surname', surnames);

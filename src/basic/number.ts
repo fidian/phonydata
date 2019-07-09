@@ -1,21 +1,17 @@
-import { PhonyData } from '..';
+import { define } from '..';
 
-declare module '..' {
-    interface PhonyData {
-        index(items: number): number;
-        _index(items: number): number;
-        integer(min: number, max: number): number;
-        _integer(min: number, max: number): number;
-    }
+export interface PhonyDataAddNumber {
+    index(items: number): number;
+    _index(items: number): number;
+    integer(min: number, max: number): number;
+    _integer(min: number, max: number): number;
 }
 
-export function number(phonyData: PhonyData) {
-    phonyData.define('index', (items: number = 1) =>
-        Math.floor(phonyData.random * items)
-    );
-    phonyData.define(
-        'integer',
-        (min: number, max: number) =>
-            Math.floor(phonyData.random * (max - min + 1)) + min
-    );
+export function number() {
+    define('index', function(items: number = 1) {
+        return Math.floor(this.random * items);
+    });
+    define('integer', function(min: number, max: number) {
+        return Math.floor(this.random * (max - min + 1)) + min;
+    });
 }

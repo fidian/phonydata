@@ -1,31 +1,38 @@
-import { PhonyData } from '..';
+import { define } from '..';
 
-declare module '..' {
-    interface PhonyData {
-        date: Date;
-        _date: () => Date;
-        dateFuture: Date;
-        _dateFuture: () => Date;
-        datePast: Date;
-        _datePast: () => Date;
-    }
+export interface PhonyDataAddDate {
+    date: Date;
+    _date(): Date;
+    dateFuture: Date;
+    _dateFuture(): Date;
+    datePast: Date;
+    _datePast(): Date;
 }
 
-export function date(phonyData: PhonyData) {
-    phonyData.define('date', () => phonyData.random < 0.5 ? phonyData.dateFuture : phonyData.datePast);
-    phonyData.define('dateFuture', () => {
+const oneYearInMs = 31557600000;
+const oneSecondInMs = 1000;
+
+export function date() {
+    define('date', function() {
+        if (this.random < 0.5) {
+            return this.dateFuture;
+        }
+
+        return this.datePast;
+    });
+    define('dateFuture', function() {
         const d = new Date();
 
         // Add one second to ensure it's in the future
-        d.setTime(d.getTime() + phonyData.index(31557600000) + 1000);
+        d.setTime(d.getTime() + this.index(oneYearInMs) + oneSecondInMs);
 
         return d;
     });
-    phonyData.define('datePast', () => {
+    define('datePast', function() {
         const d = new Date();
 
         // Remove one second to ensure it's in the past
-        d.setTime(d.getTime() - phonyData.index(31557600000) - 1000);
+        d.setTime(d.getTime() - this.index(oneYearInMs) - oneSecondInMs);
 
         return d;
     });

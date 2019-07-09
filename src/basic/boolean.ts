@@ -1,12 +1,12 @@
-import { PhonyData } from '..';
+import { define } from '..';
 
-declare module '..' {
-    interface PhonyData {
-        boolean: boolean;
-        _boolean: () => boolean;
-    }
+export interface PhonyDataAddBoolean {
+    boolean: boolean;
+    _boolean(): boolean;
 }
 
-export function boolean(phonyData: PhonyData) {
-    phonyData.define('boolean', () => phonyData.random < 0.5);
+export function boolean() {
+    define('boolean', function() {
+        return this.random < 0.5;
+    });
 }

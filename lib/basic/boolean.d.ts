@@ -1,8 +1,5 @@
-import { PhonyData } from '..';
-declare module '..' {
-    interface PhonyData {
-        boolean: boolean;
-        _boolean: () => boolean;
-    }
+export interface PhonyDataAddBoolean {
+    boolean: boolean;
+    _boolean(): boolean;
 }
-export declare function boolean(phonyData: PhonyData): void;
+export declare function boolean(): void;

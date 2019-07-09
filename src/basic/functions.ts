@@ -1,24 +1,22 @@
-import { PhonyData } from '..';
+import { define } from '..';
 
-declare module '..' {
-    interface PhonyData {
-        dateFormat: (format: string, date?: Date) => string;
-        _dateFormat: (format: string, date?: Date) => string;
-        format: (format: string) => string;
-        _format: (format: string) => string;
-        parse: (format: string) => string;
-        _parse: (format: string) => string;
-    }
+export interface PhonyDataAddFunctions {
+    dateFormat(format: string, date?: Date): string;
+    _dateFormat(format: string, date?: Date): string;
+    format(format: string): string;
+    _format(format: string): string;
+    parse(format: string): string;
+    _parse(format: string): string;
 }
 
 interface TypedPhonyData {
     [key: string]: (...args: any[]) => any;
 }
 
-export function functions(phonyData: PhonyData) {
-    phonyData.define('dateFormat', (format: string, date?: Date) => {
+export function functions() {
+    define('dateFormat', function(format: string, date?: Date) {
         if (!(date instanceof Date)) {
-            date = phonyData.date;
+            date = this.date;
         }
 
         // Avoid using these characters because they are already used in ISO
@@ -32,19 +30,19 @@ export function functions(phonyData: PhonyData) {
             .replace(/mm/, ('0' + date.getUTCMinutes()).substr(-2))
             .replace(/ss/, ('0' + date.getUTCSeconds()).substr(-2));
     });
-    phonyData.define('format', (format: string) => {
+    define('format', function(format: string) {
         return format
             .toString()
-            .replace(/#/g, phonyData._digit)
-            .replace(/A/g, phonyData._letterUpper)
-            .replace(/a/g, phonyData._letterLower)
-            .replace(/X/g, phonyData._hexUpper)
-            .replace(/x/g, phonyData._hexLower)
-            .replace(/Z/g, phonyData._alphaNumericUpper)
-            .replace(/z/g, phonyData._alphaNumericLower);
+            .replace(/#/g, this._digit)
+            .replace(/A/g, this._letterUpper)
+            .replace(/a/g, this._letterLower)
+            .replace(/X/g, this._hexUpper)
+            .replace(/x/g, this._hexLower)
+            .replace(/Z/g, this._alphaNumericUpper)
+            .replace(/z/g, this._alphaNumericLower);
     });
-    phonyData.define('parse', (format: string) => {
-        const typedPhonyData: TypedPhonyData = phonyData as unknown as TypedPhonyData;
+    define('parse', function(format: string) {
+        const typedPhonyData: TypedPhonyData = (this as unknown) as TypedPhonyData;
 
         return format.toString().replace(/\{\{(.*?)\}\}/g, (match, grab) => {
             const elements = grab.replace(/\s*/g, '').split('|');

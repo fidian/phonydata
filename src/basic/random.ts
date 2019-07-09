@@ -1,18 +1,27 @@
 import MersenneTwister from 'mersenne-twister';
-import { PhonyData } from '..';
+import { define, PhonyData } from '..';
 
-declare module '..' {
-    interface PhonyData {
-        random: number;
-        _random: () => number;
-        seed: (seed: number) => void;
-        _seed: (seed: number) => void;
-    }
+export interface PhonyDataAddRandom {
+    random: number;
+    _random(): number;
+    seed(seed: number): void;
+    _seed(seed: number): void;
 }
 
-export function random(phonyData: PhonyData) {
+function init(obj: PhonyData) {
     const generator = new MersenneTwister();
 
-    phonyData.define('random', () => generator.random());
-    phonyData.define('seed', (seed: number = 0) => generator.init_seed(seed));
+    obj.define('random', () => generator.random());
+    obj.define('seed', (seed: number = 0) => generator.init_seed(seed));
+
+    return obj;
+}
+
+export function random() {
+    define('random', function() {
+        return init(this).random;
+    });
+    define('seed', function(seed: number = 0) {
+        return init(this).seed(seed);
+    });
 }

@@ -1,31 +1,29 @@
 import { PhonyData } from '..';
 
-declare module '..' {
-    interface PhonyData {
-        formatGenerator: (formats: string[] | string) => (() => string);
-        parseGenerator: (formats: string[] | string) => (() => string);
-        sequenceGenerator: (values: any[]) => (() => any);
-    }
+export interface PhonyDataAddGenerators {
+    formatGenerator(formats: string[] | string): () => string;
+    parseGenerator(formats: string[] | string): () => string;
+    sequenceGenerator(values: any[]): () => any;
 }
 
-export function generators(phonyData: PhonyData) {
-    phonyData.formatGenerator = (formats: string[] | string) => {
+export function generators() {
+    PhonyData.prototype.formatGenerator = function(formats: string[] | string) {
         if (Array.isArray(formats)) {
-            return () => phonyData.format(formats[phonyData.index(formats.length)]);
+            return () => this.format(formats[this.index(formats.length)]);
         }
 
-        return () => phonyData.format(formats);
+        return () => this.format(formats);
     };
 
-    phonyData.parseGenerator = (formats: string[] | string) => {
+    PhonyData.prototype.parseGenerator = function(formats: string[] | string) {
         if (Array.isArray(formats)) {
-            return () => phonyData.parse(formats[phonyData.index(formats.length)]);
+            return () => this.parse(formats[this.index(formats.length)]);
         }
 
-        return () => phonyData.parse(formats);
+        return () => this.parse(formats);
     };
 
-    phonyData.sequenceGenerator = (values: any[]) => {
+    PhonyData.prototype.sequenceGenerator = (values: any[]) => {
         let index = 0;
 
         return () => {

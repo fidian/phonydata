@@ -1,4 +1,4 @@
-import { PhonyData } from '..';
+import { define } from '..';
 import { mimeTypes } from '../data/mime-types';
 
 const mimeTypeList = Object.keys(mimeTypes);
@@ -12,23 +12,21 @@ for (const mimeType of mimeTypeList) {
     }
 }
 
-declare module '..' {
-    interface PhonyData {
-        cssBasicColorName: string;
-        _cssBasicColorName: () => string;
-        cssColorName: string;
-        _cssColorName: () => string;
-        fileExtension: string;
-        _fileExtension: () => string;
-        mimeType: string;
-        _mimeType: () => string;
-        rgbHex: string;
-        _rgbHex: () => string;
-    }
+export interface PhonyDataAddWeb {
+    cssBasicColorName: string;
+    _cssBasicColorName(): string;
+    cssColorName: string;
+    _cssColorName(): string;
+    fileExtension: string;
+    _fileExtension(): string;
+    mimeType: string;
+    _mimeType(): string;
+    rgbHex: string;
+    _rgbHex(): string;
 }
 
-export function web(phonyData: PhonyData) {
-    phonyData.define('cssBasicColorName', [
+export function web() {
+    define('cssBasicColorName', [
         'aqua',
         'black',
         'blue',
@@ -45,7 +43,7 @@ export function web(phonyData: PhonyData) {
         'white',
         'yellow'
     ]);
-    phonyData.define('cssColorName', [
+    define('cssColorName', [
         'AliceBlue',
         'AntiqueWhite',
         'Aqua',
@@ -194,7 +192,9 @@ export function web(phonyData: PhonyData) {
         'Yellow',
         'YellowGreen'
     ]);
-    phonyData.define('fileExtension', fileExtensions);
-    phonyData.define('mimeType', mimeTypeList);
-    phonyData.define('rgbHex', '#' + phonyData.format('xxxxxx'));
+    define('fileExtension', fileExtensions);
+    define('mimeType', mimeTypeList);
+    define('rgbHex', function() {
+        return '#' + this.format('xxxxxx');
+    });
 }
