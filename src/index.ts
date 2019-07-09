@@ -96,23 +96,21 @@ function defineMethod(
     name: string,
     value: PhonyDataGeneratorFunction<any>
 ) {
-    const boundValue = value.bind(target);
-
     if (value.length) {
         Object.defineProperty(target, name, {
             configurable: true,
-            value: boundValue
+            value: value
         });
     } else {
         Object.defineProperty(target, name, {
             configurable: true,
-            get: boundValue
+            get: value
         });
     }
 
     Object.defineProperty(target, '_' + name, {
         configurable: true,
-        value: boundValue
+        value: value
     });
 }
 

@@ -33,13 +33,13 @@ export function functions() {
     define('format', function(format: string) {
         return format
             .toString()
-            .replace(/#/g, this._digit)
-            .replace(/A/g, this._letterUpper)
-            .replace(/a/g, this._letterLower)
-            .replace(/X/g, this._hexUpper)
-            .replace(/x/g, this._hexLower)
-            .replace(/Z/g, this._alphaNumericUpper)
-            .replace(/z/g, this._alphaNumericLower);
+            .replace(/#/g, () => this.digit)
+            .replace(/A/g, () => this.letterUpper)
+            .replace(/a/g, () => this.letterLower)
+            .replace(/X/g, () => this.hexUpper)
+            .replace(/x/g, () => this.hexLower)
+            .replace(/Z/g, () => this.alphaNumericUpper)
+            .replace(/z/g, () => this.alphaNumericLower);
     });
     define('parse', function(format: string) {
         const typedPhonyData: TypedPhonyData = (this as unknown) as TypedPhonyData;
