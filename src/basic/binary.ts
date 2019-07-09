@@ -1,10 +1,10 @@
 import { define } from '..';
 
 export interface PhonyDataAddBinary {
-    byteValue: number;
-    _byteValue(): number;
     byteHex: string;
     _byteHex(): string;
+    byteValue: number;
+    _byteValue(): number;
     hexLower: string;
     _hexLower(): string;
     hexUpper: string;
@@ -14,11 +14,11 @@ export interface PhonyDataAddBinary {
 }
 
 export function binary() {
-    define('byteValue', function() {
-        return this.index(256);
-    });
     define('byteHex', function() {
         return this.hexLower + this.hexLower;
+    });
+    define('byteValue', function() {
+        return this.index(256);
     });
     define('hexLower', '0123456789abcdef'.split(''));
     define('hexUpper', '0123456789ABCDEF'.split(''));

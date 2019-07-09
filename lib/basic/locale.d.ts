@@ -2,6 +2,7 @@ export interface PhonyDataLocality {
     addressLine1: string;
     city: string;
     stateOrProvince: string;
+    stateOrProvinceCode: string;
     postCode: string;
 }
 export interface PhonyDataAddLocale {
@@ -49,6 +50,8 @@ export interface PhonyDataAddLocale {
     _postCode(): string;
     stateOrProvince: string;
     _stateOrProvince(): string;
+    stateOrProvinceCode: string;
+    _stateOrProvinceCode(): string;
     streetName: string;
     _streetName(): string;
     surname: string;

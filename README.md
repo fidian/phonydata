@@ -108,7 +108,7 @@ Shortcut that will make a generator function that produces a random member of th
     // sunny
 
 
-### `phony.define(hashOfGenerators)`
+### `phony.defineObject(hashOfGenerators)`
 
 Adds multiple generators. Shorthand, convenience function.
 
@@ -116,15 +116,26 @@ Adds multiple generators. Shorthand, convenience function.
     phony.define("numberWordBigger", [ "twenty", "thirty", "forty" ]);
 
     // The above is the same as the below section.
-    phony.define({
+    phony.defineObject({
         numberWord: [ "one", "two", "three", "four", "five" ],
         numberWordBigger: [ "twenty", "thirty", "forty" ]
     });
 
 
+### `phony.formatGenerator(arrayOfParseStrings)`
+
+Creates a generator function that should be passed into `phony.define()`. The generator function will select a random string from the array and pass it through `phony.parse()`.
+
+    phony.define("someDigits", phony.formatGenerator([ "#", "##", "###" ]));
+    console.log(phony.someDigits);
+    // 553
+    console.log(phony.someDigits);
+    // 70
+
+
 ### `phony.parseGenerator(arrayOfParseStrings)`
 
-Creates a generator function that should be passed into `phony.generator()`. The generator function will select a random string from the array and pass it through `phony.parse()`.
+Creates a generator function that should be passed into `phony.define()`. The generator function will select a random string from the array and pass it through `phony.parse()`.
 
     phony.define("mood", phony.parseGenerator([ "happy", "sad", "bored" ]));
     phony.define("pronoun", phony.parseGenerator([ "he", "she", "it" ]));
@@ -189,11 +200,14 @@ This is a complete list of getters. Ones tagged with `»` at the beginning indic
 
 | Generator             | Description                                                     | Sample Shown As JSON                         |
 |-----------------------|-----------------------------------------------------------------|----------------------------------------------|
-| alphaNumericLower     | `»` A lowercase letter or number.                               | "w"                                          |
-| alphaNumericUpper     | `»` A capitalized letter or number.                             | "G"                                          |
+| addressLine1          | `»` The first line of an address.                               | "915 Quae Laboriosam"                        |
+| buildingNumber        | `»` A number of a building as a number.                         | 404                                          |
+| alphaNumericLower     | `»` A lowercase letter or number as a string.                   | "w"                                          |
+| alphaNumericUpper     | `»` A capitalized letter or number as a string.                 | "G"                                          |
 | boolean               | Boolean.                                                        | true                                         |
 | byteHex               | A hexadecimal value of a single 8-bit byte.                     | "4b"                                         |
 | byteValue             | A decimal value of a single 8-bit byte.                         | 75                                           |
+| city                  | `»` Name of a city or town.                                     | "Blanditiis"                                 |
 | cssBasicColorName     | A valid CSS3 color name.                                        | "olive"                                      |
 | cssColorName          | An extended CSS3 color name. It's also capitalized.             | "SpringGreen"                                |
 | currency              | An object that details a random type of currency.               | ***See note below.***                        |
@@ -207,20 +221,27 @@ This is a complete list of getters. Ones tagged with `»` at the beginning indic
 | datePast              | A date in the past, within one year of the current date.        | new Date("2018-01-11T12:37:18.965Z")         |
 | digit                 | Single numerical digit.                                         | "0"                                          |
 | fileExtension         | Extension of a filename.                                        | "ogv"                                        |
+| givenName             | `»` The first name of an individual.                            | "Dolor"                                      |
+| givenNameFemale       | `»` The first name of a female.                                 | "Laborum"                                    |
+| givenNameMale         | `»` The first name of a male.                                   | "Optio"                                      |
 | hexLower              | Hexadecimal digit in lowercase.                                 | "f"                                          |
 | hexUpper              | Hexadecimal digit in uppercase.                                 | "c"                                          |
 | letterLower           | `»` A lowercase letter.                                         | "l"                                          |
-| letterUpper           | `»` A capitalized letter.                                       | "P"                                          |
+| letterLower           | `»` A lowercase letter.                                         | "l"                                          |
+| locality              | `»` A location as an object.                                    | ***See note below.***                        |
 | loremSentence         | Fake sentence.                                                  | "Et consequatur doloribus officiis officia." |
 | loremSentenceFragment | Portion of a sentence.                                          | "sit voluptatem maxime quae"                 |
 | loremTitle            | Three to eight capitalized words.                               | "Ut Quia Rerum Illum"                        |
 | loremWord             | A single word from Lorem Ipsum.                                 | "velit"                                      |
 | mimeType              | A file's MIME type.                                             | "application/x-abiword"                      |
 | phoneNumber           | `»` A phone number.                                             | "345-884-7216"                               |
+| personName            | `»` The first and name of an individual.                        | "Tenetur Optio"                              |
+| postCode              | `»` How mail gets routed. In the US it's called ZIP Code.       | "44P NX7"                                    |
 | random                | Number from 0 to 1. ***See note below.***                       | 0.9053151633124799                           |
 | rgbHex                | Color code, suitable for HTML.                                  | "#fafeca"                                    |
 | sentence              | `»` Fake sentence.                                              | "Repellat quos neque animi."                 |
 | sentencePunctuation   | A biased punctuation generator that produces mostly periods.    | "."                                          |
+| stateOrProvince       | `»` Larger region than city, smaller than the nation.           | "AGV"                                        |
 | title                 | `»` Three to eight capitalized words.                           | "Ad Voluptas Est Nihil"                      |
 | uuid                  | Version 4 random UUID.                                          | "e92f7cc8-7eb7-4ec4-B36-1b7d8cc8d66c"        |
 | word                  | `»` A word.                                                     | "quia"                                       |
@@ -233,6 +254,16 @@ This is a complete list of getters. Ones tagged with `»` at the beginning indic
         digitalCode: '780',
         name: 'Trinidad and Tobago Dollar',
         countries: [ 'Trinidad and Tobago' ]
+    }
+
+`phony.locality` provides an object similar to this one. When possible, the information within will relate to each other.
+
+    {
+        addressLine1: '54 Dolor Ut',
+        city: 'Aliquid',
+        stateOrProvince: 'Minima',
+        stateOrProvinceCode: 'MIN',
+        postCode: 'NZW 8AR'
     }
 
 `phony.random` returns a number from a range that starts at zero and ends just before one, also known as `[0-1)`. Use this as a basis for any random number generation because it can get reset when the user uses `phony.seed()`.
@@ -261,9 +292,9 @@ Some of these functions are useful as modifiers for `phony.parse()`, which is ex
 | dateFormat(format, date) | Formats a date.                                        | "YYYY", new Date()     | "2018"                      |
 | dateText(date)           | ISO8601, YYYY-MM-DD                                    | new Date()             | "2018-06-04"                |
 | dateTimeCondensed(date)  | ISO8601, date and time without separators              | new Date()             | "20180604T142341Z"          |
-| dateTimeMinuteZ(date)    | ISO8601, includes time and no seconds                  | new Date()             | "2018-06-04T14:23Z"         |
 | dateTimeOffset(date)     | ISO8601, date and time with a GMT offset               | new Date()             | "2018-06-04T14:23:41+00:00" |
-| dateTimeMinuteZ(date)    | ISO8601, includes time                                 | new Date()             | "2018-06-04T14:23:43Z"      |
+| dateTimeMinuteZ(date)    | ISO8601, includes time and no seconds                  | new Date()             | "2018-06-04T14:23Z"         |
+| dateTimeZ(date)          | ISO8601, includes time                                 | new Date()             | "2018-06-04T14:23:43Z"      |
 | format(format)           | Replaces letters in the format.                        | "##-AA-aa-ZZ-zz-XX-xx" | "65-W1-qm-7Y-br-20-ec"      |
 | index(items)             | Number from 0 to `items - 1`.                          | 100                    | 33                          |
 | integer(min, max)        | Number that is between min and max, inclusive.         | 4, 5                   | 5                           |

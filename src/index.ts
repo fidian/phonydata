@@ -3,7 +3,6 @@ import { boolean, PhonyDataAddBoolean } from './basic/boolean';
 import { currency, PhonyDataAddCurrency } from './basic/currency';
 import { date, PhonyDataAddDate } from './basic/date';
 import { functions, PhonyDataAddFunctions } from './basic/functions';
-import { generators, PhonyDataAddGenerators } from './basic/generators';
 import { locale, PhonyDataAddLocale } from './basic/locale';
 import { lorem, PhonyDataAddLorem } from './basic/lorem';
 import { modifiers, PhonyDataAddModifiers } from './basic/modifiers';
@@ -12,13 +11,13 @@ import { random, PhonyDataAddRandom } from './basic/random';
 import { text, PhonyDataAddText } from './basic/text';
 import { web, PhonyDataAddWeb } from './basic/web';
 
-export type PhonyDataGeneratorFunction = (
+export type PhonyDataGeneratorFunction<T> = (
     this: PhonyData,
     ...args: any[]
-) => any;
+) => T;
 
-export type PhonyDataGenerator =
-    | PhonyDataGeneratorFunction
+export type PhonyDataGeneratorValue =
+    | PhonyDataGeneratorFunction<any>
     | any[]
     | string
     | number
@@ -34,7 +33,6 @@ export interface PhonyData
         PhonyDataAddCurrency,
         PhonyDataAddDate,
         PhonyDataAddFunctions,
-        PhonyDataAddGenerators,
         PhonyDataAddLocale,
         PhonyDataAddLorem,
         PhonyDataAddModifiers,
@@ -42,12 +40,15 @@ export interface PhonyData
         PhonyDataAddRandom,
         PhonyDataAddText,
         PhonyDataAddWeb {
-    define(name: string, value: PhonyDataGenerator): void;
+    define(name: string, value: PhonyDataGeneratorValue): void;
     defineObject(obj: PhonyDataDefineObject): void;
+    formatGenerator(formats: string[]): PhonyDataGeneratorFunction<string>;
+    parseGenerator(formats: string[]): PhonyDataGeneratorFunction<string>;
+    sequenceGenerator(values: any[]): PhonyDataGeneratorFunction<any>;
 }
 
 export class PhonyData implements PhonyData {
-    define(name: string, value: PhonyDataGenerator): void {
+    define(name: string, value: PhonyDataGeneratorValue): void {
         defineForObject(this, name, value);
     }
 
@@ -56,41 +57,69 @@ export class PhonyData implements PhonyData {
             defineForObject(this, key, obj[key]);
         }
     }
+
+    formatGenerator = formatGenerator;
+    parseGenerator = parseGenerator;
+    sequenceGenerator = sequenceGenerator;
+}
+
+export function formatGenerator(formats: string[]): PhonyDataGeneratorFunction<string> {
+    const length = formats.length;
+
+    return function() {
+        return this.format(formats[this.index(length)]);
+    };
+}
+
+export function parseGenerator(formats: string[]): PhonyDataGeneratorFunction<string> {
+    const length = formats.length;
+
+    return function() {
+        return this.parse(formats[this.index(length)]);
+    };
+}
+
+export function sequenceGenerator(values: any[]): PhonyDataGeneratorFunction<any> {
+    let index = 0;
+
+    return () => {
+        const value = values[index];
+        index += 1;
+        index %= values.length;
+
+        return value;
+    };
 }
 
 function defineMethod(
-    target: object,
+    target: PhonyData,
     name: string,
-    value: PhonyDataGeneratorFunction
+    value: PhonyDataGeneratorFunction<any>
 ) {
+    const boundValue = value.bind(target);
+
     if (value.length) {
         Object.defineProperty(target, name, {
             configurable: true,
-            value: value
+            value: boundValue
         });
     } else {
         Object.defineProperty(target, name, {
             configurable: true,
-            get: value
+            get: boundValue
         });
     }
 
     Object.defineProperty(target, '_' + name, {
         configurable: true,
-        value: value
+        value: boundValue
     });
 }
 
-export function defineForObject(target: object, name: PhonyDataDefineObject): void;
 export function defineForObject(
-    target: object,
+    target: PhonyData,
     name: string,
-    value: PhonyDataGenerator
-): void;
-export function defineForObject(
-    target: object,
-    name: PhonyDataDefineObject | string,
-    value?: PhonyDataGenerator
+    value: PhonyDataGeneratorValue
 ): void {
     if (typeof name === 'object') {
         for (const key of Object.keys(name)) {
@@ -113,7 +142,7 @@ export function defineObject(obj: PhonyDataDefineObject) {
     }
 }
 
-export function define(name: string, value: PhonyDataGenerator): void {
+export function define(name: string, value: PhonyDataGeneratorValue): void {
     defineForObject(PhonyData.prototype, name, value);
 }
 
@@ -122,7 +151,6 @@ boolean();
 currency();
 date();
 functions();
-generators();
 locale();
 lorem();
 modifiers();

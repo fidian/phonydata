@@ -4,6 +4,7 @@ export interface PhonyDataLocality {
     addressLine1: string;
     city: string;
     stateOrProvince: string;
+    stateOrProvinceCode: string;
     postCode: string;
 }
 
@@ -55,6 +56,8 @@ export interface PhonyDataAddLocale {
     _postCode(): string;
     stateOrProvince: string;
     _stateOrProvince(): string;
+    stateOrProvinceCode: string;
+    _stateOrProvinceCode(): string;
     streetName: string;
     _streetName(): string;
     surname: string;
@@ -94,13 +97,13 @@ export function locale() {
 
     // Country specific
     define('addressLine1', function() {
-        return this.buildingNumber + ' ' + this.streetName;
+        return this.locality.addressLine1;
     });
     define('buildingNumber', function() {
         return this.integer(1, 1000);
     });
     define('city', function() {
-        return this.loremTitleWords(1);
+        return this.locality.city;
     });
     define('currencyValue', function() {
         return this.integer(0, 10000) / 100;
@@ -115,21 +118,28 @@ export function locale() {
         return this.loremTitleWords(1);
     });
     define('locality', function() {
+        const state = this.loremTitleWords(1);
+        const stateCode = (state + 'XXX').substr(0, 3).toUpperCase();
+
         return {
-            addressLine1: this.addressLine1,
-            city: this.city,
-            stateOrProvince: this.stateOrProvince,
-            postCode: this.postCode
+            addressLine1: this.buildingNumber + ' ' + this.streetName,
+            city: this.loremTitleWords(1),
+            stateOrProvince: state,
+            stateOrProvinceCode: stateCode,
+            postCode: this.format('ZZZ ZZZ')
         };
     });
     define('phoneNumber', function() {
         return this.integer(2, 9).toString() + this.format('##-###-####');
     });
     define('postCode', function() {
-        return this.format('ZZZ ZZZ');
+        return this.locality.postCode;
     });
     define('stateOrProvince', function() {
-        return this.format('AAA');
+        return this.locality.stateOrProvinceCode;
+    });
+    define('stateOrProvinceCode', function() {
+        return this.locality.stateOrProvinceCode;
     });
     define('streetName', function() {
         return this.loremTitleWords(2);

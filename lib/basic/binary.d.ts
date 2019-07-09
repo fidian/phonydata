@@ -1,8 +1,8 @@
 export interface PhonyDataAddBinary {
-    byteValue: number;
-    _byteValue(): number;
     byteHex: string;
     _byteHex(): string;
+    byteValue: number;
+    _byteValue(): number;
     hexLower: string;
     _hexLower(): string;
     hexUpper: string;
