@@ -5,7 +5,9 @@
     "main": "index.js",
     "scripts": {
         "build": "rm -rf lib && tsc",
-        "test": "tslint -p tslint.json"
+        "test:ava": "ava",
+        "test:tslint": "tslint -p tslint.json",
+        "test": "npm run test:tslint && npm run test:ava"
     },
     "repository": {
         "type": "git",
@@ -29,7 +31,8 @@
     },
     "homepage": "https://github.com/fidian/phonydata#readme",
     "devDependencies": {
-        "typescript": "^3.5.2"
+        "ava": "2.2.0",
+        "typescript": "^3.5.3"
     },
     "dependencies": {
         "@types/mersenne-twister": "^1.1.2",

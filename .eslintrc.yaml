@@ -1,5 +1,6 @@
 parserOptions:
     ecmaVersion: 6
+    sourceType: module
 env:
     es6: true
     jasmine: true
@@ -67,7 +68,6 @@ rules:
     no-empty-pattern: error
     no-eq-null: error
     no-eval: error
-    no-extend-native: error
     no-extra-bind: error
     no-extra-boolean-cast: error
     no-extra-label: error
@@ -159,7 +159,6 @@ rules:
     require-yield: error
     semi: error
     semi-spacing: error
-    sort-imports: error
     sort-vars:
         - error
         -
