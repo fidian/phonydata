@@ -17,7 +17,7 @@ export interface PhonyDataDefineObject {
 }
 export interface PhonyData extends PhonyDataAddBinary, PhonyDataAddBoolean, PhonyDataAddCurrency, PhonyDataAddDate, PhonyDataAddFunctions, PhonyDataAddLocale, PhonyDataAddLorem, PhonyDataAddModifiers, PhonyDataAddNumber, PhonyDataAddRandom, PhonyDataAddText, PhonyDataAddWeb {
     define(name: string, value: PhonyDataGeneratorValue): void;
-    defineObject(obj: PhonyDataDefineObject): void;
+    define(obj: PhonyDataDefineObject): void;
     formatGenerator(formats: string[]): PhonyDataGeneratorFunction<string>;
     parseGenerator(formats: string[]): PhonyDataGeneratorFunction<string>;
     sequenceGenerator(values: any[]): PhonyDataGeneratorFunction<any>;
@@ -31,5 +31,4 @@ export declare function formatGenerator(formats: string[]): PhonyDataGeneratorFu
 export declare function parseGenerator(formats: string[]): PhonyDataGeneratorFunction<string>;
 export declare function sequenceGenerator(values: any[]): PhonyDataGeneratorFunction<any>;
 export declare function defineForObject(target: PhonyData, name: string, value: PhonyDataGeneratorValue): void;
-export declare function defineObject(obj: PhonyDataDefineObject): void;
 export declare function define(name: string, value: PhonyDataGeneratorValue): void;
