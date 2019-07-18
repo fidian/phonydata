@@ -41,20 +41,25 @@ export interface PhonyData
         PhonyDataAddText,
         PhonyDataAddWeb {
     define(name: string, value: PhonyDataGeneratorValue): void;
-    defineObject(obj: PhonyDataDefineObject): void;
+    define(obj: PhonyDataDefineObject): void;
     formatGenerator(formats: string[]): PhonyDataGeneratorFunction<string>;
     parseGenerator(formats: string[]): PhonyDataGeneratorFunction<string>;
     sequenceGenerator(values: any[]): PhonyDataGeneratorFunction<any>;
 }
 
 export class PhonyData implements PhonyData {
-    define(name: string, value: PhonyDataGeneratorValue): void {
-        defineForObject(this, name, value);
-    }
-
-    defineObject(obj: PhonyDataDefineObject): void {
-        for (const key of Object.keys(obj)) {
-            defineForObject(this, key, obj[key]);
+    define(
+        name: string | PhonyDataDefineObject,
+        value?: PhonyDataGeneratorValue
+    ): void {
+        if (typeof name === 'string') {
+            if (typeof value !== 'undefined') {
+                defineForObject(this, name, value);
+            }
+        } else {
+            for (const key of Object.keys(name)) {
+                defineForObject(this, key, name[key]);
+            }
         }
     }
 
@@ -63,7 +68,9 @@ export class PhonyData implements PhonyData {
     sequenceGenerator = sequenceGenerator;
 }
 
-export function formatGenerator(formats: string[]): PhonyDataGeneratorFunction<string> {
+export function formatGenerator(
+    formats: string[]
+): PhonyDataGeneratorFunction<string> {
     const length = formats.length;
 
     return function() {
@@ -71,7 +78,9 @@ export function formatGenerator(formats: string[]): PhonyDataGeneratorFunction<s
     };
 }
 
-export function parseGenerator(formats: string[]): PhonyDataGeneratorFunction<string> {
+export function parseGenerator(
+    formats: string[]
+): PhonyDataGeneratorFunction<string> {
     const length = formats.length;
 
     return function() {
@@ -79,7 +88,9 @@ export function parseGenerator(formats: string[]): PhonyDataGeneratorFunction<st
     };
 }
 
-export function sequenceGenerator(values: any[]): PhonyDataGeneratorFunction<any> {
+export function sequenceGenerator(
+    values: any[]
+): PhonyDataGeneratorFunction<any> {
     let index = 0;
 
     return () => {
@@ -134,7 +145,7 @@ export function defineForObject(
     }
 }
 
-export function defineObject(obj: PhonyDataDefineObject) {
+function defineObject(obj: PhonyDataDefineObject) {
     for (const key of Object.keys(obj)) {
         defineForObject(PhonyData.prototype, key, obj[key]);
     }

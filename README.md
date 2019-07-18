@@ -24,6 +24,12 @@ Installation
     npm install --save-dev phonydata
 
 
+Upgrades
+--------
+
+Version 2 changed how generators are added. You can now add them to the prototype of the object, resulting in faster object creation. There's helpful functions exported, such as `defineForObject`, which will assist. Everything was rewritten in TypeScript as well in order to provide better type hints to others using the library. Previous code should still work.
+
+
 Usage
 -----
 
@@ -37,35 +43,35 @@ Import or require this in order to get the class.
 
 Next, create an instance.
 
-    let phony = new PhonyData();
+    let instance = new PhonyData();
 
 Finally, create data.
 
-    console.log(phony.loremSentence);
+    console.log(instance.loremSentence);
     // Sint quos voluptas.
-    console.log(phony.loremSentence);
+    console.log(instance.loremSentence);
     // Dolores et ratione atque, voluptas quia eos consectetur natus.
-    console.log(phony.loremSentence);
+    console.log(instance.loremSentence);
     // Explicabo sed ut.
 
-Since this is a class, you could extend it and add additional data generators. It isn't strictly necessary to extend the class to add your own generators. See the documentation for `phony.define()`.
+Since this is a class, you could extend it and add additional data generators. It isn't strictly necessary to extend the class to add your own generators. See the documentation for `instance.define()`.
 
-    class PhonyExtended extends PhonyData {
-        constructor() {
-            super();
-            this.define("sillyUnicodeCharacters", [ "☃", "☠", "〠", "⍨" ])
-            this.define("complexObject", () => {
-                return {
-                    integer: this.integer(0, 9999),
-                    letter: this.letter,
-                    nestedObject: {
-                        loremWord: this.loremWord,
-                        word: this.word
-                    }
-                };
-            });
-        }
-    }
+    import { PhonyData, defineForObject } from "phonydata";
+
+    class PhonyExtended extends PhonyData {}
+
+    defineForObject(PhonyExtended.prototype, "sillyUnicodeCharacters",
+        [ "☃", "☠", "〠", "⍨" ])
+    defineForObject(PhonyExtended.prototype, "complexObject", () => {
+        return {
+            integer: this.integer(0, 9999),
+            letter: this.letter,
+            nestedObject: {
+                loremWord: this.loremWord,
+                word: this.word
+            }
+        };
+    });
 
     const phonyExtended = new PhonyExtended();
     console.log(phonyExtended.sillyUnicodeCharacters);
@@ -82,104 +88,181 @@ API - Special Functions
 
 There are a few special functions that are primarily used as the engine behind the random data generation.
 
-### `phony.define(name, generator)`
+### `defineForObject(target, name, generator)`
 
 Creates a new data generator and a new underscore function. The underscore function is described a bit where the data generators are listed.
 
-    phony.define("biasedCoinFlip", () => phony.random > 0.8);
+    import { defineForObject, PhonyData } from 'phonydata';
+    class ExtendedPhonyData extends PhonyData {}
+    defineForObject(ExtendedPhonyData.prototype, 'biasedCoinFlip', function () {
+        return this.random > 0.8;
+    });
+    const instance = new ExtendedPhonyData();
 
-    console.log(phony.biasedCoinFlip);
+    console.log(instance.biasedCoinFlip);
     // true
-    console.log(phony.biasedCoinFlip);
+    console.log(instance.biasedCoinFlip);
     // false
-    console.log(phony.biasedCoinFlip);
+    console.log(instance.biasedCoinFlip);
     // false
-    console.log(phony.biasedCoinFlip);
+    console.log(instance.biasedCoinFlip);
     // false
 
 
-### `phony.define(name, arrayOfItems)`
+### `defineForObject(target, name, arrayOfItems)`
 
 Shortcut that will make a generator function that produces a random member of the array.
 
-    phony.define("weather", [ "sunny", "rainy", "cloudy", "night" ]);
+    import { defineForObject, PhonyData } from 'phonydata';
+    class ExtendedPhonyData extends PhonyData {}
+    defineForObject(ExtendedPhonyData.prototype, 'biasedCoinFlip',
+        [ "sunny", "rainy", "cloudy", "night" ]);
+    const instance = new ExtendedPhonyData();
 
-    console.log(phony.weather);
+    console.log(instance.weather);
     // sunny
 
 
-### `phony.defineObject(hashOfGenerators)`
+### `defineForObject(target, hashOfGenerators)`
 
 Adds multiple generators. Shorthand, convenience function.
 
-    phony.define("numberWord", [ "one", "two", "three", "four", "five" ]);
-    phony.define("numberWordBigger", [ "twenty", "thirty", "forty" ]);
+    import { defineForObject, PhonyData } from 'phonydata';
+    class ExtendedPhonyData extends PhonyData {}
+    defineForObject(ExtendedPhonyData.prototype, {
+        numberWord: [ "one", "two", "three", "four", "five" ],
+        numberWordBigger: [ "twenty", "thirty", "forty" ]
+    });
+    const instance = new ExtendedPhonyData();
 
-    // The above is the same as the below section.
-    phony.defineObject({
+    console.log(instance.numberWord);
+    // two
+
+    console.log(instance.numberWordBigger);
+    // forty
+
+
+### `instance.define(name, generator)`
+
+Creates a new data generator and a new underscore function. The underscore function is described a bit where the data generators are listed.
+
+    instance.define("biasedCoinFlip", () => instance.random > 0.8);
+
+    console.log(instance.biasedCoinFlip);
+    // true
+    console.log(instance.biasedCoinFlip);
+    // false
+    console.log(instance.biasedCoinFlip);
+    // false
+    console.log(instance.biasedCoinFlip);
+    // false
+
+
+### `instance.define(name, arrayOfItems)`
+
+Shortcut that will make a generator function that produces a random member of the array.
+
+    instance.define("weather", [ "sunny", "rainy", "cloudy", "night" ]);
+
+    console.log(instance.weather);
+    // sunny
+
+
+### `instance.define(hashOfGenerators)`
+
+Adds multiple generators. Shorthand, convenience function.
+
+    instance.define({
         numberWord: [ "one", "two", "three", "four", "five" ],
         numberWordBigger: [ "twenty", "thirty", "forty" ]
     });
 
+    console.log(instance.numberWord);
+    // two
 
-### `phony.formatGenerator(arrayOfParseStrings)`
+    console.log(instance.numberWordBigger);
+    // forty
 
-Creates a generator function that should be passed into `phony.define()`. The generator function will select a random string from the array and pass it through `phony.parse()`.
 
-    phony.define("someDigits", phony.formatGenerator([ "#", "##", "###" ]));
-    console.log(phony.someDigits);
+### `formatGenerator(arrayOfParseStrings)`
+
+This function is exported from the library and is also available on instances.
+
+    // Pick your favorite
+    import { formatGenerator } from 'phonydata';
+    const formatGenerator = require('phonydata').formatGenerator;
+    instance.formatGenerator
+
+Creates a generator function that should be passed into `instance.define()`. The generator function will select a random string from the array and pass it through `instance.parse()`.
+
+    instance.define("someDigits", instance.formatGenerator([ "#", "##", "###" ]));
+    console.log(instance.someDigits);
     // 553
-    console.log(phony.someDigits);
+    console.log(instance.someDigits);
     // 70
 
 
-### `phony.parseGenerator(arrayOfParseStrings)`
+### `parseGenerator(arrayOfParseStrings)`
 
-Creates a generator function that should be passed into `phony.define()`. The generator function will select a random string from the array and pass it through `phony.parse()`.
+This function is exported from the library and is also available on instances.
 
-    phony.define("mood", phony.parseGenerator([ "happy", "sad", "bored" ]));
-    phony.define("pronoun", phony.parseGenerator([ "he", "she", "it" ]));
-    console.log(phony.mood);
+    // Pick your favorite
+    import { parseGenerator } from 'phonydata';
+    const parseGenerator = require('phonydata').parseGenerator;
+    instance.parseGenerator
+
+Creates a generator function that should be passed into `instance.define()`. The generator function will select a random string from the array and pass it through `instance.parse()`.
+
+    instance.define("mood", instance.parseGenerator([ "happy", "sad", "bored" ]));
+    instance.define("pronoun", instance.parseGenerator([ "he", "she", "it" ]));
+    console.log(instance.mood);
     // bored
-    console.log(phony.parse("{{pronoun}} is {{mood}}"));
+    console.log(instance.parse("{{pronoun}} is {{mood}}"));
     // it is sad
-    phony.define("speech", phony.parseGenerator([
+    instance.define("speech", instance.parseGenerator([
         "{{pronoun}} is {{mood}}",
         "{{pronoun}} is not {{mood}}",
         "{{mood}} {{pronoun}} is"
     ]));
-    console.log(phony.speech);
+    console.log(instance.speech);
     // sad it is
 
 
-### `phony.sequenceGenerator(arrayOfValues)`
+### `sequenceGenerator(arrayOfValues)`
+
+This function is exported from the library and is also available on instances.
+
+    // Pick your favorite
+    import { sequenceGenerator } from 'phonydata';
+    const sequenceGenerator = require('phonydata').sequenceGenerator;
+    instance.sequenceGenerator
 
 Returns a function that will provide the values in the array sequentially. When at the end, the list will begin again from the beginning.
 
-    phony.define("powerLevel", phony.sequenceGenerator([ "low", "medium", "high" ]));
-    console.log(phony.powerLevel);
+    instance.define("powerLevel", instance.sequenceGenerator([ "low", "medium", "high" ]));
+    console.log(instance.powerLevel);
     // low
-    console.log(phony.powerLevel);
+    console.log(instance.powerLevel);
     // medium
-    console.log(phony.powerLevel);
+    console.log(instance.powerLevel);
     // high
-    console.log(phony.powerLevel);
+    console.log(instance.powerLevel);
     // low
 
 
-### `phony.seed(number?)`
+### `instance.seed(number?)`
 
 Seeds the random number generator. When `number` is not passed, the generator is seeded with 0.
 
-    phony.seed();
-    console.log(phony.random);
+    instance.seed();
+    console.log(instance.random);
     // 0.548813502304256
-    console.log(phony.random);
+    console.log(instance.random);
     // 0.5928446163889021
-    phony.seed(0);
-    console.log(phony.random);
+    instance.seed(0);
+    console.log(instance.random);
     // 0.548813502304256
-    console.log(phony.random);
+    console.log(instance.random);
     // 0.5928446163889021
 
 
@@ -189,11 +272,11 @@ API - Data Getters
 Each of these generators are able to be used in two different ways. First, you may use them as you would any other property. It just returns a different value each time. Secondly, you may add an underscore to the beginning, such as `_name` to access a function.
 
     // This shows the "random" getter.
-    console.log(phony.random);
+    console.log(instance.random);
     // 0.42365479678846896
 
     // Calling the function version of this same generator.
-    console.log(phony._random());
+    console.log(instance._random());
     // 0.6235636963974684
 
 This is a complete list of getters. Ones tagged with `»` at the beginning indicate properties that are overridden when using a locale.
@@ -246,7 +329,7 @@ This is a complete list of getters. Ones tagged with `»` at the beginning indic
 | uuid                  | Version 4 random UUID.                                          | "e92f7cc8-7eb7-4ec4-B36-1b7d8cc8d66c"        |
 | word                  | `»` A word.                                                     | "quia"                                       |
 
-`phony.currency` provides an object similar to this one.
+`instance.currency` provides an object similar to this one.
 
     {
         code: 'TTD',
@@ -256,7 +339,7 @@ This is a complete list of getters. Ones tagged with `»` at the beginning indic
         countries: [ 'Trinidad and Tobago' ]
     }
 
-`phony.locality` provides an object similar to this one. When possible, the information within will relate to each other.
+`instance.locality` provides an object similar to this one. When possible, the information within will relate to each other.
 
     {
         addressLine1: '54 Dolor Ut',
@@ -266,7 +349,7 @@ This is a complete list of getters. Ones tagged with `»` at the beginning indic
         postCode: 'NZW 8AR'
     }
 
-`phony.random` returns a number from a range that starts at zero and ends just before one, also known as `[0-1)`. Use this as a basis for any random number generation because it can get reset when the user uses `phony.seed()`.
+`instance.random` returns a number from a range that starts at zero and ends just before one, also known as `[0-1)`. Use this as a basis for any random number generation because it can get reset when the user uses `instance.seed()`.
 
 
 API - Data Functions
@@ -275,14 +358,14 @@ API - Data Functions
 The functions are very similar to getters, but they could take arguments, so you must always call them as a function.
 
     // "index" requires an argument, so it must always be called as a function.
-    console.log(phony.index(10));
+    console.log(instance.index(10));
     // 6
 
     // This acts the exact same.
-    console.log(phony._index(10));
+    console.log(instance._index(10));
     // 3
 
-Some of these functions are useful as modifiers for `phony.parse()`, which is explained later. Anything with `»` at the beginning indicate properties that are overridden when using a locale.
+Some of these functions are useful as modifiers for `instance.parse()`, which is explained later. Anything with `»` at the beginning indicate properties that are overridden when using a locale.
 
 | Generator                | Description                                            | Input                  | Sample Shown As JSON        |
 |--------------------------|--------------------------------------------------------|------------------------|-----------------------------|
@@ -307,7 +390,7 @@ Some of these functions are useful as modifiers for `phony.parse()`, which is ex
 | words(num)               | `»` A number of words.                                 | 2                      | "ut voluptatum"             |
 
 
-### `phony.dateFormat()`
+### `instance.dateFormat()`
 
 Replaces series of letters with portions of a date. Makes it much easier to reformat dates into a readable text.
 
@@ -319,7 +402,7 @@ Replaces series of letters with portions of a date. Makes it much easier to refo
 * `YYYY` -> Four digit year.
 
 
-### `phony.format()`
+### `instance.format()`
 
 This replaces all occurrences of one character with another.
 
@@ -334,33 +417,33 @@ This replaces all occurrences of one character with another.
 The letters and alphanumeric entries can be overridden when loading a locale.
 
 
-### `phony.parse(format)`
+### `instance.parse(format)`
 
-Parses a string and looks for `{{prop}}` and replaces it with the value from `phony.prop`.
+Parses a string and looks for `{{prop}}` and replaces it with the value from `instance[prop]`.
 
-    console.log(phony.parse("{{letterUpper}}{{letterLower}}{{letterLower}} {{digit}}{{digit}}"));
+    console.log(instance.parse("{{letterUpper}}{{letterLower}}{{letterLower}} {{digit}}{{digit}}"));
     // Cbv 33
 
 Modifier functions are supported, so you can change your strings.
 
-    console.log(phony.parse("{{sentence}}"));
+    console.log(instance.parse("{{sentence}}"));
     // Iste laborum inventore mollitia quis?
 
-    console.log(phony.parse("{{sentence|capitalize}}"));
+    console.log(instance.parse("{{sentence|capitalize}}"));
     // EST NISI SED.
 
-    console.log(phony.parse("{{sentence|capitalizeFirst}}"));
+    console.log(instance.parse("{{sentence|capitalizeFirst}}"));
     // Voluptas odit minima suscipit reiciendis consequuntur.
 
-    console.log(phony.parse("{{sentence|capitalizeTitle}}"));
+    console.log(instance.parse("{{sentence|capitalizeTitle}}"));
     // Et Eos Sequi.
 
 This can not use functions that take arguments, so you can not use a format like `{{integer(0,10)}}`. Also, there's nothing special about making a mistake about the formats, so do make sure you're using the right names and not using a function.
 
-    console.log(phony.parse("{{wrong name}}"));
+    console.log(instance.parse("{{wrong name}}"));
     // undefined
 
-    console.log(phony.parse("{{integer}}"));
+    console.log(instance.parse("{{integer}}"));
     // function () { [native code] }
 
 
@@ -371,7 +454,7 @@ Support for localization is rudimentary at present. Generators will be updated t
 
     require("phonydata/lib/locale/en-US").PhonyDataEnUs;  // Loads the US version of English
 
-This will set the words to match the language and country-specific information to change in order to try to match the country.
+This will set the words, addresses, phone numbers, and other generators to match the language and country-specific information to change in order to try to match the country.
 
 | Locale | Language | Country       |
 |--------|----------|---------------|
