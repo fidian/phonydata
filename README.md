@@ -56,29 +56,66 @@ Finally, create data.
 
 Since this is a class, you could extend it and add additional data generators. It isn't strictly necessary to extend the class to add your own generators. See the documentation for `instance.define()`.
 
+    // Method 1: using instance.define()
+    import { PhonyData } from "phonydata";
+    const instance = new PhonyData.PhonyData();
+    instance.define("sillyUnicodeCharacters", [ "☃", "☠", "〠", "⍨" ])
+    instance.define("complexObject", () => {
+        return {
+            integer: instance.integer(0, 9999),
+            letter: instance.alphaLower,
+            nestedObject: {
+                loremWord: instance.loremWord,
+                word: instance.word
+            }
+        };
+    });
+
+    // Method 2: extending the class in the constructor
+    import { PhonyData } from "phonydata";
+    class PhonyExtended extends PhonyData {
+        constructor() {
+            super();
+            this.define("sillyUnicodeCharacters", [ "☃", "☠", "〠", "⍨" ])
+            this.define("complexObject", () => {
+                return {
+                    integer: this.integer(0, 9999),
+                    letter: this.alphaLower,
+                    nestedObject: {
+                        loremWord: this.loremWord,
+                        word: this.word
+                    }
+                };
+            });
+        }
+    }
+    const instance = new PhonyDataExtended();
+
+    // Method 3: Typescript and using a helper to add to the prototype
     import { PhonyData, defineForObject } from "phonydata";
-
     class PhonyExtended extends PhonyData {}
-
     defineForObject(PhonyExtended.prototype, "sillyUnicodeCharacters",
         [ "☃", "☠", "〠", "⍨" ])
     defineForObject(PhonyExtended.prototype, "complexObject", () => {
         return {
             integer: this.integer(0, 9999),
-            letter: this.letter,
+            letter: this.alphaLower,
             nestedObject: {
                 loremWord: this.loremWord,
                 word: this.word
             }
         };
     });
+    const instance = new PhonyDataExtended();
 
-    const phonyExtended = new PhonyExtended();
-    console.log(phonyExtended.sillyUnicodeCharacters);
+
+    // Finally, after picking one of the above methods, you can
+    // start to generate random data.
+    console.log(instance.sillyUnicodeCharacters);
     // ☃
-    console.log(phonyExtended.complexObject);
+    console.log(instance.complexObject);
     // { integer: 1807,
-    //   letter: undefined,
+    //   letter: "w",
     //   nestedObject: { loremWord: 'exercitationem', word: 'deserunt' } }
 
 
@@ -88,9 +125,13 @@ API - Special Functions
 
 There are a few special functions that are primarily used as the engine behind the random data generation.
 
+**Random Numbers:** If you are defining your own generators, please leverage `this.random`, `this.index`, or other built-in methods because they all use the same random number source and that source can be seeded in order to produce the same values over multiple runs.
+
+**Generator Functions:** You are welcome to use arrow functions or normal functions. When you use normal functions, you have access to `this`, so you can generate additional data. Arrow functions do not.
+
 ### `defineForObject(target, name, generator)`
 
-Creates a new data generator and a new underscore function. The underscore function is described a bit where the data generators are listed.
+Creates a new data generator and a new underscore function on an object. Typically, one would pass in a class's prototype as the target. The underscore function is described a bit where the data generators are listed.
 
     import { defineForObject, PhonyData } from 'phonydata';
     class ExtendedPhonyData extends PhonyData {}
@@ -111,7 +152,7 @@ Creates a new data generator and a new underscore function. The underscore funct
 
 ### `defineForObject(target, name, arrayOfItems)`
 
-Shortcut that will make a generator function that produces a random member of the array.
+Shortcut that will make a generator function that produces a random member of the array because this is frequently used when making random data.
 
     import { defineForObject, PhonyData } from 'phonydata';
     class ExtendedPhonyData extends PhonyData {}
@@ -125,7 +166,7 @@ Shortcut that will make a generator function that produces a random member of th
 
 ### `defineForObject(target, hashOfGenerators)`
 
-Adds multiple generators. Shorthand, convenience function.
+Adds multiple generators. Shorthand, convenience function that accepts generator functions or arrays of values as the property values.
 
     import { defineForObject, PhonyData } from 'phonydata';
     class ExtendedPhonyData extends PhonyData {}
@@ -228,6 +269,40 @@ Creates a generator function that should be passed into `instance.define()`. The
     // sad it is
 
 
+### `randomGenerator(arrayOfValues)`
+
+This function is exported from the library and is also available on instances.
+
+    // Pick your favorite
+    import { randomGenerator } from 'phonydata';
+    const randomGenerator = require('phonydata').randomGenerator;
+    instance.randomGenerator
+
+Builds a generator function that will randomly select any of the values each time it is called. This is used internally when utilizing the shortcut of calling `instance.define` or `defineForObject` with an array of values.
+
+    instance.define('direction', randomGenerator(['left', 'forward', 'right']));
+    console.log(instance.direction);
+
+    // This line is equivalent to the one above.
+    instance.define('direction', ['left', 'forward', 'right']);
+
+
+### `instance.seed(number?)`
+
+Seeds the random number generator. When `number` is not passed, the generator is seeded with 0.
+
+    instance.seed();
+    console.log(instance.random);
+    // 0.548813502304256
+    console.log(instance.random);
+    // 0.5928446163889021
+    instance.seed(0);
+    console.log(instance.random);
+    // 0.548813502304256
+    console.log(instance.random);
+    // 0.5928446163889021
+
+
 ### `sequenceGenerator(arrayOfValues)`
 
 This function is exported from the library and is also available on instances.
@@ -250,20 +325,39 @@ Returns a function that will provide the values in the array sequentially. When 
     // low
 
 
-### `instance.seed(number?)`
+### `weightedGenerator(weightsAndValues)`
 
-Seeds the random number generator. When `number` is not passed, the generator is seeded with 0.
+This function is exported from the library and is also available on instances.
 
-    instance.seed();
-    console.log(instance.random);
-    // 0.548813502304256
-    console.log(instance.random);
-    // 0.5928446163889021
-    instance.seed(0);
-    console.log(instance.random);
-    // 0.548813502304256
-    console.log(instance.random);
-    // 0.5928446163889021
+    // Pick your favorite
+    import { weightedGenerator } from 'phonydata';
+    const weightedGenerator = require('phonydata').weightedGenerator;
+    instance.weightedGenerator
+
+Returns a function that will provide the values in the array with a frequency that matches their weights. Weights are represented as numbers and you are able to use percentages, counts, or fractions to define them. All weights for all options are totaled together, so the weights are always relative to the other items in the array.
+
+    // Define a generator that returns a city in New York. Each
+    // city is weighted by its population so the generated data
+    // looks like a random New York resident was chosen.
+    instance.define("newYorkCityName", instance.weightedGenerator([
+        [18972871, "New York"],  // Much more likely
+        [2736074, "Brooklyn"],
+        [2405464, "Queens"],
+        // Insert many more cities here
+        [27, "SALTAIRE"],
+        [23, "WITHERBEE"],
+        [14, "LINWOOD"]  // Extremely unlikely
+    ]);
+
+    console.log(instance.newYorkCityName);
+    // North Amnityville
+
+The associated values can be anything. When they are a function, that function is called to produce the value. Using this technique, you could generate a random 4-digit number most of the time and generate a UUID rarely.
+
+    phony.define('customId', phony.weightedGenerator([
+        [.9, phony.formatGenerator(['####'])], // 90% of the time
+        [.1, () => phony.uuid] // 10% of the time
+    ]);
 
 
 API - Data Getters

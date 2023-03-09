@@ -1,5 +1,5 @@
 import { defineForObject, PhonyData } from '..';
-import { PhonyDataLocality } from '../basic/locale';
+import { PhonyDataLocality } from '../datatypes/phony-data-locality';
 import { cityStatePostCode } from './us-data/city-state-post-code';
 import { givenNamesFemale } from './us-data/given-names-female';
 import { givenNamesMale } from './us-data/given-names-male';

@@ -11,11 +11,11 @@ import {
 } from '../lib';
 
 test('define adds two properties', t => {
-    t.falsy(PhonyData.prototype.hasOwnProperty('xxx'));
-    t.falsy(PhonyData.prototype.hasOwnProperty('_xxx'));
+    t.falsy(Object.prototype.hasOwnProperty.call(PhonyData, 'xxx'));
+    t.falsy(Object.prototype.hasOwnProperty.call(PhonyData, '_xxx'));
     define('xxx', 1);
-    t.truthy(PhonyData.prototype.hasOwnProperty('xxx'));
-    t.truthy(PhonyData.prototype.hasOwnProperty('_xxx'));
+    t.truthy(Object.prototype.hasOwnProperty.call(PhonyData, 'xxx'));
+    t.truthy(Object.prototype.hasOwnProperty.call(PhonyData, '_xxx'));
     delete PhonyData.prototype.xxx;
     delete PhonyData.prototype._xxx;
     t.pass();
@@ -24,8 +24,8 @@ test('define adds two properties', t => {
 test('defineForObject adds two properties to an object', t => {
     const obj = {};
     defineForObject(obj, 'xxx', 1);
-    t.truthy(obj.hasOwnProperty('xxx'));
-    t.truthy(obj.hasOwnProperty('_xxx'));
+    t.truthy(Object.prototype.hasOwnProperty.call(obj, 'xxx'));
+    t.truthy(Object.prototype.hasOwnProperty.call(obj, '_xxx'));
     t.is(obj.xxx, 1);
     t.is(typeof obj._xxx, 'function');
     t.is(obj._xxx(), 1);
@@ -33,18 +33,18 @@ test('defineForObject adds two properties to an object', t => {
 });
 
 test('defineObject sets multiple properties', t => {
-    t.falsy(PhonyData.prototype.hasOwnProperty('xxx'));
-    t.falsy(PhonyData.prototype.hasOwnProperty('_xxx'));
-    t.falsy(PhonyData.prototype.hasOwnProperty('yyy'));
-    t.falsy(PhonyData.prototype.hasOwnProperty('_yyy'));
+    t.falsy(Object.prototype.hasOwnProperty.call(PhonyData, 'xxx'));
+    t.falsy(Object.prototype.hasOwnProperty.call(PhonyData, '_xxx'));
+    t.falsy(Object.prototype.hasOwnProperty.call(PhonyData, 'yyy'));
+    t.falsy(Object.prototype.hasOwnProperty.call(PhonyData, '_yyy'));
     defineObject({
         xxx: 1,
         yyy: 2
     });
-    t.truthy(PhonyData.prototype.hasOwnProperty('xxx'));
-    t.truthy(PhonyData.prototype.hasOwnProperty('_xxx'));
-    t.truthy(PhonyData.prototype.hasOwnProperty('yyy'));
-    t.truthy(PhonyData.prototype.hasOwnProperty('_yyy'));
+    t.truthy(Object.prototype.hasOwnProperty.call(PhonyData, 'xxx'));
+    t.truthy(Object.prototype.hasOwnProperty.call(PhonyData, '_xxx'));
+    t.truthy(Object.prototype.hasOwnProperty.call(PhonyData, 'yyy'));
+    t.truthy(Object.prototype.hasOwnProperty.call(PhonyData, '_yyy'));
     delete PhonyData.prototype.xxx;
     delete PhonyData.prototype._xxx;
     delete PhonyData.prototype.yyy;

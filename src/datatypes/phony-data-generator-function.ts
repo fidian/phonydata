@@ -1,4 +1,4 @@
-import { PhonyData } from './phony-data';
+import { PhonyData } from '../';
 
 export type PhonyDataGeneratorFunction<T> = (
     this: PhonyData,

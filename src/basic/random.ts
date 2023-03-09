@@ -12,7 +12,7 @@ function init(obj: PhonyData) {
     const generator = new MersenneTwister();
 
     obj.define('random', () => generator.random());
-    obj.define('seed', (seed: number = 0) => generator.init_seed(seed));
+    obj.define('seed', (seed = 0) => generator.init_seed(seed));
 
     return obj;
 }
@@ -21,7 +21,7 @@ export function random() {
     define('random', function () {
         return init(this).random;
     });
-    define('seed', function (seed: number = 0) {
+    define('seed', function (seed = 0) {
         return init(this).seed(seed);
     });
 }

@@ -1,3 +1,5 @@
+import { PhonyDataCurrency } from '../datatypes/phony-data-currency';
+
 export const currencies: PhonyDataCurrency[] = [
     {
         code: 'AED',

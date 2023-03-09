@@ -6,7 +6,7 @@
     "scripts": {
         "build": "rm -rf lib && tsc",
         "test:ava": "ava",
-        "test:tslint": "tslint -p tslint.json",
+        "test:lint": "eslint src test",
         "test": "npm run test:tslint && npm run test:ava"
     },
     "repository": {
@@ -31,7 +31,10 @@
     },
     "homepage": "https://github.com/fidian/phonydata#readme",
     "devDependencies": {
+        "@typescript-eslint/eslint-plugin": "^5.54.1",
+        "@typescript-eslint/parser": "^5.54.1",
         "ava": "5.2.0",
+        "eslint": "^8.35.0",
         "typescript": "^4.9.5"
     },
     "dependencies": {

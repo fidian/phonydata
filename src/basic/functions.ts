@@ -41,6 +41,8 @@ export function functions() {
             .replace(/ss/, pad(date.getUTCSeconds()));
     });
     define('format', function (format: string) {
+        const typedPhonyData: TypedPhonyData = this as unknown as TypedPhonyData;
+
         return format.toString().replace(/./g, letter => {
             const mapped = this._formatMap.get(letter);
 
@@ -48,7 +50,7 @@ export function functions() {
                 return letter;
             }
 
-            return this[`_${mapped}`]();
+            return typedPhonyData[`_${mapped}`]();
         });
     });
     define('parse', function (format: string) {

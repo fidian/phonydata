@@ -35,14 +35,6 @@ export interface PhonyData
         PhonyDataAddText,
         PhonyDataAddWeb {
     _formatMap: Map<string, string>;
-    define(name: string, value: PhonyDataGeneratorValue): void;
-    define(obj: PhonyDataDefineObject): void;
-    defineFormatter(formatCharacter: string, generatorName: string): void;
-    formatGenerator: typeof formatGenerator;
-    parseGenerator: typeof parseGenerator;
-    randomGenerator: typeof randomGenerator;
-    sequenceGenerator: typeof sequenceGenerator;
-    weightedGenerator: typeof weightedGenerator;
 }
 
 export class PhonyData implements PhonyData {
@@ -84,10 +76,10 @@ export class PhonyData implements PhonyData {
     weightedGenerator = weightedGenerator;
 }
 
-function defineMethod(
+function defineMethod<T = any>(
     target: PhonyData,
     name: string,
-    value: PhonyDataGeneratorFunction<any>
+    value: PhonyDataGeneratorFunction<T>
 ) {
     if (value.length) {
         Object.defineProperty(target, name, {
