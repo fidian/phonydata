@@ -1,21 +1,17 @@
 parserOptions:
-    ecmaVersion: 5
+    ecmaVersion: 6
+    sourceType: module
 env:
     es6: true
     jasmine: true
     node: true
-extends:
-    - eslint:recommended
+extends: eslint:recommended
 rules:
     accessor-pairs: error
     array-bracket-spacing:
         - error
         - never
     array-callback-return: error
-    arrow-body-style:
-        - error
-        - always
-    arrow-parens: error
     arrow-spacing: error
     block-spacing:
         - error
@@ -24,25 +20,16 @@ rules:
     comma-dangle: error
     comma-spacing: error
     comma-style: error
-    complexity:
-        - error
-        - 10
     computed-property-spacing: error
-    consistent-return: error
-    consistent-this: off
+    consistent-this: error
     constructor-super: error
     curly: error
-    default-case: error
     dot-notation: error
     eol-last: error
     eqeqeq: error
     generator-star-spacing: error
     global-require: off
     guard-for-in: error
-    indent: error
-    init-declarations:
-        - error
-        - never
     jsx-quotes: error
     key-spacing: error
     keyword-spacing: error
@@ -54,9 +41,7 @@ rules:
             allowObjectStart: true
             allowArrayStart: true
     max-statements-per-line: error
-    new-cap: error
     new-parens: error
-    newline-after-var: error
     newline-before-return: error
     no-alert: error
     no-array-constructor: error
@@ -83,18 +68,16 @@ rules:
     no-empty-pattern: error
     no-eq-null: error
     no-eval: error
-    no-extend-native: error
     no-extra-bind: error
     no-extra-boolean-cast: error
     no-extra-label: error
-    no-extra-parens: error
     no-extra-semi: error
     no-fallthrough: error
     no-func-assign: error
     no-implied-eval: error
     no-inline-comments: error
     no-inner-declarations: error
-    no-invalid-this: off
+    no-invalid-this: error
     no-invalid-regexp: error
     no-irregular-whitespace: error
     no-iterator: error
@@ -123,7 +106,6 @@ rules:
     no-octal-escape: error
     no-path-concat: error
     no-plusplus: error
-    no-process-exit: error
     no-proto: error
     no-redeclare: error
     no-regex-spaces: error
@@ -138,14 +120,12 @@ rules:
     no-spaced-func: error
     no-sparse-arrays: error
     no-sync: error
-    no-ternary: error
     no-this-before-super: error
     no-throw-literal: error
     no-trailing-spaces: error
     no-undef: error
     no-undef-init: error
     no-undefined: error
-    no-underscore-dangle: off
     no-unexpected-multiline: error
     no-unmodified-loop-condition: error
     no-unneeded-ternary: error
@@ -154,7 +134,6 @@ rules:
     no-unused-expressions: error
     no-unused-labels: error
     no-unused-vars: error
-    no-use-before-define: error
     no-useless-call: error
     no-useless-computed-key: error
     no-useless-concat: error
@@ -164,46 +143,27 @@ rules:
     no-warning-comments: warn
     no-whitespace-before-property: error
     no-with: error
-    object-curly-spacing: error
-    object-property-newline: error
-    object-shorthand: off
-    one-var: error
     operator-assignment: error
-    operator-linebreak:
-        - error
-        - none
     padded-blocks:
         - error
         - never
-    prefer-arrow-callback: off
+    prefer-arrow-callback:
+        - error
+        -
+            allowNamedFunctions: true
     prefer-const: error
-    prefer-template: off
     quote-props:
         - error
         - as-needed
-    quotes: error
     radix: error
-    require-jsdoc:
-        - error
-        -
-            require:
-                FunctionDeclaration: true
-                MethodDefinition: true
-                ClassDeclaration: true
     require-yield: error
     semi: error
     semi-spacing: error
-    sort-imports: error
     sort-vars:
         - error
         -
             ignoreCase: true
     space-before-blocks: error
-    space-before-function-paren:
-        - error
-        -
-            anonymous: always
-            named: never
     space-in-parens: error
     space-infix-ops:
         - error
