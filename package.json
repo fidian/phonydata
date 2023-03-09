@@ -31,8 +31,8 @@
     },
     "homepage": "https://github.com/fidian/phonydata#readme",
     "devDependencies": {
-        "ava": "2.2.0",
-        "typescript": "^3.5.3"
+        "ava": "5.2.0",
+        "typescript": "^4.9.5"
     },
     "dependencies": {
         "@types/mersenne-twister": "^1.1.2",

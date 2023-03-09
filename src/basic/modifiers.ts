@@ -18,7 +18,7 @@ export function modifiers() {
     define('capitalizeFirst', (str: string) => {
         const s = str.toString();
 
-        return s.charAt(0).toUpperCase() + s.substr(1);
+        return s.charAt(0).toUpperCase() + s.substring(1);
     });
     define('capitalizeTitle', (str: string) =>
         str.toString().replace(/(^|[^\w])\w/g, match => match.toUpperCase()));

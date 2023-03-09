@@ -119,7 +119,7 @@ export function locale() {
     });
     define('locality', function() {
         const state = this.loremTitleWords(1);
-        const stateCode = (state + 'XXX').substr(0, 3).toUpperCase();
+        const stateCode = (state + 'XXX').substring(0, 3).toUpperCase();
 
         return {
             addressLine1: this.buildingNumber + ' ' + this.streetName,

@@ -15,6 +15,16 @@ interface TypedPhonyData {
 
 export function functions() {
     define('dateFormat', function(format: string, date?: Date) {
+        function pad(n: number) {
+            const s = n.toString();
+
+            if (s.length < 2) {
+                return `0${s}`;
+            }
+
+            return s;
+        }
+
         if (!(date instanceof Date)) {
             date = this.date;
         }
@@ -24,11 +34,11 @@ export function functions() {
         return format
             .toString()
             .replace(/YYYY/, date.getUTCFullYear().toString())
-            .replace(/MM/, ('0' + (date.getUTCMonth() + 1)).substr(-2))
-            .replace(/DD/, ('0' + date.getUTCDate()).substr(-2))
-            .replace(/hh/, ('0' + date.getUTCHours()).substr(-2))
-            .replace(/mm/, ('0' + date.getUTCMinutes()).substr(-2))
-            .replace(/ss/, ('0' + date.getUTCSeconds()).substr(-2));
+            .replace(/MM/, pad(date.getUTCMonth() + 1))
+            .replace(/DD/, pad(date.getUTCDate()))
+            .replace(/hh/, pad(date.getUTCHours()))
+            .replace(/mm/, pad(date.getUTCMinutes()))
+            .replace(/ss/, pad(date.getUTCSeconds()));
     });
     define('format', function(format: string) {
         return format
@@ -50,7 +60,7 @@ export function functions() {
             return elements.reduce((acc: string, item: string) => {
                 try {
                     return typedPhonyData['_' + item](acc);
-                } catch (e) {
+                } catch (e: any) {
                     return e.toString();
                 }
             }, null);
