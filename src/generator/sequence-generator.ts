@@ -13,4 +13,3 @@ export function sequenceGenerator<T = any>(
         return value;
     };
 }
-

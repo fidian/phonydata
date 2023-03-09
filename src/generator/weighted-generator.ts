@@ -43,7 +43,7 @@ export function weightedGenerator<T = any>(
 
         for (const item of reweighed) {
             if (r < item[0]) {
-                if (typeof item[1] === "function") {
+                if (typeof item[1] === 'function') {
                     return item[1]();
                 }
 
@@ -51,7 +51,6 @@ export function weightedGenerator<T = any>(
             }
         }
 
-        return "";
+        return '';
     };
 }
-

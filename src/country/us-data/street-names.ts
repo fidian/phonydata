@@ -3096,5 +3096,5 @@ export const streetNames = [
     'Ridge',
     'Street',
     'Hill',
-    'Oak'
+    'Oak',
 ];

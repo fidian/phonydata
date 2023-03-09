@@ -17,16 +17,16 @@ export interface PhonyDataAddCurrency {
 
 export function currency() {
     define('currency', currencies);
-    define('currencyCode', function() {
+    define('currencyCode', function () {
         return this.currency.code;
     });
-    define('currencyDigitalCode', function() {
+    define('currencyDigitalCode', function () {
         return this.currency.digitalCode;
     });
-    define('currencyName', function() {
+    define('currencyName', function () {
         return this.currency.name;
     });
-    define('currencySymbol', function() {
+    define('currencySymbol', function () {
         return this.currency.symbol;
     });
 }

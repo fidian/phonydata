@@ -21,7 +21,8 @@ export function modifiers() {
         return s.charAt(0).toUpperCase() + s.substring(1);
     });
     define('capitalizeTitle', (str: string) =>
-        str.toString().replace(/(^|[^\w])\w/g, match => match.toUpperCase()));
+        str.toString().replace(/(^|[^\w])\w/g, match => match.toUpperCase())
+    );
     define('toJson', (thing: any) => JSON.stringify(thing));
     define('toString', (thing: any) => thing.toString());
 }

@@ -17,7 +17,7 @@ export interface PhonyDataAddLorem {
 }
 
 export function lorem() {
-    define('loremSentence', function() {
+    define('loremSentence', function () {
         if (this.boolean) {
             return (
                 this.capitalizeFirst(this.loremSentenceFragment) +
@@ -32,17 +32,17 @@ export function lorem() {
             this.sentencePunctuation
         );
     });
-    define('loremSentenceFragment', function() {
+    define('loremSentenceFragment', function () {
         return this.loremWords(this.integer(3, 7));
     });
-    define('loremTitle', function() {
+    define('loremTitle', function () {
         return this.capitalizeTitle(this.loremWords());
     });
-    define('loremTitleWords', function(num?: number) {
+    define('loremTitleWords', function (num?: number) {
         return this.capitalizeTitle(this.loremWords(num));
     });
     define('loremWord', loremWords);
-    define('loremWords', function(num?: number) {
+    define('loremWords', function (num?: number) {
         const desired = num || this.integer(3, 8);
         const words = [];
 

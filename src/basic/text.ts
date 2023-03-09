@@ -16,19 +16,19 @@ export interface PhonyDataAddText {
 }
 
 export function text() {
-    define('dateText', function(d: Date) {
+    define('dateText', function (d: Date) {
         return this.dateFormat('YYYY-MM-DD', d);
     });
-    define('dateTimeCondensed', function(d: Date) {
+    define('dateTimeCondensed', function (d: Date) {
         return this.dateFormat('YYYYMMDDThhmmssZ', d);
     });
-    define('dateTimeOffset', function(d: Date) {
+    define('dateTimeOffset', function (d: Date) {
         return this.dateFormat('YYYY-MM-DDThh:mm:ss+00:00', d);
     });
-    define('dateTimeMinuteZ', function(d: Date) {
+    define('dateTimeMinuteZ', function (d: Date) {
         return this.dateFormat('YYYY-MM-DDThh:mmZ', d);
     });
-    define('dateTimeZ', function(d: Date) {
+    define('dateTimeZ', function (d: Date) {
         return this.dateFormat('YYYY-MM-DDThh:mm:ssZ', d);
     });
     define('digit', '0123456789'.split(''));

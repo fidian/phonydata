@@ -4,42 +4,42 @@ export const currencies: PhonyDataCurrency[] = [
         symbol: 'د.إ',
         digitalCode: '784',
         name: 'UAE Dirham',
-        countries: ['UAE']
+        countries: ['UAE'],
     },
     {
         code: 'AFN',
         symbol: 'Af',
         digitalCode: '971',
         name: 'Afghani',
-        countries: ['Afghanistan']
+        countries: ['Afghanistan'],
     },
     {
         code: 'ALL',
         symbol: 'L',
         digitalCode: '008',
         name: 'Lek',
-        countries: ['Albania']
+        countries: ['Albania'],
     },
     {
         code: 'AMD',
         symbol: 'Դ',
         digitalCode: '051',
         name: 'Armenian Dram',
-        countries: ['Armenia']
+        countries: ['Armenia'],
     },
     {
         code: 'AOA',
         symbol: 'Kz',
         digitalCode: '973',
         name: 'Kwanza',
-        countries: ['Angola']
+        countries: ['Angola'],
     },
     {
         code: 'ARS',
         symbol: '$',
         digitalCode: '032',
         name: 'Argentine Peso',
-        countries: ['Argentina']
+        countries: ['Argentina'],
     },
     {
         code: 'AUD',
@@ -51,246 +51,246 @@ export const currencies: PhonyDataCurrency[] = [
             'Kiribati',
             'Coconut Islands',
             'Nauru',
-            'Tuvalu'
-        ]
+            'Tuvalu',
+        ],
     },
     {
         code: 'AWG',
         symbol: 'ƒ',
         digitalCode: '533',
         name: 'Aruban Guilder/Florin',
-        countries: ['Aruba']
+        countries: ['Aruba'],
     },
     {
         code: 'AZN',
         symbol: 'ман',
         digitalCode: '944',
         name: 'Azerbaijanian Manat',
-        countries: ['Azerbaijan']
+        countries: ['Azerbaijan'],
     },
     {
         code: 'BAM',
         symbol: 'КМ',
         digitalCode: '977',
         name: 'Konvertibilna Marka',
-        countries: ['Bosnia and Herzegovina']
+        countries: ['Bosnia and Herzegovina'],
     },
     {
         code: 'BBD',
         symbol: '$',
         digitalCode: '052',
         name: 'Barbados Dollar',
-        countries: ['Barbados']
+        countries: ['Barbados'],
     },
     {
         code: 'BDT',
         symbol: '৳',
         digitalCode: '050',
         name: 'Taka',
-        countries: ['Bangladesh']
+        countries: ['Bangladesh'],
     },
     {
         code: 'BGN',
         symbol: 'лв',
         digitalCode: '975',
         name: 'Bulgarian Lev',
-        countries: ['Bulgaria']
+        countries: ['Bulgaria'],
     },
     {
         code: 'BHD',
         symbol: 'ب.د',
         digitalCode: '048',
         name: 'Bahraini Dinar',
-        countries: ['Bahrain']
+        countries: ['Bahrain'],
     },
     {
         code: 'BIF',
         symbol: '₣',
         digitalCode: '108',
         name: 'Burundi Franc',
-        countries: ['Burundi']
+        countries: ['Burundi'],
     },
     {
         code: 'BMD',
         symbol: '$',
         digitalCode: '060',
         name: 'Bermudian Dollar',
-        countries: ['Bermuda']
+        countries: ['Bermuda'],
     },
     {
         code: 'BND',
         symbol: '$',
         digitalCode: '096',
         name: 'Brunei Dollar',
-        countries: ['Brunei', 'Singapore']
+        countries: ['Brunei', 'Singapore'],
     },
     {
         code: 'BOB',
         symbol: 'Bs.',
         digitalCode: '068',
         name: 'Boliviano',
-        countries: ['Bolivia']
+        countries: ['Bolivia'],
     },
     {
         code: 'BRL',
         symbol: 'R$',
         digitalCode: '986',
         name: 'Brazilian Real',
-        countries: ['Brazil']
+        countries: ['Brazil'],
     },
     {
         code: 'BSD',
         symbol: '$',
         digitalCode: '044',
         name: 'Bahamian Dollar',
-        countries: ['Bahamas']
+        countries: ['Bahamas'],
     },
     {
         code: 'BTN',
         symbol: '',
         digitalCode: '064',
         name: 'Ngultrum',
-        countries: ['Bhutan']
+        countries: ['Bhutan'],
     },
     {
         code: 'BWP',
         symbol: 'P',
         digitalCode: '072',
         name: 'Pula',
-        countries: ['Botswana']
+        countries: ['Botswana'],
     },
     {
         code: 'BYR',
         symbol: 'Br',
         digitalCode: '974',
         name: 'Belarussian Ruble',
-        countries: ['Belarus']
+        countries: ['Belarus'],
     },
     {
         code: 'BZD',
         symbol: '$',
         digitalCode: '084',
         name: 'Belize Dollar',
-        countries: ['Belize']
+        countries: ['Belize'],
     },
     {
         code: 'CAD',
         symbol: '$',
         digitalCode: '124',
         name: 'Canadian Dollar',
-        countries: ['Canada']
+        countries: ['Canada'],
     },
     {
         code: 'CDF',
         symbol: '₣',
         digitalCode: '976',
         name: 'Congolese Franc',
-        countries: ['Congo (Kinshasa)']
+        countries: ['Congo (Kinshasa)'],
     },
     {
         code: 'CHF',
         symbol: '₣',
         digitalCode: '756',
         name: 'Swiss Franc',
-        countries: ['Lichtenstein', 'Switzerland']
+        countries: ['Lichtenstein', 'Switzerland'],
     },
     {
         code: 'CLP',
         symbol: '$',
         digitalCode: '152',
         name: 'Chilean Peso',
-        countries: ['Chile']
+        countries: ['Chile'],
     },
     {
         code: 'CNY',
         symbol: '¥',
         digitalCode: '156',
         name: 'Yuan',
-        countries: ['China']
+        countries: ['China'],
     },
     {
         code: 'COP',
         symbol: '$',
         digitalCode: '170',
         name: 'Colombian Peso',
-        countries: ['Colombia']
+        countries: ['Colombia'],
     },
     {
         code: 'CRC',
         symbol: '₡',
         digitalCode: '188',
         name: 'Costa Rican Colon',
-        countries: ['Costa Rica']
+        countries: ['Costa Rica'],
     },
     {
         code: 'CUP',
         symbol: '$',
         digitalCode: '192',
         name: 'Cuban Peso',
-        countries: ['Cuba']
+        countries: ['Cuba'],
     },
     {
         code: 'CVE',
         symbol: '$',
         digitalCode: '132',
         name: 'Cape Verde Escudo',
-        countries: ['Cape Verde']
+        countries: ['Cape Verde'],
     },
     {
         code: 'CZK',
         symbol: 'Kč',
         digitalCode: '203',
         name: 'Czech Koruna',
-        countries: ['Czech Republic']
+        countries: ['Czech Republic'],
     },
     {
         code: 'DJF',
         symbol: '₣',
         digitalCode: '262',
         name: 'Djibouti Franc',
-        countries: ['Djibouti']
+        countries: ['Djibouti'],
     },
     {
         code: 'DKK',
         symbol: 'kr',
         digitalCode: '208',
         name: 'Danish Krone',
-        countries: ['Denmark']
+        countries: ['Denmark'],
     },
     {
         code: 'DOP',
         symbol: '$',
         digitalCode: '214',
         name: 'Dominican Peso',
-        countries: ['Dominican Republic']
+        countries: ['Dominican Republic'],
     },
     {
         code: 'DZD',
         symbol: 'د.ج',
         digitalCode: '012',
         name: 'Algerian Dinar',
-        countries: ['Algeria']
+        countries: ['Algeria'],
     },
     {
         code: 'EGP',
         symbol: '£',
         digitalCode: '818',
         name: 'Egyptian Pound',
-        countries: ['Egypt']
+        countries: ['Egypt'],
     },
     {
         code: 'ERN',
         symbol: 'Nfk',
         digitalCode: '232',
         name: 'Nakfa',
-        countries: ['Eritrea']
+        countries: ['Eritrea'],
     },
     {
         code: 'ETB',
         symbol: '',
         digitalCode: '230',
         name: 'Ethiopian Birr',
-        countries: ['Ethiopia']
+        countries: ['Ethiopia'],
     },
     {
         code: 'EUR',
@@ -323,22 +323,22 @@ export const currencies: PhonyDataCurrency[] = [
             'Slovakia',
             'Slovenia',
             'Spain',
-            'Vatican'
-        ]
+            'Vatican',
+        ],
     },
     {
         code: 'FJD',
         symbol: '$',
         digitalCode: '242',
         name: 'Fiji Dollar',
-        countries: ['Fiji']
+        countries: ['Fiji'],
     },
     {
         code: 'FKP',
         symbol: '£',
         digitalCode: '238',
         name: 'Falkland Islands Pound',
-        countries: ['Falkland Islands']
+        countries: ['Falkland Islands'],
     },
     {
         code: 'GBP',
@@ -349,652 +349,652 @@ export const currencies: PhonyDataCurrency[] = [
             'Alderney',
             'British Indian Ocean Territory',
             'Great Britain',
-            'Isle of Maine'
-        ]
+            'Isle of Maine',
+        ],
     },
     {
         code: 'GEL',
         symbol: 'ლ',
         digitalCode: '981',
         name: 'Lari',
-        countries: ['Georgia', 'South Ossetia']
+        countries: ['Georgia', 'South Ossetia'],
     },
     {
         code: 'GHS',
         symbol: '₵',
         digitalCode: '936',
         name: 'Cedi',
-        countries: ['Ghana']
+        countries: ['Ghana'],
     },
     {
         code: 'GIP',
         symbol: '£',
         digitalCode: '292',
         name: 'Gibraltar Pound',
-        countries: ['Gibraltar']
+        countries: ['Gibraltar'],
     },
     {
         code: 'GMD',
         symbol: 'D',
         digitalCode: '270',
         name: 'Dalasi',
-        countries: ['Gambia']
+        countries: ['Gambia'],
     },
     {
         code: 'GNF',
         symbol: '₣',
         digitalCode: '324',
         name: 'Guinea Franc',
-        countries: ['Guinea']
+        countries: ['Guinea'],
     },
     {
         code: 'GTQ',
         symbol: 'Q',
         digitalCode: '320',
         name: 'Quetzal',
-        countries: ['Guatemala']
+        countries: ['Guatemala'],
     },
     {
         code: 'GYD',
         symbol: '$',
         digitalCode: '328',
         name: 'Guyana Dollar',
-        countries: ['Guyana']
+        countries: ['Guyana'],
     },
     {
         code: 'HKD',
         symbol: '$',
         digitalCode: '344',
         name: 'Hong Kong Dollar',
-        countries: ['Hong Kong']
+        countries: ['Hong Kong'],
     },
     {
         code: 'HNL',
         symbol: 'L',
         digitalCode: '340',
         name: 'Lempira',
-        countries: ['Honduras']
+        countries: ['Honduras'],
     },
     {
         code: 'HRK',
         symbol: 'Kn',
         digitalCode: '191',
         name: 'Croatian Kuna',
-        countries: ['Croatia']
+        countries: ['Croatia'],
     },
     {
         code: 'HTG',
         symbol: 'G',
         digitalCode: '332',
         name: 'Gourde',
-        countries: ['Haiti']
+        countries: ['Haiti'],
     },
     {
         code: 'HUF',
         symbol: 'Ft',
         digitalCode: '348',
         name: 'Forint',
-        countries: ['Hungary']
+        countries: ['Hungary'],
     },
     {
         code: 'IDR',
         symbol: 'Rp',
         digitalCode: '360',
         name: 'Rupiah',
-        countries: ['Indonesia']
+        countries: ['Indonesia'],
     },
     {
         code: 'ILS',
         symbol: '₪',
         digitalCode: '376',
         name: 'New Israeli Shekel',
-        countries: ['Israel', 'Palestine']
+        countries: ['Israel', 'Palestine'],
     },
     {
         code: 'INR',
         symbol: '₨',
         digitalCode: '356',
         name: 'Indian Rupee',
-        countries: ['Bhutan', 'India']
+        countries: ['Bhutan', 'India'],
     },
     {
         code: 'IQD',
         symbol: 'ع.د',
         digitalCode: '368',
         name: 'Iraqi Dinar',
-        countries: ['Iraq']
+        countries: ['Iraq'],
     },
     {
         code: 'IRR',
         symbol: '﷼',
         digitalCode: '364',
         name: 'Iranian Rial',
-        countries: ['Iran']
+        countries: ['Iran'],
     },
     {
         code: 'ISK',
         symbol: 'Kr',
         digitalCode: '352',
         name: 'Iceland Krona',
-        countries: ['Iceland']
+        countries: ['Iceland'],
     },
     {
         code: 'JMD',
         symbol: '$',
         digitalCode: '388',
         name: 'Jamaican Dollar',
-        countries: ['Jamaica']
+        countries: ['Jamaica'],
     },
     {
         code: 'JOD',
         symbol: 'د.ا',
         digitalCode: '400',
         name: 'Jordanian Dinar',
-        countries: ['Jordan']
+        countries: ['Jordan'],
     },
     {
         code: 'JPY',
         symbol: '¥',
         digitalCode: '392',
         name: 'Yen',
-        countries: ['Japan']
+        countries: ['Japan'],
     },
     {
         code: 'KES',
         symbol: 'Sh',
         digitalCode: '404',
         name: 'Kenyan Shilling',
-        countries: ['Kenya']
+        countries: ['Kenya'],
     },
     {
         code: 'KGS',
         symbol: '',
         digitalCode: '417',
         name: 'Som',
-        countries: ['Kyrgyzstan']
+        countries: ['Kyrgyzstan'],
     },
     {
         code: 'KHR',
         symbol: '៛',
         digitalCode: '116',
         name: 'Riel',
-        countries: ['Cambodia']
+        countries: ['Cambodia'],
     },
     {
         code: 'KPW',
         symbol: '₩',
         digitalCode: '408',
         name: 'North Korean Won',
-        countries: ['North Korea']
+        countries: ['North Korea'],
     },
     {
         code: 'KRW',
         symbol: '₩',
         digitalCode: '410',
         name: 'South Korean Won',
-        countries: ['South Korea']
+        countries: ['South Korea'],
     },
     {
         code: 'KWD',
         symbol: 'د.ك',
         digitalCode: '414',
         name: 'Kuwaiti Dinar',
-        countries: ['Kuwait']
+        countries: ['Kuwait'],
     },
     {
         code: 'KYD',
         symbol: '$',
         digitalCode: '136',
         name: 'Cayman Islands Dollar',
-        countries: ['Cayman Islands']
+        countries: ['Cayman Islands'],
     },
     {
         code: 'KZT',
         symbol: '〒',
         digitalCode: '398',
         name: 'Tenge',
-        countries: ['Kazakhstan']
+        countries: ['Kazakhstan'],
     },
     {
         code: 'LAK',
         symbol: '₭',
         digitalCode: '418',
         name: 'Kip',
-        countries: ['Laos']
+        countries: ['Laos'],
     },
     {
         code: 'LBP',
         symbol: 'ل.ل',
         digitalCode: '422',
         name: 'Lebanese Pound',
-        countries: ['Lebanon']
+        countries: ['Lebanon'],
     },
     {
         code: 'LKR',
         symbol: 'Rs',
         digitalCode: '144',
         name: 'Sri Lanka Rupee',
-        countries: ['Sri Lanka']
+        countries: ['Sri Lanka'],
     },
     {
         code: 'LRD',
         symbol: '$',
         digitalCode: '430',
         name: 'Liberian Dollar',
-        countries: ['Liberia']
+        countries: ['Liberia'],
     },
     {
         code: 'LSL',
         symbol: 'L',
         digitalCode: '426',
         name: 'Loti',
-        countries: ['Lesotho']
+        countries: ['Lesotho'],
     },
     {
         code: 'LYD',
         symbol: 'ل.د',
         digitalCode: '434',
         name: 'Libyan Dinar',
-        countries: ['Libya']
+        countries: ['Libya'],
     },
     {
         code: 'MAD',
         symbol: 'د.م.',
         digitalCode: '504',
         name: 'Moroccan Dirham',
-        countries: ['Morocco']
+        countries: ['Morocco'],
     },
     {
         code: 'MDL',
         symbol: 'L',
         digitalCode: '498',
         name: 'Moldavian Leu',
-        countries: ['Moldova']
+        countries: ['Moldova'],
     },
     {
         code: 'MGA',
         symbol: '',
         digitalCode: '969',
         name: 'Malagasy Ariary',
-        countries: ['Madagascar']
+        countries: ['Madagascar'],
     },
     {
         code: 'MKD',
         symbol: 'ден',
         digitalCode: '807',
         name: 'Denar',
-        countries: ['Macedonia']
+        countries: ['Macedonia'],
     },
     {
         code: 'MMK',
         symbol: 'K',
         digitalCode: '104',
         name: 'Kyat',
-        countries: ['Myanmar (Burma)']
+        countries: ['Myanmar (Burma)'],
     },
     {
         code: 'MNT',
         symbol: '₮',
         digitalCode: '496',
         name: 'Tugrik',
-        countries: ['Mongolia']
+        countries: ['Mongolia'],
     },
     {
         code: 'MOP',
         symbol: 'P',
         digitalCode: '446',
         name: 'Pataca',
-        countries: ['Macao']
+        countries: ['Macao'],
     },
     {
         code: 'MRO',
         symbol: 'UM',
         digitalCode: '478',
         name: 'Ouguiya',
-        countries: ['Mauritania']
+        countries: ['Mauritania'],
     },
     {
         code: 'MUR',
         symbol: '₨',
         digitalCode: '480',
         name: 'Mauritius Rupee',
-        countries: ['Mauritius']
+        countries: ['Mauritius'],
     },
     {
         code: 'MVR',
         symbol: 'ރ.',
         digitalCode: '462',
         name: 'Rufiyaa',
-        countries: ['Maldives']
+        countries: ['Maldives'],
     },
     {
         code: 'MWK',
         symbol: 'MK',
         digitalCode: '454',
         name: 'Kwacha',
-        countries: ['Malawi']
+        countries: ['Malawi'],
     },
     {
         code: 'MXN',
         symbol: '$',
         digitalCode: '484',
         name: 'Mexican Peso',
-        countries: ['Mexico']
+        countries: ['Mexico'],
     },
     {
         code: 'MYR',
         symbol: 'RM',
         digitalCode: '458',
         name: 'Malaysian Ringgit',
-        countries: ['Malaysia']
+        countries: ['Malaysia'],
     },
     {
         code: 'MZN',
         symbol: 'MTn',
         digitalCode: '943',
         name: 'Metical',
-        countries: ['Mozambique']
+        countries: ['Mozambique'],
     },
     {
         code: 'NAD',
         symbol: '$',
         digitalCode: '516',
         name: 'Namibia Dollar',
-        countries: ['Namibia']
+        countries: ['Namibia'],
     },
     {
         code: 'NGN',
         symbol: '₦',
         digitalCode: '566',
         name: 'Naira',
-        countries: ['Nigeria']
+        countries: ['Nigeria'],
     },
     {
         code: 'NIO',
         symbol: 'C$',
         digitalCode: '558',
         name: 'Cordoba Oro',
-        countries: ['Nicaragua']
+        countries: ['Nicaragua'],
     },
     {
         code: 'NOK',
         symbol: 'kr',
         digitalCode: '578',
         name: 'Norwegian Krone',
-        countries: ['Norway']
+        countries: ['Norway'],
     },
     {
         code: 'NPR',
         symbol: '₨',
         digitalCode: '524',
         name: 'Nepalese Rupee',
-        countries: ['Nepal']
+        countries: ['Nepal'],
     },
     {
         code: 'NZD',
         symbol: '$',
         digitalCode: '554',
         name: 'New Zealand Dollar',
-        countries: ['Cook Islands', 'New Zealand', 'Niue', 'Pitcairn Island']
+        countries: ['Cook Islands', 'New Zealand', 'Niue', 'Pitcairn Island'],
     },
     {
         code: 'OMR',
         symbol: 'ر.ع.',
         digitalCode: '512',
         name: 'Rial Omani',
-        countries: ['Oman']
+        countries: ['Oman'],
     },
     {
         code: 'PAB',
         symbol: 'B/.',
         digitalCode: '590',
         name: 'Balboa',
-        countries: ['Panama']
+        countries: ['Panama'],
     },
     {
         code: 'PEN',
         symbol: 'S/.',
         digitalCode: '604',
         name: 'Nuevo Sol',
-        countries: ['Peru']
+        countries: ['Peru'],
     },
     {
         code: 'PGK',
         symbol: 'K',
         digitalCode: '598',
         name: 'Kina',
-        countries: ['Papua New Guinea']
+        countries: ['Papua New Guinea'],
     },
     {
         code: 'PHP',
         symbol: '₱',
         digitalCode: '608',
         name: 'Philippine Peso',
-        countries: ['Philippines']
+        countries: ['Philippines'],
     },
     {
         code: 'PKR',
         symbol: '₨',
         digitalCode: '586',
         name: 'Pakistan Rupee',
-        countries: ['Pakistan']
+        countries: ['Pakistan'],
     },
     {
         code: 'PLN',
         symbol: 'zł',
         digitalCode: '985',
         name: 'PZloty',
-        countries: ['Poland']
+        countries: ['Poland'],
     },
     {
         code: 'PYG',
         symbol: '₲',
         digitalCode: '600',
         name: 'Guarani',
-        countries: ['Paraguay']
+        countries: ['Paraguay'],
     },
     {
         code: 'QAR',
         symbol: 'ر.ق',
         digitalCode: '634',
         name: 'Qatari Rial',
-        countries: ['Qatar']
+        countries: ['Qatar'],
     },
     {
         code: 'RON',
         symbol: 'L',
         digitalCode: '946',
         name: 'Leu',
-        countries: ['Romania']
+        countries: ['Romania'],
     },
     {
         code: 'RSD',
         symbol: 'din',
         digitalCode: '941',
         name: 'Serbian Dinar',
-        countries: ['Kosovo', 'Serbia']
+        countries: ['Kosovo', 'Serbia'],
     },
     {
         code: 'RUB',
         symbol: 'р.',
         digitalCode: '643',
         name: 'Russian Ruble',
-        countries: ['Russia', 'South Ossetia']
+        countries: ['Russia', 'South Ossetia'],
     },
     {
         code: 'RWF',
         symbol: '₣',
         digitalCode: '646',
         name: 'Rwanda Franc',
-        countries: ['Rwanda']
+        countries: ['Rwanda'],
     },
     {
         code: 'SAR',
         symbol: 'ر.س',
         digitalCode: '682',
         name: 'Saudi Riyal',
-        countries: ['Saudi Arabia']
+        countries: ['Saudi Arabia'],
     },
     {
         code: 'SBD',
         symbol: '$',
         digitalCode: '090',
         name: 'Solomon Islands Dollar',
-        countries: ['Solomon Islands']
+        countries: ['Solomon Islands'],
     },
     {
         code: 'SCR',
         symbol: '₨',
         digitalCode: '690',
         name: 'Seychelles Rupee',
-        countries: ['Seychelles']
+        countries: ['Seychelles'],
     },
     {
         code: 'SDG',
         symbol: '£',
         digitalCode: '938',
         name: 'Sudanese Pound',
-        countries: ['Sudan']
+        countries: ['Sudan'],
     },
     {
         code: 'SEK',
         symbol: 'kr',
         digitalCode: '752',
         name: 'Swedish Krona',
-        countries: ['Sweden']
+        countries: ['Sweden'],
     },
     {
         code: 'SGD',
         symbol: '$',
         digitalCode: '702',
         name: 'Singapore Dollar',
-        countries: ['Brunei', 'Singapore']
+        countries: ['Brunei', 'Singapore'],
     },
     {
         code: 'SHP',
         symbol: '£',
         digitalCode: '654',
         name: 'Saint Helena Pound',
-        countries: ['Ascension Island', 'Saint Helena', 'Tristan da Cunha']
+        countries: ['Ascension Island', 'Saint Helena', 'Tristan da Cunha'],
     },
     {
         code: 'SLL',
         symbol: 'Le',
         digitalCode: '694',
         name: 'Leone',
-        countries: ['Sierra Leone']
+        countries: ['Sierra Leone'],
     },
     {
         code: 'SOS',
         symbol: 'Sh',
         digitalCode: '706',
         name: 'Somali Shilling',
-        countries: ['Somalia']
+        countries: ['Somalia'],
     },
     {
         code: 'SRD',
         symbol: '$',
         digitalCode: '968',
         name: 'Suriname Dollar',
-        countries: ['Suriname']
+        countries: ['Suriname'],
     },
     {
         code: 'STD',
         symbol: 'Db',
         digitalCode: '678',
         name: 'Dobra',
-        countries: ['Sao Tome and Principe']
+        countries: ['Sao Tome and Principe'],
     },
     {
         code: 'SYP',
         symbol: 'ل.س',
         digitalCode: '760',
         name: 'Syrian Pound',
-        countries: ['Syria']
+        countries: ['Syria'],
     },
     {
         code: 'SZL',
         symbol: 'L',
         digitalCode: '748',
         name: 'Lilangeni',
-        countries: ['Swaziland']
+        countries: ['Swaziland'],
     },
     {
         code: 'THB',
         symbol: '฿',
         digitalCode: '764',
         name: 'Baht',
-        countries: ['Thailand']
+        countries: ['Thailand'],
     },
     {
         code: 'TJS',
         symbol: 'ЅМ',
         digitalCode: '972',
         name: 'Somoni',
-        countries: ['Tajikistan']
+        countries: ['Tajikistan'],
     },
     {
         code: 'TMT',
         symbol: 'm',
         digitalCode: '934',
         name: 'Manat',
-        countries: ['Turkmenistan']
+        countries: ['Turkmenistan'],
     },
     {
         code: 'TND',
         symbol: 'د.ت',
         digitalCode: '788',
         name: 'Tunisian Dinar',
-        countries: ['Tunisia']
+        countries: ['Tunisia'],
     },
     {
         code: 'TOP',
         symbol: 'T$',
         digitalCode: '776',
         name: 'Pa’anga',
-        countries: ['Tonga']
+        countries: ['Tonga'],
     },
     {
         code: 'TRY',
         symbol: '₤',
         digitalCode: '949',
         name: 'Turkish Lira',
-        countries: ['North Cyprus', 'Turkey']
+        countries: ['North Cyprus', 'Turkey'],
     },
     {
         code: 'TTD',
         symbol: '$',
         digitalCode: '780',
         name: 'Trinidad and Tobago Dollar',
-        countries: ['Trinidad and Tobago']
+        countries: ['Trinidad and Tobago'],
     },
     {
         code: 'TWD',
         symbol: '$',
         digitalCode: '901',
         name: 'Taiwan Dollar',
-        countries: ['Taiwan']
+        countries: ['Taiwan'],
     },
     {
         code: 'TZS',
         symbol: 'Sh',
         digitalCode: '834',
         name: 'Tanzanian Shilling',
-        countries: ['Tanzania']
+        countries: ['Tanzania'],
     },
     {
         code: 'UAH',
         symbol: '₴',
         digitalCode: '980',
         name: 'Hryvnia',
-        countries: ['Ukraine']
+        countries: ['Ukraine'],
     },
     {
         code: 'UGX',
         symbol: 'Sh',
         digitalCode: '800',
         name: 'Uganda Shilling',
-        countries: ['Uganda']
+        countries: ['Uganda'],
     },
     {
         code: 'USD',
@@ -1016,50 +1016,50 @@ export const currencies: PhonyDataCurrency[] = [
             'Puerto Rico',
             'Turks and Caicos Islands',
             'United States of America',
-            'US Virgin Islands'
-        ]
+            'US Virgin Islands',
+        ],
     },
     {
         code: 'UYU',
         symbol: '$',
         digitalCode: '858',
         name: 'Peso Uruguayo',
-        countries: ['Uruguay']
+        countries: ['Uruguay'],
     },
     {
         code: 'UZS',
         symbol: '',
         digitalCode: '860',
         name: 'Uzbekistan Sum',
-        countries: ['Uzbekistan']
+        countries: ['Uzbekistan'],
     },
     {
         code: 'VEF',
         symbol: 'Bs F',
         digitalCode: '937',
         name: 'Bolivar Fuerte',
-        countries: ['Venezuela']
+        countries: ['Venezuela'],
     },
     {
         code: 'VND',
         symbol: '₫',
         digitalCode: '704',
         name: 'Dong',
-        countries: ['Vietnam']
+        countries: ['Vietnam'],
     },
     {
         code: 'VUV',
         symbol: 'Vt',
         digitalCode: '548',
         name: 'Vatu',
-        countries: ['Vanuatu']
+        countries: ['Vanuatu'],
     },
     {
         code: 'WST',
         symbol: 'T',
         digitalCode: '882',
         name: 'Tala',
-        countries: ['Samoa']
+        countries: ['Samoa'],
     },
     {
         code: 'XAF',
@@ -1080,8 +1080,8 @@ export const currencies: PhonyDataCurrency[] = [
             'Mali',
             'Niger',
             'Senegal',
-            'Togo'
-        ]
+            'Togo',
+        ],
     },
     {
         code: 'XCD',
@@ -1096,42 +1096,42 @@ export const currencies: PhonyDataCurrency[] = [
             'Montserrat',
             'Saint Kitts and Nevis',
             'Saint Lucia',
-            'Saint Vincent and Grenadine'
-        ]
+            'Saint Vincent and Grenadine',
+        ],
     },
     {
         code: 'XPF',
         symbol: '₣',
         digitalCode: '953',
         name: 'CFP Franc',
-        countries: ['French Polynesia', 'New Caledonia', 'Wallis and Futuna']
+        countries: ['French Polynesia', 'New Caledonia', 'Wallis and Futuna'],
     },
     {
         code: 'YER',
         symbol: '﷼',
         digitalCode: '886',
         name: 'Yemeni Rial',
-        countries: ['Yemen']
+        countries: ['Yemen'],
     },
     {
         code: 'ZAR',
         symbol: 'R',
         digitalCode: '710',
         name: 'Rand',
-        countries: ['Lesotho', 'Namibia', 'South Africa']
+        countries: ['Lesotho', 'Namibia', 'South Africa'],
     },
     {
         code: 'ZMW',
         symbol: 'ZK',
         digitalCode: '967',
         name: 'Zambian Kwacha',
-        countries: ['Zambia']
+        countries: ['Zambia'],
     },
     {
         code: 'ZWL',
         symbol: '$',
         digitalCode: '932',
         name: 'Zimbabwe Dollar',
-        countries: ['Zimbabwe']
-    }
+        countries: ['Zimbabwe'],
+    },
 ];

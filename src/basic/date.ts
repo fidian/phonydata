@@ -13,14 +13,14 @@ const oneYearInMs = 31557600000;
 const oneSecondInMs = 1000;
 
 export function date() {
-    define('date', function() {
+    define('date', function () {
         if (this.random < 0.5) {
             return this.dateFuture;
         }
 
         return this.datePast;
     });
-    define('dateFuture', function() {
+    define('dateFuture', function () {
         const d = new Date();
 
         // Add one second to ensure it's in the future
@@ -28,7 +28,7 @@ export function date() {
 
         return d;
     });
-    define('datePast', function() {
+    define('datePast', function () {
         const d = new Date();
 
         // Remove one second to ensure it's in the past

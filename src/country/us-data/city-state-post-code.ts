@@ -81461,5 +81461,5 @@ export const cityStatePostCode: string[] = [
     'Wrangell|AK|99929',
     'Edna Bay|AK|99950',
     'Kasaan|AK|99950',
-    'Ketchikan|AK|99950'
+    'Ketchikan|AK|99950',
 ];

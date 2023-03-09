@@ -14,7 +14,7 @@ interface TypedPhonyData {
 }
 
 export function functions() {
-    define('dateFormat', function(format: string, date?: Date) {
+    define('dateFormat', function (format: string, date?: Date) {
         function pad(n: number) {
             const s = n.toString();
 
@@ -40,8 +40,8 @@ export function functions() {
             .replace(/mm/, pad(date.getUTCMinutes()))
             .replace(/ss/, pad(date.getUTCSeconds()));
     });
-    define('format', function(format: string) {
-        return format.toString().replace(/./g, (letter) => {
+    define('format', function (format: string) {
+        return format.toString().replace(/./g, letter => {
             const mapped = this._formatMap.get(letter);
 
             if (!mapped) {
@@ -51,8 +51,9 @@ export function functions() {
             return this[`_${mapped}`]();
         });
     });
-    define('parse', function(format: string) {
-        const typedPhonyData: TypedPhonyData = (this as unknown) as TypedPhonyData;
+    define('parse', function (format: string) {
+        const typedPhonyData: TypedPhonyData =
+            this as unknown as TypedPhonyData;
 
         return format.toString().replace(/\{\{(.*?)\}\}/g, (match, grab) => {
             const elements = grab.replace(/\s*/g, '').split('|');

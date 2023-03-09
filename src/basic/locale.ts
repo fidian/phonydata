@@ -60,57 +60,59 @@ export interface PhonyDataAddLocale {
 // Placeholders that should get overridden by locale-specific extensions.
 export function locale() {
     // Language/location specific
-    define('alphaNumericLower', 'abcdefghijklmnopqrstuvwxyz0123456789'.split(
-        ''
-    ));
-    define('alphaNumericUpper', 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789'.split(
-        ''
-    ));
+    define(
+        'alphaNumericLower',
+        'abcdefghijklmnopqrstuvwxyz0123456789'.split('')
+    );
+    define(
+        'alphaNumericUpper',
+        'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789'.split('')
+    );
     define('letterLower', 'abcdefghijklmnopqrstuvwxyz'.split(''));
     define('letterUpper', 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split(''));
-    define('personName', function() {
+    define('personName', function () {
         return this.givenName + ' ' + this.surname;
     });
-    define('sentence', function() {
+    define('sentence', function () {
         return this.loremSentence;
     });
     define('sentencePunctuation', '..........?!'.split(''));
-    define('title', function() {
+    define('title', function () {
         return this.loremTitle;
     });
-    define('titleWords', function(num?: number) {
+    define('titleWords', function (num?: number) {
         return this.loremTitleWords(num);
     });
-    define('word', function() {
+    define('word', function () {
         return this.loremWord;
     });
-    define('words', function(num?: number) {
+    define('words', function (num?: number) {
         return this.loremWords(num);
     });
 
     // Country specific
-    define('addressLine1', function() {
+    define('addressLine1', function () {
         return this.locality.addressLine1;
     });
-    define('buildingNumber', function() {
+    define('buildingNumber', function () {
         return this.integer(1, 1000);
     });
-    define('city', function() {
+    define('city', function () {
         return this.locality.city;
     });
-    define('currencyValue', function() {
+    define('currencyValue', function () {
         return this.integer(0, 10000) / 100;
     });
-    define('givenName', function() {
+    define('givenName', function () {
         return this.random < 0.5 ? this.givenNameFemale : this.givenNameMale;
     });
-    define('givenNameFemale', function() {
+    define('givenNameFemale', function () {
         return this.loremTitleWords(1);
     });
-    define('givenNameMale', function() {
+    define('givenNameMale', function () {
         return this.loremTitleWords(1);
     });
-    define('locality', function() {
+    define('locality', function () {
         const state = this.loremTitleWords(1);
         const stateCode = (state + 'XXX').substring(0, 3).toUpperCase();
 
@@ -119,25 +121,25 @@ export function locale() {
             city: this.loremTitleWords(1),
             stateOrProvince: state,
             stateOrProvinceCode: stateCode,
-            postCode: this.format('ZZZ ZZZ')
+            postCode: this.format('ZZZ ZZZ'),
         };
     });
-    define('phoneNumber', function() {
+    define('phoneNumber', function () {
         return this.integer(2, 9).toString() + this.format('##-###-####');
     });
-    define('postCode', function() {
+    define('postCode', function () {
         return this.locality.postCode;
     });
-    define('stateOrProvince', function() {
+    define('stateOrProvince', function () {
         return this.locality.stateOrProvinceCode;
     });
-    define('stateOrProvinceCode', function() {
+    define('stateOrProvinceCode', function () {
         return this.locality.stateOrProvinceCode;
     });
-    define('streetName', function() {
+    define('streetName', function () {
         return this.loremTitleWords(2);
     });
-    define('surname', function() {
+    define('surname', function () {
         return this.loremTitleWords(1);
     });
 }

@@ -18,7 +18,7 @@ const streetDirections = [
     'NW',
     'SW',
     'NE',
-    'SE'
+    'SE',
 ];
 const streetNamePrefixes = [
     'Country',
@@ -43,7 +43,7 @@ const streetNamePrefixes = [
     'Indian',
     'Valley',
     'Black',
-    'Hidden'
+    'Hidden',
 ];
 const streetNameSuffixes = [
     'Drive',
@@ -61,7 +61,7 @@ const streetNameSuffixes = [
     'Alley',
     'Cove',
     'Parkway',
-    'Run'
+    'Run',
 ];
 interface StateCodeToState {
     [key: string]: string;
@@ -128,7 +128,7 @@ const stateCodeToState: StateCodeToState = {
     WA: 'Washington',
     WI: 'Wisconsin',
     WV: 'West Virginia',
-    WY: 'Wyoming'
+    WY: 'Wyoming',
 };
 
 export class PhonyDataUs extends PhonyData {}
@@ -137,26 +137,25 @@ const define = defineForObject.bind(null, PhonyDataUs.prototype);
 
 define('givenNameFemale', givenNamesFemale);
 define('givenNameMale', givenNamesMale);
-define('locality', function(): PhonyDataLocality {
-    const entry = cityStatePostCode[this.index(cityStatePostCode.length)].split(
-        '|'
-    );
+define('locality', function (): PhonyDataLocality {
+    const entry =
+        cityStatePostCode[this.index(cityStatePostCode.length)].split('|');
 
     return {
         addressLine1: this.buildingNumber + ' ' + this.streetName,
         city: entry[0],
         stateOrProvince: stateCodeToState[entry[1]],
         stateOrProvinceCode: entry[1],
-        postCode: entry[2]
+        postCode: entry[2],
     };
 });
-define('phoneNumber', function() {
+define('phoneNumber', function () {
     return this.integer(2, 9).toString(10) + this.format('##-###-####');
 });
-define('postCode', function() {
+define('postCode', function () {
     return this.locality.postCode;
 });
-define('streetName', function() {
+define('streetName', function () {
     let result = '';
 
     if (this.random <= 0.01) {

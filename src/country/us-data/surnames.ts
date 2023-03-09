@@ -9999,5 +9999,5 @@ export const surnames = [
     'Zucker',
     'Zuckerman',
     'Zuniga',
-    'Zurita'
+    'Zurita',
 ];

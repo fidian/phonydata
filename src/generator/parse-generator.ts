@@ -5,7 +5,7 @@ export function parseGenerator(
 ): PhonyDataGeneratorFunction<string> {
     const length = formats.length;
 
-    return function() {
+    return function () {
         return this.parse(formats[this.index(length)]);
     };
 }

@@ -219,7 +219,7 @@ export const mimeTypes: PhonyDataMimeTypeFileAssociations = {
         'bpk',
         'dump',
         'elc',
-        'deploy'
+        'deploy',
     ],
     'application/oda': ['oda'],
     'application/odx': [],
@@ -920,91 +920,144 @@ export const mimeTypes: PhonyDataMimeTypeFileAssociations = {
     'application/vnd.openxmlformats-officedocument.customxmlproperties+xml': [],
     'application/vnd.openxmlformats-officedocument.drawing+xml': [],
     'application/vnd.openxmlformats-officedocument.drawingml.chart+xml': [],
-    'application/vnd.openxmlformats-officedocument.drawingml.chartshapes+xml': [],
-    'application/vnd.openxmlformats-officedocument.drawingml.diagramcolors+xml': [],
-    'application/vnd.openxmlformats-officedocument.drawingml.diagramdata+xml': [],
-    'application/vnd.openxmlformats-officedocument.drawingml.diagramlayout+xml': [],
-    'application/vnd.openxmlformats-officedocument.drawingml.diagramstyle+xml': [],
+    'application/vnd.openxmlformats-officedocument.drawingml.chartshapes+xml':
+        [],
+    'application/vnd.openxmlformats-officedocument.drawingml.diagramcolors+xml':
+        [],
+    'application/vnd.openxmlformats-officedocument.drawingml.diagramdata+xml':
+        [],
+    'application/vnd.openxmlformats-officedocument.drawingml.diagramlayout+xml':
+        [],
+    'application/vnd.openxmlformats-officedocument.drawingml.diagramstyle+xml':
+        [],
     'application/vnd.openxmlformats-officedocument.extended-properties+xml': [],
-    'application/vnd.openxmlformats-officedocument.presentationml.commentauthors+xml': [],
-    'application/vnd.openxmlformats-officedocument.presentationml.comments+xml': [],
-    'application/vnd.openxmlformats-officedocument.presentationml.handoutmaster+xml': [],
-    'application/vnd.openxmlformats-officedocument.presentationml.notesmaster+xml': [],
-    'application/vnd.openxmlformats-officedocument.presentationml.notesslide+xml': [],
-    'application/vnd.openxmlformats-officedocument.presentationml.presentation': [
-        'pptx'
-    ],
-    'application/vnd.openxmlformats-officedocument.presentationml.presentation.main+xml': [],
-    'application/vnd.openxmlformats-officedocument.presentationml.presprops+xml': [],
+    'application/vnd.openxmlformats-officedocument.presentationml.commentauthors+xml':
+        [],
+    'application/vnd.openxmlformats-officedocument.presentationml.comments+xml':
+        [],
+    'application/vnd.openxmlformats-officedocument.presentationml.handoutmaster+xml':
+        [],
+    'application/vnd.openxmlformats-officedocument.presentationml.notesmaster+xml':
+        [],
+    'application/vnd.openxmlformats-officedocument.presentationml.notesslide+xml':
+        [],
+    'application/vnd.openxmlformats-officedocument.presentationml.presentation':
+        ['pptx'],
+    'application/vnd.openxmlformats-officedocument.presentationml.presentation.main+xml':
+        [],
+    'application/vnd.openxmlformats-officedocument.presentationml.presprops+xml':
+        [],
     'application/vnd.openxmlformats-officedocument.presentationml.slide': [
-        'sldx'
+        'sldx',
     ],
-    'application/vnd.openxmlformats-officedocument.presentationml.slide+xml': [],
-    'application/vnd.openxmlformats-officedocument.presentationml.slidelayout+xml': [],
-    'application/vnd.openxmlformats-officedocument.presentationml.slidemaster+xml': [],
+    'application/vnd.openxmlformats-officedocument.presentationml.slide+xml':
+        [],
+    'application/vnd.openxmlformats-officedocument.presentationml.slidelayout+xml':
+        [],
+    'application/vnd.openxmlformats-officedocument.presentationml.slidemaster+xml':
+        [],
     'application/vnd.openxmlformats-officedocument.presentationml.slideshow': [
-        'ppsx'
+        'ppsx',
     ],
-    'application/vnd.openxmlformats-officedocument.presentationml.slideshow.main+xml': [],
-    'application/vnd.openxmlformats-officedocument.presentationml.slideupdateinfo+xml': [],
-    'application/vnd.openxmlformats-officedocument.presentationml.tablestyles+xml': [],
+    'application/vnd.openxmlformats-officedocument.presentationml.slideshow.main+xml':
+        [],
+    'application/vnd.openxmlformats-officedocument.presentationml.slideupdateinfo+xml':
+        [],
+    'application/vnd.openxmlformats-officedocument.presentationml.tablestyles+xml':
+        [],
     'application/vnd.openxmlformats-officedocument.presentationml.tags+xml': [],
     'application/vnd.openxmlformats-officedocument.presentationml.template': [
-        'potx'
+        'potx',
     ],
-    'application/vnd.openxmlformats-officedocument.presentationml.template.main+xml': [],
-    'application/vnd.openxmlformats-officedocument.presentationml.viewprops+xml': [],
-    'application/vnd.openxmlformats-officedocument.spreadsheetml.calcchain+xml': [],
-    'application/vnd.openxmlformats-officedocument.spreadsheetml.chartsheet+xml': [],
-    'application/vnd.openxmlformats-officedocument.spreadsheetml.comments+xml': [],
-    'application/vnd.openxmlformats-officedocument.spreadsheetml.connections+xml': [],
-    'application/vnd.openxmlformats-officedocument.spreadsheetml.dialogsheet+xml': [],
-    'application/vnd.openxmlformats-officedocument.spreadsheetml.externallink+xml': [],
-    'application/vnd.openxmlformats-officedocument.spreadsheetml.pivotcachedefinition+xml': [],
-    'application/vnd.openxmlformats-officedocument.spreadsheetml.pivotcacherecords+xml': [],
-    'application/vnd.openxmlformats-officedocument.spreadsheetml.pivottable+xml': [],
-    'application/vnd.openxmlformats-officedocument.spreadsheetml.querytable+xml': [],
-    'application/vnd.openxmlformats-officedocument.spreadsheetml.revisionheaders+xml': [],
-    'application/vnd.openxmlformats-officedocument.spreadsheetml.revisionlog+xml': [],
-    'application/vnd.openxmlformats-officedocument.spreadsheetml.sharedstrings+xml': [],
+    'application/vnd.openxmlformats-officedocument.presentationml.template.main+xml':
+        [],
+    'application/vnd.openxmlformats-officedocument.presentationml.viewprops+xml':
+        [],
+    'application/vnd.openxmlformats-officedocument.spreadsheetml.calcchain+xml':
+        [],
+    'application/vnd.openxmlformats-officedocument.spreadsheetml.chartsheet+xml':
+        [],
+    'application/vnd.openxmlformats-officedocument.spreadsheetml.comments+xml':
+        [],
+    'application/vnd.openxmlformats-officedocument.spreadsheetml.connections+xml':
+        [],
+    'application/vnd.openxmlformats-officedocument.spreadsheetml.dialogsheet+xml':
+        [],
+    'application/vnd.openxmlformats-officedocument.spreadsheetml.externallink+xml':
+        [],
+    'application/vnd.openxmlformats-officedocument.spreadsheetml.pivotcachedefinition+xml':
+        [],
+    'application/vnd.openxmlformats-officedocument.spreadsheetml.pivotcacherecords+xml':
+        [],
+    'application/vnd.openxmlformats-officedocument.spreadsheetml.pivottable+xml':
+        [],
+    'application/vnd.openxmlformats-officedocument.spreadsheetml.querytable+xml':
+        [],
+    'application/vnd.openxmlformats-officedocument.spreadsheetml.revisionheaders+xml':
+        [],
+    'application/vnd.openxmlformats-officedocument.spreadsheetml.revisionlog+xml':
+        [],
+    'application/vnd.openxmlformats-officedocument.spreadsheetml.sharedstrings+xml':
+        [],
     'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet': [
-        'xlsx'
+        'xlsx',
     ],
-    'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet.main+xml': [],
-    'application/vnd.openxmlformats-officedocument.spreadsheetml.sheetmetadata+xml': [],
-    'application/vnd.openxmlformats-officedocument.spreadsheetml.styles+xml': [],
+    'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet.main+xml':
+        [],
+    'application/vnd.openxmlformats-officedocument.spreadsheetml.sheetmetadata+xml':
+        [],
+    'application/vnd.openxmlformats-officedocument.spreadsheetml.styles+xml':
+        [],
     'application/vnd.openxmlformats-officedocument.spreadsheetml.table+xml': [],
-    'application/vnd.openxmlformats-officedocument.spreadsheetml.tablesinglecells+xml': [],
+    'application/vnd.openxmlformats-officedocument.spreadsheetml.tablesinglecells+xml':
+        [],
     'application/vnd.openxmlformats-officedocument.spreadsheetml.template': [
-        'xltx'
+        'xltx',
     ],
-    'application/vnd.openxmlformats-officedocument.spreadsheetml.template.main+xml': [],
-    'application/vnd.openxmlformats-officedocument.spreadsheetml.usernames+xml': [],
-    'application/vnd.openxmlformats-officedocument.spreadsheetml.volatiledependencies+xml': [],
-    'application/vnd.openxmlformats-officedocument.spreadsheetml.worksheet+xml': [],
+    'application/vnd.openxmlformats-officedocument.spreadsheetml.template.main+xml':
+        [],
+    'application/vnd.openxmlformats-officedocument.spreadsheetml.usernames+xml':
+        [],
+    'application/vnd.openxmlformats-officedocument.spreadsheetml.volatiledependencies+xml':
+        [],
+    'application/vnd.openxmlformats-officedocument.spreadsheetml.worksheet+xml':
+        [],
     'application/vnd.openxmlformats-officedocument.theme+xml': [],
     'application/vnd.openxmlformats-officedocument.themeoverride+xml': [],
     'application/vnd.openxmlformats-officedocument.vmldrawing': [],
-    'application/vnd.openxmlformats-officedocument.wordprocessingml.comments+xml': [],
+    'application/vnd.openxmlformats-officedocument.wordprocessingml.comments+xml':
+        [],
     'application/vnd.openxmlformats-officedocument.wordprocessingml.document': [
-        'docx'
+        'docx',
     ],
-    'application/vnd.openxmlformats-officedocument.wordprocessingml.document.glossary+xml': [],
-    'application/vnd.openxmlformats-officedocument.wordprocessingml.document.main+xml': [],
-    'application/vnd.openxmlformats-officedocument.wordprocessingml.endnotes+xml': [],
-    'application/vnd.openxmlformats-officedocument.wordprocessingml.fonttable+xml': [],
-    'application/vnd.openxmlformats-officedocument.wordprocessingml.footer+xml': [],
-    'application/vnd.openxmlformats-officedocument.wordprocessingml.footnotes+xml': [],
-    'application/vnd.openxmlformats-officedocument.wordprocessingml.numbering+xml': [],
-    'application/vnd.openxmlformats-officedocument.wordprocessingml.settings+xml': [],
-    'application/vnd.openxmlformats-officedocument.wordprocessingml.styles+xml': [],
+    'application/vnd.openxmlformats-officedocument.wordprocessingml.document.glossary+xml':
+        [],
+    'application/vnd.openxmlformats-officedocument.wordprocessingml.document.main+xml':
+        [],
+    'application/vnd.openxmlformats-officedocument.wordprocessingml.endnotes+xml':
+        [],
+    'application/vnd.openxmlformats-officedocument.wordprocessingml.fonttable+xml':
+        [],
+    'application/vnd.openxmlformats-officedocument.wordprocessingml.footer+xml':
+        [],
+    'application/vnd.openxmlformats-officedocument.wordprocessingml.footnotes+xml':
+        [],
+    'application/vnd.openxmlformats-officedocument.wordprocessingml.numbering+xml':
+        [],
+    'application/vnd.openxmlformats-officedocument.wordprocessingml.settings+xml':
+        [],
+    'application/vnd.openxmlformats-officedocument.wordprocessingml.styles+xml':
+        [],
     'application/vnd.openxmlformats-officedocument.wordprocessingml.template': [
-        'dotx'
+        'dotx',
     ],
-    'application/vnd.openxmlformats-officedocument.wordprocessingml.template.main+xml': [],
-    'application/vnd.openxmlformats-officedocument.wordprocessingml.websettings+xml': [],
+    'application/vnd.openxmlformats-officedocument.wordprocessingml.template.main+xml':
+        [],
+    'application/vnd.openxmlformats-officedocument.wordprocessingml.websettings+xml':
+        [],
     'application/vnd.openxmlformats-package.core-properties+xml': [],
-    'application/vnd.openxmlformats-package.digital-signature-xmlsignature+xml': [],
+    'application/vnd.openxmlformats-package.digital-signature-xmlsignature+xml':
+        [],
     'application/vnd.openxmlformats-package.relationships+xml': [],
     'application/vnd.oracle.resource+json': [],
     'application/vnd.orange.indata': [],
@@ -1049,7 +1102,7 @@ export const mimeTypes: PhonyDataMimeTypeFileAssociations = {
         'qwd',
         'qwt',
         'qxl',
-        'qxb'
+        'qxb',
     ],
     'application/vnd.quobject-quoxdocument': [],
     'application/vnd.radisys.moml+xml': [],
@@ -1280,7 +1333,7 @@ export const mimeTypes: PhonyDataMimeTypeFileAssociations = {
         'cxt',
         'w3d',
         'fgd',
-        'swa'
+        'swa',
     ],
     'application/x-doom': ['wad'],
     'application/x-dtbncx+xml': ['ncx'],
@@ -1888,5 +1941,5 @@ export const mimeTypes: PhonyDataMimeTypeFileAssociations = {
     'video/x-msvideo': ['avi'],
     'video/x-sgi-movie': ['movie'],
     'video/x-smv': ['smv'],
-    'x-conference/x-cooltalk': ['ice']
+    'x-conference/x-cooltalk': ['ice'],
 };

@@ -247,5 +247,5 @@ export const loremWords: string[] = [
     'voluptatem',
     'voluptates',
     'voluptatibus',
-    'voluptatum'
+    'voluptatum',
 ];

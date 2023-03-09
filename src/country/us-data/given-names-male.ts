@@ -1218,5 +1218,5 @@ export const givenNamesMale = [
     'Dorsey',
     'Darell',
     'Broderick',
-    'Alonso'
+    'Alonso',
 ];

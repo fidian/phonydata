@@ -4274,5 +4274,5 @@ export const givenNamesFemale = [
     'Annelle',
     'Angila',
     'Alona',
-    'Allyn'
+    'Allyn',
 ];

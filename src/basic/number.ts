@@ -8,10 +8,10 @@ export interface PhonyDataAddNumber {
 }
 
 export function number() {
-    define('index', function(items: number = 1) {
+    define('index', function (items: number = 1) {
         return Math.floor(this.random * items);
     });
-    define('integer', function(min: number, max: number) {
+    define('integer', function (min: number, max: number) {
         return Math.floor(this.random * (max - min + 1)) + min;
     });
 }

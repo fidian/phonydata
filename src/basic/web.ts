@@ -41,7 +41,7 @@ export function web() {
         'silver',
         'teal',
         'white',
-        'yellow'
+        'yellow',
     ]);
     define('cssColorName', [
         'AliceBlue',
@@ -190,11 +190,11 @@ export function web() {
         'White',
         'WhiteSmoke',
         'Yellow',
-        'YellowGreen'
+        'YellowGreen',
     ]);
     define('fileExtension', fileExtensions);
     define('mimeType', mimeTypeList);
-    define('rgbHex', function() {
+    define('rgbHex', function () {
         return '#' + this.format('xxxxxx');
     });
 }

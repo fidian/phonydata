@@ -6,7 +6,7 @@ export interface PhonyDataAddBoolean {
 }
 
 export function boolean() {
-    define('boolean', function() {
+    define('boolean', function () {
         return this.random < 0.5;
     });
 }
