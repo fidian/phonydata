@@ -1,5 +1,6 @@
 import { define } from '..';
-import { currencies, PhonyDataCurrency } from '../data/currencies';
+import { currencies } from '../data/currencies';
+import { PhonyDataCurrency } from '../datatypes/phony-data-currency';
 
 export interface PhonyDataAddCurrency {
     currency: PhonyDataCurrency;

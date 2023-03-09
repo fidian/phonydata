@@ -1,12 +1,5 @@
 import { define } from '..';
-
-export interface PhonyDataLocality {
-    addressLine1: string;
-    city: string;
-    stateOrProvince: string;
-    stateOrProvinceCode: string;
-    postCode: string;
-}
+import { PhonyDataLocality } from '../datatypes/phony-data-locality';
 
 export interface PhonyDataAddLocale {
     // Language specific

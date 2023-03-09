@@ -1,3 +1,13 @@
+import { PhonyDataDefineObject } from './datatypes/phony-data-define-object';
+import { PhonyDataGeneratorFunction } from './datatypes/phony-data-generator-function';
+import { PhonyDataGeneratorValue } from './datatypes/phony-data-generator-value';
+
+import { formatGenerator } from './generator/format-generator';
+import { parseGenerator } from './generator/parse-generator';
+import { randomGenerator } from './generator/random-generator';
+import { sequenceGenerator } from './generator/sequence-generator';
+import { weightedGenerator } from './generator/weighted-generator';
+
 import { binary, PhonyDataAddBinary } from './basic/binary';
 import { boolean, PhonyDataAddBoolean } from './basic/boolean';
 import { currency, PhonyDataAddCurrency } from './basic/currency';
@@ -10,22 +20,6 @@ import { number, PhonyDataAddNumber } from './basic/number';
 import { random, PhonyDataAddRandom } from './basic/random';
 import { text, PhonyDataAddText } from './basic/text';
 import { web, PhonyDataAddWeb } from './basic/web';
-
-export type PhonyDataGeneratorFunction<T> = (
-    this: PhonyData,
-    ...args: any[]
-) => T;
-
-export type PhonyDataGeneratorValue =
-    | PhonyDataGeneratorFunction<any>
-    | any[]
-    | string
-    | number
-    | null;
-
-export interface PhonyDataDefineObject {
-    [key: string]: any;
-}
 
 export interface PhonyData
     extends PhonyDataAddBinary,
@@ -40,14 +34,30 @@ export interface PhonyData
         PhonyDataAddRandom,
         PhonyDataAddText,
         PhonyDataAddWeb {
+    _formatMap: Map<string, string>;
     define(name: string, value: PhonyDataGeneratorValue): void;
     define(obj: PhonyDataDefineObject): void;
-    formatGenerator(formats: string[]): PhonyDataGeneratorFunction<string>;
-    parseGenerator(formats: string[]): PhonyDataGeneratorFunction<string>;
-    sequenceGenerator(values: any[]): PhonyDataGeneratorFunction<any>;
+    defineFormatter(formatCharacter: string, generatorName: string): void;
+    formatGenerator: typeof formatGenerator;
+    parseGenerator: typeof parseGenerator;
+    randomGenerator: typeof randomGenerator;
+    sequenceGenerator: typeof sequenceGenerator;
+    weightedGenerator: typeof weightedGenerator;
 }
 
 export class PhonyData implements PhonyData {
+    constructor() {
+        this._formatMap = new Map([
+            ['#', 'digit'],
+            ['A', 'letterUpper'],
+            ['a', 'letterLower'],
+            ['X', 'hexUpper'],
+            ['x', 'hexLower'],
+            ['Z', 'alphaNumericUpper'],
+            ['z', 'alphaNumericLower'],
+        ]);
+    }
+
     define(
         name: string | PhonyDataDefineObject,
         value?: PhonyDataGeneratorValue
@@ -63,43 +73,15 @@ export class PhonyData implements PhonyData {
         }
     }
 
+    defineFormatter(formatCharacter: string, generatorName: string) {
+        this._formatMap.set(formatCharacter, generatorName);
+    }
+
     formatGenerator = formatGenerator;
     parseGenerator = parseGenerator;
+    randomGenerator = randomGenerator;
     sequenceGenerator = sequenceGenerator;
-}
-
-export function formatGenerator(
-    formats: string[]
-): PhonyDataGeneratorFunction<string> {
-    const length = formats.length;
-
-    return function() {
-        return this.format(formats[this.index(length)]);
-    };
-}
-
-export function parseGenerator(
-    formats: string[]
-): PhonyDataGeneratorFunction<string> {
-    const length = formats.length;
-
-    return function() {
-        return this.parse(formats[this.index(length)]);
-    };
-}
-
-export function sequenceGenerator(
-    values: any[]
-): PhonyDataGeneratorFunction<any> {
-    let index = 0;
-
-    return () => {
-        const value = values[index];
-        index += 1;
-        index %= values.length;
-
-        return value;
-    };
+    weightedGenerator = weightedGenerator;
 }
 
 function defineMethod(
@@ -110,18 +92,18 @@ function defineMethod(
     if (value.length) {
         Object.defineProperty(target, name, {
             configurable: true,
-            value: value
+            value: value,
         });
     } else {
         Object.defineProperty(target, name, {
             configurable: true,
-            get: value
+            get: value,
         });
     }
 
     Object.defineProperty(target, '_' + name, {
         configurable: true,
-        value: value
+        value: value,
     });
 }
 
@@ -135,19 +117,13 @@ export function defineForObject(
             defineForObject(target, key, name[key]);
         }
     } else if (Array.isArray(value)) {
-        defineMethod(target, name, function() {
+        defineMethod(target, name, function () {
             return value[this.index(value.length)];
         });
     } else if (typeof value === 'function') {
         defineMethod(target, name, value);
     } else {
         defineMethod(target, name, () => value);
-    }
-}
-
-function defineObject(obj: PhonyDataDefineObject) {
-    for (const key of Object.keys(obj)) {
-        defineForObject(PhonyData.prototype, key, obj[key]);
     }
 }
 

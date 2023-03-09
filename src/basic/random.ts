@@ -18,10 +18,10 @@ function init(obj: PhonyData) {
 }
 
 export function random() {
-    define('random', function() {
+    define('random', function () {
         return init(this).random;
     });
-    define('seed', function(seed: number = 0) {
+    define('seed', function (seed: number = 0) {
         return init(this).seed(seed);
     });
 }

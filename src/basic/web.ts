@@ -1,17 +1,6 @@
 import { define } from '..';
 import { mimeTypes } from '../data/mime-types';
 
-const mimeTypeList = Object.keys(mimeTypes);
-let fileExtensions: string[] = [];
-
-for (const mimeType of mimeTypeList) {
-    const additionalExtensions = mimeTypes[mimeType];
-
-    if (additionalExtensions.length) {
-        fileExtensions = fileExtensions.concat(additionalExtensions);
-    }
-}
-
 export interface PhonyDataAddWeb {
     cssBasicColorName: string;
     _cssBasicColorName(): string;
@@ -23,6 +12,17 @@ export interface PhonyDataAddWeb {
     _mimeType(): string;
     rgbHex: string;
     _rgbHex(): string;
+}
+
+const mimeTypeList = Object.keys(mimeTypes);
+let fileExtensions: string[] = [];
+
+for (const mimeType of mimeTypeList) {
+    const additionalExtensions = mimeTypes[mimeType];
+
+    if (additionalExtensions.length) {
+        fileExtensions = fileExtensions.concat(additionalExtensions);
+    }
 }
 
 export function web() {

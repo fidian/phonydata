@@ -26,7 +26,7 @@ export function functions() {
         }
 
         if (!(date instanceof Date)) {
-            date = this.date;
+            date = this.date as Date;
         }
 
         // Avoid using these characters because they are already used in ISO
@@ -41,15 +41,15 @@ export function functions() {
             .replace(/ss/, pad(date.getUTCSeconds()));
     });
     define('format', function(format: string) {
-        return format
-            .toString()
-            .replace(/#/g, () => this.digit)
-            .replace(/A/g, () => this.letterUpper)
-            .replace(/a/g, () => this.letterLower)
-            .replace(/X/g, () => this.hexUpper)
-            .replace(/x/g, () => this.hexLower)
-            .replace(/Z/g, () => this.alphaNumericUpper)
-            .replace(/z/g, () => this.alphaNumericLower);
+        return format.toString().replace(/./g, (letter) => {
+            const mapped = this._formatMap.get(letter);
+
+            if (!mapped) {
+                return letter;
+            }
+
+            return this[`_${mapped}`]();
+        });
     });
     define('parse', function(format: string) {
         const typedPhonyData: TypedPhonyData = (this as unknown) as TypedPhonyData;
