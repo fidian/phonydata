@@ -1,135 +1,58 @@
 import { defineForObject, PhonyData } from '..';
 import { PhonyDataLocality } from '../datatypes/phony-data-locality';
-import { cityStatePostCode } from './us-data/city-state-post-code';
+import { PhonyDataGeneratorFunction } from '../datatypes/phony-data-generator-function';
 import { givenNamesFemale } from './us-data/given-names-female';
 import { givenNamesMale } from './us-data/given-names-male';
+import { randomGenerator } from '../generator/random-generator';
+import { stateCodeToState } from './us-data/state-code-to-state';
+import { streetDirections } from './us-data/street-directions';
+import { streetNamePrefixes } from './us-data/street-name-prefixes';
 import { streetNames } from './us-data/street-names';
+import { streetNameSuffixes } from './us-data/street-name-suffixes';
 import { surnames } from './us-data/surnames';
+import { stateCityPopulationZips } from './us-data/state-city-population-zips';
+import { weightedGenerator } from '../generator/weighted-generator';
 
-const streetDirections = [
-    'N',
-    'S',
-    'E',
-    'W',
-    'North',
-    'South',
-    'East',
-    'West',
-    'NW',
-    'SW',
-    'NE',
-    'SE',
-];
-const streetNamePrefixes = [
-    'Country',
-    'Van',
-    'Saint',
-    'Blue',
-    'White',
-    'Valley',
-    'Route',
-    'Old',
-    'St',
-    'New',
-    'East',
-    'Red',
-    'Spring',
-    'Blue',
-    'White',
-    'South',
-    'Green',
-    'West',
-    'North',
-    'Indian',
-    'Valley',
-    'Black',
-    'Hidden',
-];
-const streetNameSuffixes = [
-    'Drive',
-    'Road',
-    'Street',
-    'Court',
-    'Lane',
-    'Avenue',
-    'Way',
-    'Place',
-    'Circle',
-    'Boulevard',
-    'Terrace',
-    'Trail',
-    'Alley',
-    'Cove',
-    'Parkway',
-    'Run',
-];
-interface StateCodeToState {
-    [key: string]: string;
+interface CityInfo {
+    cityName: string;
+    population: number;
+    generator: PhonyDataGeneratorFunction<string>
 }
-const stateCodeToState: StateCodeToState = {
-    AA: 'AA',
-    AE: 'AE',
-    AK: 'Alaska',
-    AL: 'Alabama',
-    AP: 'AP',
-    AR: 'Arkansas',
-    AS: 'American Samoa',
-    AZ: 'Arizona',
-    CA: 'California',
-    CO: 'Colorado',
-    CT: 'Connecticut',
-    DC: 'District of Columbia',
-    DE: 'Delaware',
-    FL: 'Florida',
-    FM: 'Federated States of Micronesia',
-    GA: 'Georgia',
-    GU: 'Guam',
-    HI: 'Hawaii',
-    IA: 'Iowa',
-    ID: 'Idaho',
-    IL: 'Illinois',
-    IN: 'Indiana',
-    KS: 'Kansas',
-    KY: 'Kentucky',
-    LA: 'Louisiana',
-    MA: 'Massachusetts',
-    MD: 'Maryland',
-    ME: 'Maine',
-    MH: 'Marshall Islands',
-    MI: 'Michigan',
-    MN: 'Minnesota',
-    MO: 'Missouri',
-    MP: 'Northern Mariana Islands',
-    MS: 'Mississippi',
-    MT: 'Montana',
-    NC: 'North Carolina',
-    ND: 'North Dakota',
-    NE: 'Nebraska',
-    NH: 'New Hampshire',
-    NJ: 'New Jersey',
-    NM: 'New Mexico',
-    NV: 'Nevada',
-    NY: 'New York',
-    OH: 'Ohio',
-    OK: 'Oklahoma',
-    OR: 'Oregon',
-    PA: 'Pennsylvania',
-    PR: 'Puerto Rico',
-    PW: 'Palau',
-    RI: 'Rhode Island',
-    SC: 'South Carolina',
-    SD: 'South Dakota',
-    TN: 'Tennessee',
-    TX: 'Texas',
-    UT: 'Utah',
-    VA: 'Virginia',
-    VI: 'Virgin Islands',
-    VT: 'Vermont',
-    WA: 'Washington',
-    WI: 'Wisconsin',
-    WV: 'West Virginia',
-    WY: 'Wyoming',
-};
+
+const stateToCityInfo = new Map<string, CityInfo[]>();
+
+for (const stateCityPopulationZip of stateCityPopulationZips) {
+    const [stateCode, cityName, populationString, ...zips] = stateCityPopulationZip.split('|');
+    const population = +populationString;
+
+    const cities = stateToCityInfo.get(stateCode) || [];
+    cities.push({
+        cityName,
+        population,
+        generator: randomGenerator(zips)
+    });
+    stateToCityInfo.set(stateCode, cities);
+}
+
+const weightedStateCodeData: [number, string][] = [];
+const cityGeneratorByState = new Map<string, PhonyDataGeneratorFunction<string>>();
+const zipGeneratorByStateCity = new Map<string, Map<string, PhonyDataGeneratorFunction<string>>>();
+
+for (const [stateCode, cities] of stateToCityInfo) {
+    const population = cities.reduce((acc, next) => acc + next.population, 0);
+    const cityList: [number, string][] = cities.map((city) => [city.population, city.cityName]);
+    weightedStateCodeData.push([population, stateCode]);
+    cityGeneratorByState.set(stateCode, weightedGenerator(cityList));
+    
+    const zipGeneratorByCity = new Map<string, PhonyDataGeneratorFunction<string>>();
+    zipGeneratorByStateCity.set(stateCode, zipGeneratorByCity);
+
+    for (const city of cities) {
+        zipGeneratorByCity.set(city.cityName, city.generator);
+    }
+}
+
+const weightedStateCodeGenerator = weightedGenerator(weightedStateCodeData);
 
 export class PhonyDataUs extends PhonyData {}
 
@@ -138,15 +61,30 @@ const define = defineForObject.bind(null, PhonyDataUs.prototype);
 define('givenNameFemale', givenNamesFemale);
 define('givenNameMale', givenNamesMale);
 define('locality', function (): PhonyDataLocality {
-    const entry =
-        cityStatePostCode[this.index(cityStatePostCode.length)].split('|');
+    const stateCode = weightedStateCodeGenerator.call(this);
+    const cityGenerator = cityGeneratorByState.get(stateCode);
+    const zipGeneratorByCity = zipGeneratorByStateCity.get(stateCode);
+    let cityName = '';
+    let zipCode = '';
+
+    if (cityGenerator) {
+        cityName = cityGenerator.call(this);
+    }
+
+    if (zipGeneratorByCity) {
+        const zipGenerator = zipGeneratorByCity.get(cityName);
+
+        if (zipGenerator) {
+            zipCode = zipGenerator.call(this);
+        }
+    }
 
     return {
         addressLine1: this.buildingNumber + ' ' + this.streetName,
-        city: entry[0],
-        stateOrProvince: stateCodeToState[entry[1]],
-        stateOrProvinceCode: entry[1],
-        postCode: entry[2],
+        city: cityName,
+        stateOrProvince: stateCodeToState[stateCode],
+        stateOrProvinceCode: stateCode,
+        postCode: zipCode,
     };
 });
 define('phoneNumber', function () {
