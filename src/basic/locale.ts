@@ -131,7 +131,7 @@ export function locale() {
         return this.locality.postCode;
     });
     define('stateOrProvince', function () {
-        return this.locality.stateOrProvinceCode;
+        return this.locality.stateOrProvince;
     });
     define('stateOrProvinceCode', function () {
         return this.locality.stateOrProvinceCode;

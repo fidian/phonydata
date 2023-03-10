@@ -1,12 +1,12 @@
 {
     "name": "phonydata",
-    "version": "2.0.2",
+    "version": "2.1.2",
     "description": "Generate test data, based on casual's ideas and faker's data.",
     "main": "lib/index.js",
     "scripts": {
         "build": "rm -rf lib && tsc",
         "test:ava": "ava",
-        "test:lint": "eslint src test",
+        "test:lint": "eslint src",
         "test": "npm run test:lint && npm run test:ava"
     },
     "repository": {
@@ -46,7 +46,7 @@
     "ava": {
         "extensions": [ "ts" ],
         "files": [
-            "test/**/*.ts"
+            "src/**/*.spec.ts"
         ],
         "require": [
             "ts-node/register/transpile-only"

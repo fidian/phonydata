@@ -16,35 +16,48 @@ import { weightedGenerator } from '../generator/weighted-generator';
 interface CityInfo {
     cityName: string;
     population: number;
-    generator: PhonyDataGeneratorFunction<string>
+    generator: PhonyDataGeneratorFunction<string>;
 }
 
 const stateToCityInfo = new Map<string, CityInfo[]>();
 
 for (const stateCityPopulationZip of stateCityPopulationZips) {
-    const [stateCode, cityName, populationString, ...zips] = stateCityPopulationZip.split('|');
+    const [stateCode, cityName, populationString, ...zips] =
+        stateCityPopulationZip.split('|');
     const population = +populationString;
 
     const cities = stateToCityInfo.get(stateCode) || [];
     cities.push({
         cityName,
         population,
-        generator: randomGenerator(zips)
+        generator: randomGenerator(zips),
     });
     stateToCityInfo.set(stateCode, cities);
 }
 
 const weightedStateCodeData: [number, string][] = [];
-const cityGeneratorByState = new Map<string, PhonyDataGeneratorFunction<string>>();
-const zipGeneratorByStateCity = new Map<string, Map<string, PhonyDataGeneratorFunction<string>>>();
+const cityGeneratorByState = new Map<
+    string,
+    PhonyDataGeneratorFunction<string>
+>();
+const zipGeneratorByStateCity = new Map<
+    string,
+    Map<string, PhonyDataGeneratorFunction<string>>
+>();
 
 for (const [stateCode, cities] of stateToCityInfo) {
     const population = cities.reduce((acc, next) => acc + next.population, 0);
-    const cityList: [number, string][] = cities.map((city) => [city.population, city.cityName]);
+    const cityList: [number, string][] = cities.map(city => [
+        city.population,
+        city.cityName,
+    ]);
     weightedStateCodeData.push([population, stateCode]);
     cityGeneratorByState.set(stateCode, weightedGenerator(cityList));
-    
-    const zipGeneratorByCity = new Map<string, PhonyDataGeneratorFunction<string>>();
+
+    const zipGeneratorByCity = new Map<
+        string,
+        PhonyDataGeneratorFunction<string>
+    >();
     zipGeneratorByStateCity.set(stateCode, zipGeneratorByCity);
 
     for (const city of cities) {

@@ -1,4 +1,5 @@
 import { define } from '..';
+import { PhonyDataMethods } from '../datatypes/phony-data-methods';
 
 export interface PhonyDataAddFunctions {
     dateFormat(format: string, date?: Date): string;
@@ -7,10 +8,6 @@ export interface PhonyDataAddFunctions {
     _format(format: string): string;
     parse(format: string): string;
     _parse(format: string): string;
-}
-
-interface TypedPhonyData {
-    [key: string]: (...args: any[]) => any;
 }
 
 export function functions() {
@@ -41,7 +38,7 @@ export function functions() {
             .replace(/ss/, pad(date.getUTCSeconds()));
     });
     define('format', function (format: string) {
-        const typedPhonyData: TypedPhonyData = this as unknown as TypedPhonyData;
+        const typedPhonyData = this as unknown as PhonyDataMethods;
 
         return format.toString().replace(/./g, letter => {
             const mapped = this._formatMap.get(letter);
@@ -54,8 +51,7 @@ export function functions() {
         });
     });
     define('parse', function (format: string) {
-        const typedPhonyData: TypedPhonyData =
-            this as unknown as TypedPhonyData;
+        const typedPhonyData = this as unknown as PhonyDataMethods;
 
         return format.toString().replace(/\{\{(.*?)\}\}/g, (match, grab) => {
             const elements = grab.replace(/\s*/g, '').split('|');

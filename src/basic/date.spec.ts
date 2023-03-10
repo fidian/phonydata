@@ -1,9 +1,10 @@
 import test from 'ava';
-import { init, testSequence } from '../util';
+import { init, testSequence } from '../test-util';
+import { PhonyData } from '..';
 
 const startingPoint = 1550000000000;
 
-function makeOffsetGetter(instance, method) {
+function makeOffsetGetter(instance: PhonyData, method: keyof PhonyData) {
     return () => {
         const saved = Date.prototype.getTime;
         Date.prototype.getTime = () => startingPoint;
@@ -18,11 +19,11 @@ function makeOffsetGetter(instance, method) {
     };
 }
 
-function testDate(method, values) {
+function testDate(method: keyof PhonyData, values: any[]) {
     test(method, t => {
         const instance = init();
 
-        testSequence(t, makeOffsetGetter(instance, method), values);
+        testSequence(t, [], makeOffsetGetter(instance, method), values);
         t.pass();
     });
 }
