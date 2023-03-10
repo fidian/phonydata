@@ -77,7 +77,7 @@ export class PhonyData implements PhonyData {
 }
 
 function defineMethod<T = any>(
-    target: PhonyData,
+    target: any,
     name: string,
     value: PhonyDataGeneratorFunction<T>
 ) {
@@ -100,7 +100,7 @@ function defineMethod<T = any>(
 }
 
 export function defineForObject(
-    target: PhonyData,
+    target: any,
     name: string,
     value: PhonyDataGeneratorValue
 ): void {

@@ -1,12 +1,8 @@
 import test from 'ava';
-import { PhonyData } from '../lib';
+import { PhonyData } from '../src';
 
-export function init(classDef) {
-    if (!classDef) {
-        classDef = PhonyData;
-    }
-
-    const instance = new classDef();
+export function init() {
+    const instance = new PhonyData();
     instance.seed(1);
 
     return instance;

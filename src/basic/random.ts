@@ -19,9 +19,17 @@ function init(obj: PhonyData) {
 
 export function random() {
     define('random', function () {
-        return init(this).random;
+        init(this);
+
+        return this._random();
     });
-    define('seed', function (seed = 0) {
-        return init(this).seed(seed);
+    define('seed', function (seed?: number) {
+        if (typeof seed === 'undefined') {
+            seed = 1;
+        }
+
+        init(this);
+
+        return this._seed(seed);
     });
 }
