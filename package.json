@@ -1,6 +1,6 @@
 {
     "name": "phonydata",
-    "version": "2.1.2",
+    "version": "2.1.0",
     "description": "Generate test data, based on casual's ideas and faker's data.",
     "main": "lib/index.js",
     "scripts": {
